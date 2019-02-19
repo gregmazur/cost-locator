@@ -1,0 +1,22 @@
+{
+  "next_page": {
+    "path": "/test",
+    "uri": "https://public.api.openprocurement.org/api/2.4/tenders?offset=2015-08-18T15%3A07%3A00.652711%2B03%3A00",
+    "offset": "2015-08-18T15:07:00.652711+03:00"
+  },
+  "data": [
+    {
+      "id": "first",
+      "dateModified": "2015-06-19T21:00:03.877324+03:00"
+    },
+    {
+      "id": "26fb2604766247f7bb8b75d5aca8d737",
+      "dateModified": "2015-06-22T09:00:07.205789+03:00"
+    }
+  ],
+  "prev_page": {
+    "path": "/prev",
+    "uri": "https://public.api.openprocurement.org/api/2.4/tenders?descending=1&offset=2015-06-19T21%3A00%3A03.340891%2B03%3A00",
+    "offset": "2015-06-19T21:00:03.340891+03:00"
+  }
+}

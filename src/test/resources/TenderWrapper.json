@@ -1,0 +1,120 @@
+{
+  "data": {
+    "procurementMethod": "open",
+    "mainProcurementCategory": "goods",
+    "complaintPeriod": {
+      "startDate": "2019-02-01T18:31:29.449877+02:00",
+      "endDate": "2019-02-21T00:00:00+02:00"
+    },
+    "enquiryPeriod": {
+      "startDate": "2019-02-01T18:31:29.449877+02:00",
+      "clarificationsUntil": "2019-02-20T18:36:14+02:00",
+      "endDate": "2019-02-15T18:36:14+02:00",
+      "invalidationDate": "2019-02-15T15:39:53.185185+02:00"
+    },
+    "submissionMethod": "electronicAuction",
+    "next_check": "2019-02-25T18:36:14+02:00",
+    "procuringEntity": {
+      "kind": "general",
+      "name": "Управління дорожнього господарства Одеської міської ради",
+      "address": {
+        "postalCode": "65078",
+        "countryName": "Україна",
+        "streetAddress": "вул. Генерала Петрова, 22",
+        "region": "Одеська область",
+        "locality": "Одеса"
+      },
+      "contactPoint": {
+        "name_ru": "  ",
+        "name": "Дєлієргієв Геннадій Георгійович",
+        "telephone": "+380963616027",
+        "faxNumber": "+380482329963",
+        "name_en": "  ",
+        "email": "udh@omr.odessa.ua"
+      },
+      "identifier": {
+        "scheme": "UA-EDR",
+        "legalName_en": "Road Facilities Administration of Odesa City Council",
+        "id": "26506412",
+        "legalName": "Управління дорожнього господарства Одеської міської ради"
+      },
+      "name_en": "Road Facilities Administration of Odesa City Council"
+    },
+    "owner": "netcast.com.ua",
+      "id": "ca301663b4f7423f944411d22543a037",
+    "description": "площа покриття, що підлягає капітальному ремонту, складає 24 884, 5 м²",
+    "documents": [
+      {
+        "hash": "md5:a69ba8814131a74471c329b0132f707b",
+        "description": "SHA1: c5bf4e6425a2499abb140c1c526f6667206e7266; SHA2-384: dd32bc8f5cd5bfb4d6ae1d59f31e4ad5a068b1fe72f713913ab818931a4e155f607e3593eb8b47829c9745baacf3bb98; Antivirus: ESET Antivirus",
+        "title": "ТД.doc",
+        "url": "https://public.docs.openprocurement.org/get/8879b6b4bd9d41fc830db52ab8ca1b21?KeyID=52462340&Signature=C8E1xEC86vk%2FLuISc6yX5zNnI%2F0EYuUVz10ouoM%2F6TiN6VPdYdRIUQ4CbMnwMDfgcLgmOp4eGfTT%2F%2FPanXiOBA%253D%253D",
+        "format": "application/msword",
+        "title_en": "ТД.doc",
+        "documentOf": "tender",
+        "datePublished": "2019-02-01T18:31:45.453239+02:00",
+        "author": "tender_owner",
+        "title_ru": "ТД.doc",
+        "documentType": "biddingDocuments",
+        "dateModified": "2019-02-01T18:31:45.453277+02:00",
+        "id": "aba49dcc88ff41518d3db7dfc0ef59be"
+      }
+    ],
+    "title": "Капітальний ремонт вул. Софіївської у м. Одесі",
+    "tenderID": "UA-2019-02-01-001301-c",
+    "guarantee": {
+      "currency": "UAH",
+      "amount": 800000
+    },
+    "dateModified": "2019-02-15T15:40:04.518093+02:00",
+    "status": "active.tendering",
+    "tenderPeriod": {
+      "startDate": "2019-02-01T18:31:29.449877+02:00",
+      "endDate": "2019-02-25T18:36:14+02:00"
+    },
+    "auctionPeriod": {
+      "startDate": "2019-02-26T12:33:17+02:00",
+      "shouldStartAfter": "2019-02-26T00:00:00+02:00"
+    },
+    "procurementMethodType": "aboveThresholdUA",
+    "date": "2019-02-01T18:31:29.650246+02:00",
+    "minimalStep": {
+      "currency": "UAH",
+      "amount": 250000,
+      "valueAddedTaxIncluded": true
+    },
+    "items": [
+      {
+        "description": "Капітальний ремонт вул. Софіївської у м. Одесі",
+        "classification": {
+          "scheme": "ДК021",
+          "description": "Будівництво, влаштовування фундаменту та покриття шосе, доріг",
+          "id": "45233000-9"
+        },
+        "deliveryAddress": {
+          "postalCode": "65000",
+          "countryName": "Україна",
+          "streetAddress": "вул. Софіївська",
+          "region": "Одеська область",
+          "locality": "м.Одеса"
+        },
+        "deliveryDate": {
+          "startDate": "2019-03-18T18:36:14+02:00",
+          "endDate": "2020-12-31T18:36:14+02:00"
+        },
+        "id": "0e728ec734ec8b60e642bd18027bda05",
+        "unit": {
+          "code": "MTK",
+          "name": "м.кв"
+        },
+        "quantity": 24885
+      }
+    ],
+    "value": {
+      "currency": "UAH",
+      "amount": 162164682,
+      "valueAddedTaxIncluded": true
+    },
+    "awardCriteria": "lowestCost"
+  }
+}
