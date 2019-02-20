@@ -4,6 +4,7 @@ package org.open.budget.costlocator.api;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.ManyToOne;
@@ -13,14 +14,14 @@ public class Item {
 
     @SerializedName("description")
     @Expose
-    private String description;
+    private String itemDescription;
     @SerializedName("classification")
     @Expose
     @ManyToOne
     private Classification classification;
     @SerializedName("deliveryLocation")
     @Expose
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private DeliveryLocation deliveryLocation;
     @SerializedName("deliveryAddress")
     @Expose
@@ -32,7 +33,7 @@ public class Item {
     private DeliveryDate deliveryDate;
     @SerializedName("id")
     @Expose
-    private String id;
+    private String itemId;
     @SerializedName("unit")
     @Expose
     @Embedded
@@ -41,12 +42,12 @@ public class Item {
     @Expose
     private Long quantity;
 
-    public String getDescription() {
-        return description;
+    public String getItemDescription() {
+        return itemDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setItemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
     }
 
     public Classification getClassification() {
@@ -81,12 +82,12 @@ public class Item {
         this.deliveryDate = deliveryDate;
     }
 
-    public String getId() {
-        return id;
+    public String getItemId() {
+        return itemId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
 
     public Unit getUnit() {

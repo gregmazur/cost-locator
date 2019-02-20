@@ -18,6 +18,7 @@ public class GsonTest {
     @Before
     public void setUp() throws IOException {
         GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(Tender.class, new TenderDeserializer());
         gson = gsonBuilder.create();
     }
 
@@ -55,9 +56,9 @@ public class GsonTest {
             tenderWrapper = gson.fromJson(reader, TenderWrapper.class);
         }
         assertNotNull(tenderWrapper);
-        assertEquals(tenderWrapper.getTender().getProcuringEntity().getIdentifier().getId(), "26506412");
+        assertEquals(tenderWrapper.getTender().getTenderIssuer().getIdentifier().getId(), "26506412");
         assertEquals(tenderWrapper.getTender().getProzzorroId(), "ca301663b4f7423f944411d22543a037");
         assertEquals(tenderWrapper.getTender().getItem().getDeliveryAddress().getStreetAddress(),
-                "вул. Софіївська");
+                "test street");
     }
 }

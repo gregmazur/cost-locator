@@ -4,15 +4,8 @@ package org.open.budget.costlocator.api;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "documet")
 public class Document {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long entityId;
     @SerializedName("hash")
     @Expose
     private String hash;
@@ -46,10 +39,6 @@ public class Document {
     @SerializedName("id")
     @Expose
     private String prozzorroId;
-
-    public Long getEntityId() {
-        return entityId;
-    }
 
     public String getHash() {
         return hash;
@@ -133,10 +122,6 @@ public class Document {
 
     public String getProzzorroId() {
         return prozzorroId;
-    }
-
-    public void setEntityId(Long entityId) {
-        this.entityId = entityId;
     }
 
     public void setProzzorroId(String prozzorroId) {

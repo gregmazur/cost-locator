@@ -10,6 +10,8 @@ import com.google.gson.annotations.SerializedName;
 
 import javax.persistence.*;
 
+import static javax.persistence.CascadeType.PERSIST;
+
 @Entity
 @Table(name = "tender")
 public class Tender {
@@ -30,7 +32,7 @@ public class Tender {
     private TenderPeriod tenderPeriod;
     @SerializedName("documents")
     @Expose
-    @OneToMany(fetch = FetchType.LAZY)
+    @Transient
     private List<Document> documents = null;
     @SerializedName("numberOfBids")
     @Expose
@@ -46,9 +48,10 @@ public class Tender {
     @Transient
     private MinimalStep minimalStep;
     @SerializedName("items")
-    @Expose
-    @ElementCollection
-    private List<Item> items = null;
+    @Transient
+    private List<Item> items;//for deserialization
+    @Embedded
+    private Item item;
     @SerializedName("id")
     @Expose
     private String prozzorroId;
@@ -65,7 +68,7 @@ public class Tender {
     @SerializedName("procuringEntity")
     @Expose
     @ManyToOne
-    private ProcuringEntity procuringEntity;
+    private ProcuringEntity tenderIssuer;
     @SerializedName("owner")
     @Expose
     private String owner;
@@ -102,12 +105,12 @@ public class Tender {
         setDescription(builder.description);
         setTitle(builder.title);
         setMinimalStep(builder.minimalStep);
-        setItems(builder.items);
+        setItem(builder.item);
         setProzzorroId(builder.prozzorroId);
         setProcurementMethodType(builder.procurementMethodType);
         setValue(builder.value);
         setSubmissionMethod(builder.submissionMethod);
-        setProcuringEntity(builder.procuringEntity);
+        setTenderIssuer(builder.procuringEntity);
         setOwner(builder.owner);
         setTenderID(builder.tenderID);
         setEnquiryPeriod(builder.enquiryPeriod);
@@ -132,12 +135,12 @@ public class Tender {
         builder.description = copy.getDescription();
         builder.title = copy.getTitle();
         builder.minimalStep = copy.getMinimalStep();
-        builder.items = copy.getItems();
+        builder.item = copy.getItem();
         builder.prozzorroId = copy.getProzzorroId();
         builder.procurementMethodType = copy.getProcurementMethodType();
         builder.value = copy.getValue();
         builder.submissionMethod = copy.getSubmissionMethod();
-        builder.procuringEntity = copy.getProcuringEntity();
+        builder.procuringEntity = copy.getTenderIssuer();
         builder.owner = copy.getOwner();
         builder.tenderID = copy.getTenderID();
         builder.enquiryPeriod = copy.getEnquiryPeriod();
@@ -189,8 +192,8 @@ public class Tender {
         return items;
     }
 
-    public Item getItem(){
-        return items.get(0);
+    public Item getItem() {
+        return item;
     }
 
     public String getProzzorroId() {
@@ -209,8 +212,8 @@ public class Tender {
         return submissionMethod;
     }
 
-    public ProcuringEntity getProcuringEntity() {
-        return procuringEntity;
+    public ProcuringEntity getTenderIssuer() {
+        return tenderIssuer;
     }
 
     public String getOwner() {
@@ -285,8 +288,8 @@ public class Tender {
         this.minimalStep = minimalStep;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setItem(Item item){
+        this.item = item;
     }
 
     public void setProzzorroId(String prozzorroId) {
@@ -305,8 +308,8 @@ public class Tender {
         this.submissionMethod = submissionMethod;
     }
 
-    public void setProcuringEntity(ProcuringEntity procuringEntity) {
-        this.procuringEntity = procuringEntity;
+    public void setTenderIssuer(ProcuringEntity tenderIssuer) {
+        this.tenderIssuer = tenderIssuer;
     }
 
     public void setOwner(String owner) {
@@ -354,7 +357,7 @@ public class Tender {
         private String description;
         private String title;
         private MinimalStep minimalStep;
-        private List<Item> items;
+        private Item item;
         private String prozzorroId;
         private String procurementMethodType;
         private Value value;
@@ -416,8 +419,8 @@ public class Tender {
             return this;
         }
 
-        public Builder withItems(List<Item> val) {
-            items = val;
+        public Builder withItems(Item val) {
+            item = val;
             return this;
         }
 

@@ -11,21 +11,15 @@ import javax.persistence.*;
 public class Classification {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long entityId;
+    @SerializedName("id")
+    @Expose
+    private String prozzorroId;
     @SerializedName("scheme")
     @Expose
     private String scheme;
     @SerializedName("description")
     @Expose
     private String description;
-    @SerializedName("id")
-    @Expose
-    private String prozzorroId;
-
-    public Long getEntityId() {
-        return entityId;
-    }
 
     public String getScheme() {
         return scheme;
@@ -37,10 +31,6 @@ public class Classification {
 
     public String getProzzorroId() {
         return prozzorroId;
-    }
-
-    public void setEntityId(Long entityId) {
-        this.entityId = entityId;
     }
 
     public void setScheme(String scheme) {

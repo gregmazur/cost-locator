@@ -5,9 +5,11 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Id;
+import java.io.Serializable;
 
 @Embeddable
-public class Identifier {
+public class Identifier implements Serializable {
 
     @SerializedName("scheme")
     @Expose

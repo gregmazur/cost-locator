@@ -10,17 +10,13 @@ import javax.persistence.*;
 @Table(name = "tender_issuer")
 public class ProcuringEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     @SerializedName("contactPoint")
     @Expose
     @Transient
     private ContactPoint contactPoint;
     @SerializedName("identifier")
     @Expose
-    @Embedded
+    @EmbeddedId
     private Identifier identifier;
     @SerializedName("name")
     @Expose
@@ -32,10 +28,6 @@ public class ProcuringEntity {
     @Expose
     @ManyToOne
     private Address address;
-
-    public Long getId() {
-        return id;
-    }
 
     public ContactPoint getContactPoint() {
         return contactPoint;
@@ -75,9 +67,5 @@ public class ProcuringEntity {
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }

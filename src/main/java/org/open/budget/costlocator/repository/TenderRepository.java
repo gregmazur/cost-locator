@@ -1,13 +1,7 @@
 package org.open.budget.costlocator.repository;
 
-import org.open.budget.costlocator.api.Tender;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
-public interface TenderRepository extends JpaRepository<Tender, Long> {
-
-    List<Tender> findByTitle(String name);
-
-//    List<Tender> findByDeliveryAddress(DeliveryAddress deliveryAddress);
+@Repository
+public interface TenderRepository extends TenderJpaRepository, CustomTenderRepository {
 }

@@ -94,7 +94,7 @@
         "deliveryAddress": {
           "postalCode": "65000",
           "countryName": "Україна",
-          "streetAddress": "вул. Софіївська",
+          "streetAddress": "test street",
           "region": "Одеська область",
           "locality": "м.Одеса"
         },
