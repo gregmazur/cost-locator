@@ -3,11 +3,14 @@ package org.open.budget.costlocator.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "delivery_location")
+@Getter
 public class DeliveryLocation {
 
     @Id
@@ -20,28 +23,6 @@ public class DeliveryLocation {
     @SerializedName("longitude")
     @Expose
     private String longitude;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @OneToMany
+    private List<Tender> tenders;
 }

@@ -3,45 +3,40 @@ package org.open.budget.costlocator.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import lombok.Builder;
+import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "classification")
+@Builder
+@Getter
 public class Classification {
 
     @Id
+    @Column(unique = true)
     @SerializedName("id")
     @Expose
-    private String prozzorroId;
+    private String id;
     @SerializedName("scheme")
     @Expose
     private String scheme;
     @SerializedName("description")
     @Expose
+    @Column(length = 1000)
     private String description;
+    @OneToMany
+    private List<Tender> tenders;
 
-    public String getScheme() {
-        return scheme;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getProzzorroId() {
-        return prozzorroId;
-    }
-
-    public void setScheme(String scheme) {
+    public Classification(String id, String scheme, String description, List<Tender> tenders) {
+        this.id = id;
         this.scheme = scheme;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
+        this.tenders = tenders;
     }
 
-    public void setProzzorroId(String prozzorroId) {
-        this.prozzorroId = prozzorroId;
+    public Classification() {
     }
 }

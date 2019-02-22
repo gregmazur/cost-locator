@@ -3,21 +3,23 @@ package org.open.budget.costlocator.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import lombok.Builder;
+import lombok.Getter;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Embeddable
+@Builder
+@Getter
 public class Item {
 
     @SerializedName("description")
     @Expose
+    @Column(length = 5000)
     private String itemDescription;
     @SerializedName("classification")
     @Expose
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Classification classification;
     @SerializedName("deliveryLocation")
     @Expose
@@ -42,68 +44,26 @@ public class Item {
     @Expose
     private Long quantity;
 
-    public String getItemDescription() {
-        return itemDescription;
-    }
-
-    public void setItemDescription(String itemDescription) {
+    public Item(String itemDescription, Classification classification, DeliveryLocation deliveryLocation,
+                Address deliveryAddress, DeliveryDate deliveryDate, String itemId, Unit unit, Long quantity) {
         this.itemDescription = itemDescription;
-    }
-
-    public Classification getClassification() {
-        return classification;
-    }
-
-    public void setClassification(Classification classification) {
         this.classification = classification;
-    }
-
-    public DeliveryLocation getDeliveryLocation() {
-        return deliveryLocation;
-    }
-
-    public void setDeliveryLocation(DeliveryLocation deliveryLocation) {
         this.deliveryLocation = deliveryLocation;
+        this.deliveryAddress = deliveryAddress;
+        this.deliveryDate = deliveryDate;
+        this.itemId = itemId;
+        this.unit = unit;
+        this.quantity = quantity;
     }
 
-    public Address getDeliveryAddress() {
-        return deliveryAddress;
+    public Item() {
     }
 
     public void setDeliveryAddress(Address deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
     }
 
-    public DeliveryDate getDeliveryDate() {
-        return deliveryDate;
+    public void setClassification(Classification classification) {
+        this.classification = classification;
     }
-
-    public void setDeliveryDate(DeliveryDate deliveryDate) {
-        this.deliveryDate = deliveryDate;
-    }
-
-    public String getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
-    }
-
-    public Unit getUnit() {
-        return unit;
-    }
-
-    public void setUnit(Unit unit) {
-        this.unit = unit;
-    }
-
-    public Long getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Long quantity) {
-        this.quantity = quantity;
-    }
-
 }

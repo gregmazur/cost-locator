@@ -14,10 +14,9 @@ public class Scheduler {
     @Autowired
     Extractor extractor;
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 1000000)
     public void loadTenders() {
-        log.info("started");
+        log.warn("ATTENTION---STARTED TASK----------ATTENTION---------------ATTENTION---------------------");
         extractor.extract();
-
     }
 }

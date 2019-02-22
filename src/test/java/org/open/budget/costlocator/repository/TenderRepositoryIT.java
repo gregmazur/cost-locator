@@ -24,7 +24,7 @@ public class TenderRepositoryIT {
 
     @Before
     public void setUp(){
-        tender = Tender.newBuilder().withProzzorroId("prozzorroID").withTitle("TestTitle!").build();
+        tender = Tender.builder().id("prozzorroID").title("TestTitle!").build();
         tenderRepository.save(tender);
     }
 

@@ -3,12 +3,17 @@ package org.open.budget.costlocator.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import lombok.Builder;
+import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "tender_issuer")
-public class ProcuringEntity {
+@Builder
+@Getter
+public class TenderIssuer {
 
     @SerializedName("contactPoint")
     @Expose
@@ -28,41 +33,20 @@ public class ProcuringEntity {
     @Expose
     @ManyToOne
     private Address address;
+    @OneToMany
+    private List<Tender> tenders;
 
-    public ContactPoint getContactPoint() {
-        return contactPoint;
-    }
-
-    public void setContactPoint(ContactPoint contactPoint) {
+    public TenderIssuer(ContactPoint contactPoint, Identifier identifier, String name, String kind, Address address,
+                        List<Tender> tenders) {
         this.contactPoint = contactPoint;
-    }
-
-    public Identifier getIdentifier() {
-        return identifier;
-    }
-
-    public void setIdentifier(Identifier identifier) {
         this.identifier = identifier;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
-    }
-
-    public String getKind() {
-        return kind;
-    }
-
-    public void setKind(String kind) {
         this.kind = kind;
+        this.address = address;
+        this.tenders = tenders;
     }
 
-    public Address getAddress() {
-        return address;
+    public TenderIssuer() {
     }
 
     public void setAddress(Address address) {

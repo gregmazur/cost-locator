@@ -57,7 +57,7 @@ public class GsonTest {
         }
         assertNotNull(tenderWrapper);
         assertEquals(tenderWrapper.getTender().getTenderIssuer().getIdentifier().getId(), "26506412");
-        assertEquals(tenderWrapper.getTender().getProzzorroId(), "ca301663b4f7423f944411d22543a037");
+        assertEquals(tenderWrapper.getTender().getId(), "ca301663b4f7423f944411d22543a037");
         assertEquals(tenderWrapper.getTender().getItem().getDeliveryAddress().getStreetAddress(),
                 "test street");
     }

@@ -23,7 +23,7 @@ public class CustomTenderRepositoryImpl implements CustomTenderRepository{
         CriteriaQuery<Tender> query = cb.createQuery(Tender.class);
         Root<Tender> tenderRoot = query.from(Tender.class);
 
-        Path<String> emailPath = tenderRoot.get("prozzorroId");
+        Path<String> emailPath = tenderRoot.get("id");
 
         List<Predicate> predicates = new ArrayList<>();
         for (String id : ids) {
@@ -34,6 +34,6 @@ public class CustomTenderRepositoryImpl implements CustomTenderRepository{
 
         return entityManager.createQuery(query)
                 .getResultList().stream().collect(
-                Collectors.toMap(t -> t.getProzzorroId(), x -> x));
+                Collectors.toMap(t -> t.getId(), x -> x));
     }
 }

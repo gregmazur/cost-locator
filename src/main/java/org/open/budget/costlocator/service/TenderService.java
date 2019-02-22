@@ -3,12 +3,14 @@ package org.open.budget.costlocator.service;
 import org.open.budget.costlocator.api.Tender;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public interface TenderService {
 
-    Tender create(Tender tender);
+    Tender save(Tender tender);
 
-    Tender update(Tender newTender);
+    void flush();
 
-    Tender search(SearchCriteria searchCriteria);
+    Map<String,Tender> search(SearchCriteria searchCriteria);
 }

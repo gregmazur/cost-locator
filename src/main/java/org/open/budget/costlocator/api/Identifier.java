@@ -3,12 +3,15 @@ package org.open.budget.costlocator.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import lombok.Builder;
+import lombok.Getter;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Id;
 import java.io.Serializable;
 
 @Embeddable
+@Builder
+@Getter
 public class Identifier implements Serializable {
 
     @SerializedName("scheme")
@@ -16,36 +19,17 @@ public class Identifier implements Serializable {
     private String scheme;
     @SerializedName("id")
     @Expose
-    private String prozzorroId;
+    private String id;
     @SerializedName("legalName")
     @Expose
     private String legalName;
 
-    public String getScheme() {
-        return scheme;
-    }
-
-    public void setScheme(String scheme) {
+    public Identifier(String scheme, String prozzorroId, String legalName) {
         this.scheme = scheme;
-    }
-
-    public String getId() {
-        return prozzorroId;
-    }
-
-    public String getLegalName() {
-        return legalName;
-    }
-
-    public void setLegalName(String legalName) {
+        this.id = prozzorroId;
         this.legalName = legalName;
     }
 
-    public String getProzzorroId() {
-        return prozzorroId;
-    }
-
-    public void setProzzorroId(String prozzorroId) {
-        this.prozzorroId = prozzorroId;
+    public Identifier() {
     }
 }

@@ -26,11 +26,11 @@ public class TenderRepositoryTest {
 
     @Before
     public void setUp(){
-        Tender tender1 = Tender.newBuilder().withProzzorroId("prozzorroID").withTitle("Title").build();
+        Tender tender1 = Tender.builder().id("prozzorroID").title("Title").build();
         tenderRepository.save(tender1);
-        Tender tender2 = Tender.newBuilder().withProzzorroId("prozzorroID2").withTitle("Title2").build();
+        Tender tender2 = Tender.builder().id("prozzorroID2").title("Title2").build();
         tenderRepository.save(tender2);
-        Tender tender3 = Tender.newBuilder().withProzzorroId("prozzorroID3").withTitle("Title3").build();
+        Tender tender3 = Tender.builder().id("prozzorroID3").title("Title3").build();
         tenderRepository.save(tender3);
     }
 
