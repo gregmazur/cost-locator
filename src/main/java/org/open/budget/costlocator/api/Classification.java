@@ -16,7 +16,7 @@ import java.util.List;
 public class Classification {
 
     @Id
-    @Column(unique = true)
+    @Column(unique = true, length = 32)
     @SerializedName("id")
     @Expose
     private String id;
@@ -25,7 +25,7 @@ public class Classification {
     private String scheme;
     @SerializedName("description")
     @Expose
-    @Column(length = 1000)
+    @Column(length = 1000, columnDefinition = "text")
     private String description;
     @OneToMany
     private List<Tender> tenders;

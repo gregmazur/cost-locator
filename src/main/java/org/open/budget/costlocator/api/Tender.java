@@ -21,6 +21,7 @@ public class Tender {
     @Id
     @SerializedName("id")
     @Expose
+    @Column(length = 32)
     private String id;
 
     @SerializedName("procurementMethod")
@@ -43,10 +44,11 @@ public class Tender {
     private Long numberOfBids;
     @SerializedName("description")
     @Expose
-    @Column(length = 5000)
+    @Column(length = 7000,columnDefinition ="text" )
     private String description;
     @SerializedName("title")
     @Expose
+    @Column(length = 1500)
     private String title;
     @SerializedName("minimalStep")
     @Expose
@@ -76,6 +78,7 @@ public class Tender {
     private String owner;
     @SerializedName("tenderID")
     @Expose
+    @Column(length = 32)
     private String tenderID;
     @SerializedName("enquiryPeriod")
     @Expose
@@ -133,6 +136,10 @@ public class Tender {
 
     public void setTenderIssuer(TenderIssuer tenderIssuer) {
         this.tenderIssuer = tenderIssuer;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Override

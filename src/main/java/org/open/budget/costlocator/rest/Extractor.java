@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -23,9 +24,11 @@ public class Extractor {
 
     private static final Logger log = LoggerFactory.getLogger(Extractor.class);
 
-    private final String REQUEST_LINK = "https://public.api.openprocurement.org";
+    private static final String REQUEST_LINK = "https://public.api.openprocurement.org";
 
-    private String PATH = "/api/2.4/tenders";
+    private static final String[] CLASSIFICATION_PREFIXES = {"44", "45", "507", "70", "71", "90"};
+
+    private static String PATH = "/api/2.4/tenders";
 
     private RestTemplate restTemplate = new RestTemplate();
 
@@ -34,7 +37,7 @@ public class Extractor {
     @Autowired
     private TenderService tenderService;
 
-    private void setUp(){
+    private void setUp() {
         GsonHttpMessageConverter gsonHttpMessageConverter = new GsonHttpMessageConverter();
         Gson gson = new GsonBuilder().registerTypeAdapter(Tender.class, new TenderDeserializer())
                 .create();
@@ -49,9 +52,10 @@ public class Extractor {
         TenderListWrapper tenderListWrapper = retrievePortion(PATH);
         while (tenderListWrapper.getNextPage() != null) {
             preLoadPortion(tenderListWrapper);
-            log.info("loaded list");
+            PATH = tenderListWrapper.getNextPage().getPath();
+            log.info("loaded list, path : {}", PATH);
             persistPortion(tenderListWrapper);
-            tenderListWrapper = retrievePortion(tenderListWrapper.getNextPage().getPath());
+            tenderListWrapper = retrievePortion(PATH);
         }
     }
 
@@ -70,12 +74,15 @@ public class Extractor {
             if (tender == null) {
                 tender = getLatestTender(item);
                 if (tender.getItem().getDeliveryAddress() == null) {
-                    log.info("NO DELIVERY ADRESS",tender);
+                    log.info("NO DELIVERY ADRESS id {}", tender.getId());
                     continue;
                 }
-                if (tender.getStatus().equals("unsuccessful") || tender.getStatus().equals("cancelled")){
-                    log.info("CANCELED or UNSUCCESSFUL",tender);
+                if (tender.getStatus().equals("unsuccessful") || tender.getStatus().equals("cancelled")) {
+                    log.info("CANCELED or UNSUCCESSFUL id {}", tender.getId());
                     continue;
+                }
+                if (isNeededClassification(tender)){
+                    log.info("UNSUITABLE CLASSIFICATION id {}",tender.getId());
                 }
                 tenderService.save(tender);
                 log.info("-----CREATED NEW TENDER-----", tender);
@@ -89,9 +96,38 @@ public class Extractor {
 //        tenderService.flush();
     }
 
-    private Tender getLatestTender(TenderListItem item) {
-        TenderWrapper tenderWrapper = restTemplate.getForObject(REQUEST_LINK + PATH + "/" + item.getId(), TenderWrapper.class);
+    private boolean isNeededClassification(Tender tender){
+        for (String prefix : CLASSIFICATION_PREFIXES) {
+            if (tender.getItem().getClassification().getId().startsWith(prefix))
+                return true;
+        }
+        return false;
+    }
+
+    private Tender getLatestTenderImpl(TenderListItem item) {
+        TenderWrapper tenderWrapper = restTemplate.getForObject("https://public.api.openprocurement.org/api/2.4/tenders/"
+                + item.getId(), TenderWrapper.class);
         log.info("---REST RESPONSE---- FOR: " + item.getId());
         return tenderWrapper.getTender();
+    }
+
+    private Tender getLatestTender(TenderListItem item) {
+        Tender tender = null;
+        int i = 0;
+        while (tender == null && i++ < 3) {
+            try {
+                tender = getLatestTenderImpl(item);
+            } catch (ResourceAccessException e) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                log.warn("ResourceAccessException attempt " + i, e);
+            }
+        }
+        if (tender == null)
+            throw new ResourceAccessException("unable to get response");
+        return tender;
     }
 }

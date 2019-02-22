@@ -26,7 +26,7 @@ public class Address {
     private String countryName;
     @SerializedName("streetAddress")
     @Expose
-    @Column(unique = true)
+    @Column(unique = true, length = 800)
     private String streetAddress;
     @SerializedName("region")
     @Expose

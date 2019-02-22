@@ -31,6 +31,7 @@ public class TenderServiceImpl implements TenderService{
     @Override
     @Transactional
     public Tender save(Tender tender) {
+        formalize(tender);
         saveAddress(tender.getItem().getDeliveryAddress(), a -> {
             tender.getItem().setDeliveryAddress(a);
             return null;
@@ -39,6 +40,12 @@ public class TenderServiceImpl implements TenderService{
         saveClassification(tender);
         tenderRepository.save(tender);
         return tender;
+    }
+
+    private void formalize(Tender tender){
+        if (tender.getTitle().length() > 1500){
+            tender.setTitle(tender.getTitle().substring(0, 1000));
+        }
     }
 
     private void saveAddress(Address address, Function<Address,Void> function){

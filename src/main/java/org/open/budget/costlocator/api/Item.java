@@ -15,7 +15,7 @@ public class Item {
 
     @SerializedName("description")
     @Expose
-    @Column(length = 5000)
+    @Column(length = 7000, columnDefinition = "text")
     private String itemDescription;
     @SerializedName("classification")
     @Expose
