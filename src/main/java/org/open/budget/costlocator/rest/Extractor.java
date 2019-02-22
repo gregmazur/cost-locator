@@ -51,7 +51,7 @@ public class Extractor {
             preLoadPortion(tenderListWrapper);
             log.info("loaded list");
             persistPortion(tenderListWrapper);
-            retrievePortion(tenderListWrapper.getNextPage().getPath());
+            tenderListWrapper = retrievePortion(tenderListWrapper.getNextPage().getPath());
         }
     }
 

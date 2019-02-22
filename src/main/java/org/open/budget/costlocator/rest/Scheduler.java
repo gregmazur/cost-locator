@@ -14,7 +14,7 @@ public class Scheduler {
     @Autowired
     Extractor extractor;
 
-    @Scheduled(fixedRate = 1000000)
+    @Scheduled(fixedDelay = 1000000)
     public void loadTenders() {
         log.warn("ATTENTION---STARTED TASK----------ATTENTION---------------ATTENTION---------------------");
         extractor.extract();
