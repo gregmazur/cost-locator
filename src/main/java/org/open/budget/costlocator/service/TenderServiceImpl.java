@@ -44,7 +44,7 @@ public class TenderServiceImpl implements TenderService{
 
     private void formalize(Tender tender){
         if (tender.getTitle().length() > 1500){
-            tender.setTitle(tender.getTitle().substring(0, 1000));
+            tender.setTitle(tender.getTitle().substring(0, 1400));
         }
     }
 

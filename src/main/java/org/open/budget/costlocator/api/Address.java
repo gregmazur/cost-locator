@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "address")
+@Table(name = "address", indexes = {@Index(name = "REG_INDEX", unique = true, columnList = "region,id")})
 @Getter
 @Builder
 public class Address {
@@ -26,10 +26,11 @@ public class Address {
     private String countryName;
     @SerializedName("streetAddress")
     @Expose
-    @Column(unique = true, length = 800)
+    @Column(unique = true, columnDefinition = "text")
     private String streetAddress;
     @SerializedName("region")
     @Expose
+    @Column(name = "region")
     private String region;
     @SerializedName("locality")
     @Expose

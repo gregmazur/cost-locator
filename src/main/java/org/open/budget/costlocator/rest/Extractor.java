@@ -24,11 +24,15 @@ public class Extractor {
 
     private static final Logger log = LoggerFactory.getLogger(Extractor.class);
 
-    private static final String REQUEST_LINK = "https://public.api.openprocurement.org";
+    static final String API_LINK = "https://public.api.openprocurement.org";
+
+    static final String TENDER_LINK = API_LINK + "/api/2.4/tenders/";
 
     private static final String[] CLASSIFICATION_PREFIXES = {"44", "45", "507", "70", "71", "90"};
 
-    private static String PATH = "/api/2.4/tenders";
+    static String path =
+            "/api/2.4/tenders"
+            ;
 
     private RestTemplate restTemplate = new RestTemplate();
 
@@ -36,6 +40,15 @@ public class Extractor {
 
     @Autowired
     private TenderService tenderService;
+
+    public Extractor(RestTemplate restTemplate, Map<String, Tender> cache, TenderService tenderService) {
+        this.restTemplate = restTemplate;
+        this.cache = cache;
+        this.tenderService = tenderService;
+    }
+
+    public Extractor() {
+    }
 
     private void setUp() {
         GsonHttpMessageConverter gsonHttpMessageConverter = new GsonHttpMessageConverter();
@@ -49,18 +62,18 @@ public class Extractor {
 
     public void extract() {
         setUp();
-        TenderListWrapper tenderListWrapper = retrievePortion(PATH);
+        TenderListWrapper tenderListWrapper = retrievePortion(path);
         while (tenderListWrapper.getNextPage() != null) {
             preLoadPortion(tenderListWrapper);
-            PATH = tenderListWrapper.getNextPage().getPath();
-            log.info("loaded list, path : {}", PATH);
+            String path = tenderListWrapper.getNextPage().getPath();
+            log.info("loaded list, path : {}", path);
             persistPortion(tenderListWrapper);
-            tenderListWrapper = retrievePortion(PATH);
+            tenderListWrapper = retrievePortion(path);
         }
     }
 
     private TenderListWrapper retrievePortion(String listPath) {
-        return restTemplate.getForObject(REQUEST_LINK + listPath, TenderListWrapper.class);
+        return restTemplate.getForObject(API_LINK + listPath, TenderListWrapper.class);
     }
 
     private void preLoadPortion(TenderListWrapper tenderListWrapper) {
@@ -81,8 +94,9 @@ public class Extractor {
                     log.info("CANCELED or UNSUCCESSFUL id {}", tender.getId());
                     continue;
                 }
-                if (isNeededClassification(tender)){
+                if (!isNeededClassification(tender)){
                     log.info("UNSUITABLE CLASSIFICATION id {}",tender.getId());
+                    continue;
                 }
                 tenderService.save(tender);
                 log.info("-----CREATED NEW TENDER-----", tender);
@@ -104,14 +118,13 @@ public class Extractor {
         return false;
     }
 
-    private Tender getLatestTenderImpl(TenderListItem item) {
-        TenderWrapper tenderWrapper = restTemplate.getForObject("https://public.api.openprocurement.org/api/2.4/tenders/"
-                + item.getId(), TenderWrapper.class);
-        log.info("---REST RESPONSE---- FOR: " + item.getId());
+    Tender getLatestTenderImpl(TenderListItem item) {
+        log.info("---REST REQUEST---- FOR: {}", item.getId());
+        TenderWrapper tenderWrapper = restTemplate.getForObject(TENDER_LINK + item.getId(), TenderWrapper.class);
         return tenderWrapper.getTender();
     }
 
-    private Tender getLatestTender(TenderListItem item) {
+    Tender getLatestTender(TenderListItem item) {
         Tender tender = null;
         int i = 0;
         while (tender == null && i++ < 3) {
@@ -119,7 +132,7 @@ public class Extractor {
                 tender = getLatestTenderImpl(item);
             } catch (ResourceAccessException e) {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(10000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }
