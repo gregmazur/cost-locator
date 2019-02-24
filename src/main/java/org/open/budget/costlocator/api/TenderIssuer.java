@@ -25,6 +25,7 @@ public class TenderIssuer {
     private Identifier identifier;
     @SerializedName("name")
     @Expose
+    @Column(columnDefinition = "text")
     private String name;
     @SerializedName("kind")
     @Expose

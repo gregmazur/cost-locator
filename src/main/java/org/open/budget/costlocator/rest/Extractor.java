@@ -3,11 +3,14 @@ package org.open.budget.costlocator.rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.open.budget.costlocator.api.*;
+import org.open.budget.costlocator.repository.ListPathRepository;
 import org.open.budget.costlocator.service.SearchCriteria;
 import org.open.budget.costlocator.service.TenderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.stereotype.Component;
@@ -30,11 +33,7 @@ public class Extractor {
 
     private static final String[] CLASSIFICATION_PREFIXES = {"44", "45", "507", "70", "71", "90"};
 
-    static String path =
-            "/api/2.4/tenders"
-            ;
-
-    private RestTemplate restTemplate = new RestTemplate();
+    private RestTemplate restTemplate;
 
     private Map<String, Tender> cache;
 
@@ -57,15 +56,21 @@ public class Extractor {
         gsonHttpMessageConverter.setGson(gson);
         List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
         messageConverters.add(gsonHttpMessageConverter);
+        SimpleClientHttpRequestFactory rf = new SimpleClientHttpRequestFactory();
+        rf.setReadTimeout(10000);
+        rf.setConnectTimeout(10000);
+        restTemplate = new RestTemplate(rf);
         restTemplate.setMessageConverters(messageConverters);
     }
 
     public void extract() {
         setUp();
+        String path = tenderService.getLastListPath();
         TenderListWrapper tenderListWrapper = retrievePortion(path);
         while (tenderListWrapper.getNextPage() != null) {
             preLoadPortion(tenderListWrapper);
-            String path = tenderListWrapper.getNextPage().getPath();
+            path = tenderListWrapper.getNextPage().getPath();
+            tenderService.save(path);
             log.info("loaded list, path : {}", path);
             persistPortion(tenderListWrapper);
             tenderListWrapper = retrievePortion(path);

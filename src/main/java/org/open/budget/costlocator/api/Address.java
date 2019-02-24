@@ -20,6 +20,7 @@ public class Address {
     private Long id;
     @SerializedName("postalCode")
     @Expose
+    @Column(length = 70)
     private String postalCode;
     @SerializedName("countryName")
     @Expose
@@ -34,6 +35,7 @@ public class Address {
     private String region;
     @SerializedName("locality")
     @Expose
+    @Column(length = 1000)
     private String locality;
     @OneToMany
     private List<TenderIssuer> tenderIssuers;

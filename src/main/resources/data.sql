@@ -1,0 +1,1 @@
+--insert into list_path (id, last_path) values (1, '/api/2.4/tenders')

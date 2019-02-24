@@ -1,13 +1,7 @@
 package org.open.budget.costlocator.service;
 
-import org.open.budget.costlocator.api.Address;
-import org.open.budget.costlocator.api.Classification;
-import org.open.budget.costlocator.api.Tender;
-import org.open.budget.costlocator.api.TenderIssuer;
-import org.open.budget.costlocator.repository.AddressRepository;
-import org.open.budget.costlocator.repository.ClassificationRepository;
-import org.open.budget.costlocator.repository.TenderIssuerRepository;
-import org.open.budget.costlocator.repository.TenderRepository;
+import org.open.budget.costlocator.api.*;
+import org.open.budget.costlocator.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +21,8 @@ public class TenderServiceImpl implements TenderService{
     ClassificationRepository classificationRepository;
     @Autowired
     TenderIssuerRepository tenderIssuerRepository;
+    @Autowired
+    private ListPathRepository listPathRepository;
 
     @Override
     @Transactional
@@ -87,7 +83,17 @@ public class TenderServiceImpl implements TenderService{
     }
 
     @Override
-    public void flush() {
-        tenderIssuerRepository.flush();
+    @Transactional
+    public String getLastListPath() {
+        ListPath listPath = listPathRepository.getOne(1L);
+        if (listPath == null)
+            throw new IllegalStateException("there is last path set in DB");
+        return listPath.getLastPath();
+    }
+
+    @Override
+    @Transactional
+    public ListPath save(String path) {
+        return listPathRepository.save(new ListPath(1L, path));
     }
 }

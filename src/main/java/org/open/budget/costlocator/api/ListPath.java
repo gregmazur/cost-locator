@@ -3,6 +3,7 @@ package org.open.budget.costlocator.api;
 import lombok.Builder;
 import lombok.Getter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,7 +15,9 @@ import javax.persistence.Table;
 @Builder
 public class ListPath {
     @Id
+    @Column(name = "id")
     private Long id;
+    @Column(name = "last_path")
     private String lastPath;
 
     public ListPath() {
