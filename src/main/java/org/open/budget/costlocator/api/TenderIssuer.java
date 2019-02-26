@@ -29,15 +29,16 @@ public class TenderIssuer {
     private String name;
     @SerializedName("kind")
     @Expose
+    @Column(length = 10)
     private String kind;
     @SerializedName("address")
     @Expose
-    @ManyToOne
-    private Address address;
-    @OneToMany
+    @Transient
+    private AddressAPI address;
+    @OneToMany(mappedBy = "issuer")
     private List<Tender> tenders;
 
-    public TenderIssuer(ContactPoint contactPoint, Identifier identifier, String name, String kind, Address address,
+    public TenderIssuer(ContactPoint contactPoint, Identifier identifier, String name, String kind, AddressAPI address,
                         List<Tender> tenders) {
         this.contactPoint = contactPoint;
         this.identifier = identifier;
@@ -50,7 +51,7 @@ public class TenderIssuer {
     public TenderIssuer() {
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(AddressAPI address) {
         this.address = address;
     }
 }

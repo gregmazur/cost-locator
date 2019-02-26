@@ -1,8 +1,5 @@
-
 package org.open.budget.costlocator.api;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -10,7 +7,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "address", indexes = {@Index(name = "REG_INDEX", unique = true, columnList = "region,id")})
+@Table(name = "address", indexes = {@Index(name = "STREET_INDEX", unique = true, columnList = "fk_street, house_number, index"),
+        @Index(name = "POST_INDEX", columnList = "index")})
 @Getter
 @Builder
 public class Address {
@@ -18,42 +16,22 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @SerializedName("postalCode")
-    @Expose
-    @Column(length = 70)
-    private String postalCode;
-    @SerializedName("countryName")
-    @Expose
-    private String countryName;
-    @SerializedName("streetAddress")
-    @Expose
-    @Column(unique = true, columnDefinition = "text")
-    private String streetAddress;
-    @SerializedName("region")
-    @Expose
-    @Column(name = "region")
-    private String region;
-    @SerializedName("locality")
-    @Expose
-    @Column(length = 1000)
-    private String locality;
-    @OneToMany
-    private List<TenderIssuer> tenderIssuers;
-    @OneToMany
+    @Column(length = 6)
+    private String index;
+    @Column(name = "house_number", length = 40)
+    private String houseNumber;
+    @ManyToOne(fetch = FetchType.LAZY)
+//    @Column(name = "stree")
+    @JoinColumn(name = "fk_street")
+    private Street street;
+    @ManyToMany
     private List<Tender> tenders;
 
-    public Address(Long id, String postalCode, String countryName, String streetAddress, String region, String locality,
-                   List<TenderIssuer> tenderIssuers, List<Tender> tenders) {
+    public Address(Long id, String index, String houseNumber, Street street, List<Tender> tenders) {
         this.id = id;
-        this.postalCode = postalCode;
-        this.countryName = countryName;
-        this.streetAddress = streetAddress;
-        this.region = region;
-        this.locality = locality;
-        this.tenderIssuers = tenderIssuers;
+        this.index = index;
+        this.houseNumber = houseNumber;
+        this.street = street;
         this.tenders = tenders;
-    }
-
-    public Address() {
     }
 }

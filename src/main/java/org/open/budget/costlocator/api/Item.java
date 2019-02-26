@@ -15,7 +15,7 @@ public class Item {
 
     @SerializedName("description")
     @Expose
-    @Column(length = 7000, columnDefinition = "text")
+    @Column(columnDefinition = "text")
     private String itemDescription;
     @SerializedName("classification")
     @Expose
@@ -27,8 +27,8 @@ public class Item {
     private DeliveryLocation deliveryLocation;
     @SerializedName("deliveryAddress")
     @Expose
-    @ManyToOne
-    private Address deliveryAddress;
+    @Transient
+    private AddressAPI deliveryAddress;
     @SerializedName("deliveryDate")
     @Expose
     @Embedded
@@ -45,7 +45,7 @@ public class Item {
     private Long quantity;
 
     public Item(String itemDescription, Classification classification, DeliveryLocation deliveryLocation,
-                Address deliveryAddress, DeliveryDate deliveryDate, String itemId, Unit unit, Long quantity) {
+                AddressAPI deliveryAddress, DeliveryDate deliveryDate, String itemId, Unit unit, Long quantity) {
         this.itemDescription = itemDescription;
         this.classification = classification;
         this.deliveryLocation = deliveryLocation;
@@ -59,7 +59,7 @@ public class Item {
     public Item() {
     }
 
-    public void setDeliveryAddress(Address deliveryAddress) {
+    public void setDeliveryAddress(AddressAPI deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
     }
 

@@ -3,13 +3,11 @@ package org.open.budget.costlocator.rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.open.budget.costlocator.api.*;
-import org.open.budget.costlocator.repository.ListPathRepository;
 import org.open.budget.costlocator.service.SearchCriteria;
 import org.open.budget.costlocator.service.TenderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
@@ -67,14 +65,15 @@ public class Extractor {
         setUp();
         String path = tenderService.getLastListPath();
         TenderListWrapper tenderListWrapper = retrievePortion(path);
-        while (tenderListWrapper.getNextPage() != null) {
+        while (!tenderListWrapper.getTenderList().isEmpty()) {
             preLoadPortion(tenderListWrapper);
             path = tenderListWrapper.getNextPage().getPath();
-            tenderService.save(path);
             log.info("loaded list, path : {}", path);
             persistPortion(tenderListWrapper);
+            tenderService.save(path);
             tenderListWrapper = retrievePortion(path);
         }
+        log.warn("-----EXTRACTION FINISHED--------");
     }
 
     private TenderListWrapper retrievePortion(String listPath) {
@@ -141,7 +140,7 @@ public class Extractor {
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }
-                log.warn("ResourceAccessException attempt " + i, e);
+                log.warn("ResourceAccessException attempt " + i +" for " + item.getId(), e);
             }
         }
         if (tender == null)

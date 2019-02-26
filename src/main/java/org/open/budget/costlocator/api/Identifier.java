@@ -4,6 +4,7 @@ package org.open.budget.costlocator.api;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.hibernate.annotations.ColumnDefault;
 
@@ -14,6 +15,7 @@ import java.io.Serializable;
 @Embeddable
 @Builder
 @Getter
+@EqualsAndHashCode
 public class Identifier implements Serializable {
 
     @SerializedName("scheme")
@@ -28,7 +30,7 @@ public class Identifier implements Serializable {
     @SerializedName("legalName")
     @Expose
     @ColumnDefault(value = "''")
-    @Column(length = 500)
+    @Column(length = 800)
     private String legalName = "";
 
     public Identifier(String scheme, String prozzorroId, String legalName) {
@@ -38,5 +40,9 @@ public class Identifier implements Serializable {
     }
 
     public Identifier() {
+    }
+
+    public void setLegalName(String legalName) {
+        this.legalName = legalName;
     }
 }
