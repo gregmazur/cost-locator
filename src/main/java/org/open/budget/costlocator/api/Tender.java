@@ -1,6 +1,7 @@
 
 package org.open.budget.costlocator.api;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -98,7 +99,7 @@ public class Tender {
     @Expose
     private String awardCriteria;
     @ManyToMany
-    private List<Address> addresses;
+    private List<Address> addresses = new ArrayList<>();
 
     public Tender() {
     }

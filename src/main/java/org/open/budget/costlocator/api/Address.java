@@ -7,8 +7,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "address", indexes = {@Index(name = "STREET_INDEX", unique = true, columnList = "fk_street, house_number, index"),
-        @Index(name = "POST_INDEX", columnList = "index")})
+@Table(name = "address", indexes = {@Index(name = "STREET_INDEX", unique = true, columnList = "fk_street, house_number, p_index"),
+        @Index(name = "POST_INDEX", columnList = "p_index")})
 @Getter
 @Builder
 public class Address {
@@ -16,7 +16,7 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(length = 6)
+    @Column(length = 6, name = "p_index")
     private String index;
     @Column(name = "house_number", length = 40)
     private String houseNumber;
@@ -33,5 +33,8 @@ public class Address {
         this.houseNumber = houseNumber;
         this.street = street;
         this.tenders = tenders;
+    }
+
+    public Address() {
     }
 }

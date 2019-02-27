@@ -55,7 +55,7 @@ public class TenderServiceImpl implements TenderService {
     @PostConstruct
     private void init() {
         regionCache = streetRepository.getRegions();
-        regionCache.remove("Київ");
+        regionCache.remove("київ");
     }
 
     @Override
@@ -97,7 +97,7 @@ public class TenderServiceImpl implements TenderService {
 
     Optional<String> getValidRegionName(String region) {
         for (String regionName : regionCache) {
-            if (region.contains(regionName))
+            if (region.toLowerCase().contains(regionName))
                 return Optional.of(regionName);
         }
         return Optional.empty();

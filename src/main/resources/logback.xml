@@ -37,7 +37,7 @@
         <appender-ref ref="Console" />
     </root>
 
-    <logger name="org.open.budget.costlocator" level="trace" additivity="false">
+    <logger name="org.open.budget.costlocator" level="WARN" additivity="false">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </logger>

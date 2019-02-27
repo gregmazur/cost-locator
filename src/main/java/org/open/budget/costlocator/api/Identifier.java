@@ -30,7 +30,7 @@ public class Identifier implements Serializable {
     @SerializedName("legalName")
     @Expose
     @ColumnDefault(value = "''")
-    @Column(length = 800)
+    @Column(length = 500)
     private String legalName = "";
 
     public Identifier(String scheme, String prozzorroId, String legalName) {

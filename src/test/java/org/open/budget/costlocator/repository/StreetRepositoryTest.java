@@ -9,7 +9,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -21,26 +23,48 @@ public class StreetRepositoryTest {
 
     @Before
     public void setUp() throws Exception {
-        Street street = Street.builder().region("Odessa").name("Street").build();
+        Street street = Street.builder().region("Kyivska").city("Kyiv").name("Kreshatik").build();
         streetRepository.save(street);
+        Street street2 = Street.builder().region("Kyivska").city("Kyiv").name("Andriyvki uzviz").build();
+        streetRepository.save(street2);
+        Street street3 = Street.builder().region("Mykolaivska").city("Mykolaiv").name("Golovna").build();
+        streetRepository.save(street3);
     }
 
     @Test(expected = DataIntegrityViolationException.class)
     public void notUniqueSave_shouldThrowError(){
-        Street street = Street.builder().region("Odessa").name("Street").build();
+        Street street = Street.builder().region("Kyivska").city("Kyiv").name("Kreshatik").build();
         streetRepository.save(street);
         streetRepository.flush();
     }
 
-//    @Test
-//    public void findByStreetName_shouldReturn(){
-//        Optional<Street> street = streetRepository.findByStreet(street);
-//        assertEquals(street.isPresent(), true);
-//    }
-//
-//    @Test
-//    public void findByStreetName_shouldBeNull(){
-//        Optional<Street> address = streetRepository.findByStreet(Street.builder().name("s").region("1").build());
-//        assertEquals(address.isPresent(), false);
-//    }
+    @Test
+    public void findByRegionContainingIgnoreCase_shouldReturn(){
+        List<Street> streets = streetRepository.findByRegionContainingIgnoreCase("kyivska");
+        assertEquals(2, streets.size());
+    }
+
+    @Test
+    public void findByRegionContainingIgnoreCase_shouldReturnNull(){
+        List<Street> streets = streetRepository.findByRegionContainingIgnoreCase("Odeska");
+        assertEquals(0, streets.size());
+    }
+
+    @Test
+    public void getRegions_ShouldReturn2(){
+        Set<String> regions = streetRepository.getRegions();
+        assertEquals(2, regions.size());
+    }
+
+    @Test
+    public void exists_shouldReturn(){
+        boolean exists = streetRepository.exists("Kyivska", "Kyiv", "Kreshatik");
+        assertEquals(true, exists);
+    }
+
+    @Test
+    public void exists_shouldReturnNull(){
+        boolean exists = streetRepository.exists("Kyivska", "Kyiv", "");
+        assertEquals(false, exists);
+    }
 }

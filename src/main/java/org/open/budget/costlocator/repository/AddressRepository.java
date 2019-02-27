@@ -14,7 +14,8 @@ import java.util.Set;
 @Repository
 public interface AddressRepository extends JpaRepository<Address, Long> {
 
-    Optional<Address> findByStreet(Street street);
+//    @Query("SELECT a FROM Address a WHERE a.street. = :sName AND a.houseNumber = :hn AND a.index = :ind")
+//    List<Address> findByStreet(@Param("sName") String street);
 
     List<Address> findByIndex(String index);
 
