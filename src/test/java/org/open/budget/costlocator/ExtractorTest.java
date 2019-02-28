@@ -1,9 +1,10 @@
-package org.open.budget.costlocator.rest;
+package org.open.budget.costlocator;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
+import org.open.budget.costlocator.Extractor;
 import org.open.budget.costlocator.api.Tender;
 import org.open.budget.costlocator.api.TenderListItem;
 import org.open.budget.costlocator.api.TenderWrapper;
@@ -15,8 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.mockito.Mockito.*;
-import static org.open.budget.costlocator.rest.Extractor.API_LINK;
-import static org.open.budget.costlocator.rest.Extractor.TENDER_LINK;
+import static org.open.budget.costlocator.Extractor.TENDER_LINK;
 
 public class ExtractorTest {
 

@@ -29,6 +29,8 @@ public class StreetRepositoryTest {
         streetRepository.save(street2);
         Street street3 = Street.builder().region("Mykolaivska").city("Mykolaiv").name("Golovna").build();
         streetRepository.save(street3);
+        Street street4 = Street.builder().region("вінницька").city("Калинівка").name("Саксаганського").build();
+        streetRepository.save(street4);
     }
 
     @Test(expected = DataIntegrityViolationException.class)
@@ -53,7 +55,7 @@ public class StreetRepositoryTest {
     @Test
     public void getRegions_ShouldReturn2(){
         Set<String> regions = streetRepository.getRegions();
-        assertEquals(2, regions.size());
+        assertEquals(3, regions.size());
     }
 
     @Test
@@ -65,6 +67,12 @@ public class StreetRepositoryTest {
     @Test
     public void exists_shouldReturnNull(){
         boolean exists = streetRepository.exists("Kyivska", "Kyiv", "");
+        assertEquals(false, exists);
+    }
+
+    @Test
+    public void existsUA_shouldReturnNull(){
+        boolean exists = streetRepository.exists("дніпропетровська", "Дніпро", "Саксаганського");
         assertEquals(false, exists);
     }
 }

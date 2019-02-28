@@ -1,31 +1,33 @@
-package org.open.budget.costlocator.service;
+package org.open.budget.costlocator;
 
 import lombok.Builder;
+import lombok.extern.slf4j.Slf4j;
 import org.open.budget.costlocator.api.Street;
-import org.open.budget.costlocator.repository.StreetRepository;
+import org.open.budget.costlocator.service.StreetService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Optional;
 
-@Service
 @Builder
-public class StreetReaderServiceCsv {
-
-    private static final Logger log = LoggerFactory.getLogger(StreetReaderServiceCsv.class);
+@Slf4j
+public class StreetReaderCsv {
 
     private StreetService streetService;
 
-    public StreetReaderServiceCsv(StreetService streetService) {
+    public StreetReaderCsv(StreetService streetService) {
         this.streetService = streetService;
     }
 
     @Transactional
     public void start() {
         {
-            String path = StreetReaderServiceCsv.class.getResource("/houses.csv").getPath();
+            String path = StreetReaderCsv.class.getResource("/houses.csv").getPath();
 
             try (
                     BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path), "windows-1251"))
@@ -39,20 +41,27 @@ public class StreetReaderServiceCsv {
                     }
                     log.info("Reading line");
                     String[] csvRecord = line.split(";");
-                    Street street = getStreet(csvRecord);
-                    streetService.save(street);
+                    Optional<Street> street = getStreet(csvRecord);
+                    if (!street.isPresent())
+                        continue;
+                    streetService.save(street.get());
                 }
+                log.warn("------READ HAS ENDED------");
             } catch (IOException e) {
                 throw new IllegalStateException("not able to read " + path, e);
             }
         }
     }
 
-    Street getStreet(String[] csvRecord) {
-        return Street.builder().region(csvRecord[0].toLowerCase())
+    Optional<Street> getStreet(String[] csvRecord) {
+        if (csvRecord.length < 5)
+            return Optional.empty();
+        if (csvRecord[4].isEmpty())
+            return Optional.empty();
+        return Optional.of(Street.builder().region(csvRecord[0].toLowerCase())
                 .city(csvRecord[2].replaceAll("^(смт)|(с\\. )|(м\\. )|(с-ще )", "").trim())
                 .name(csvRecord[4].replaceAll("^(просп\\. )|(пл\\. )|(вул\\. )|(пров\\. )|(бульв\\. )|(вулиця )|" +
                         "(Вулиця)|(Проспект )|(Провулок )|(Площа )|(площа )|(тупік )|(Тупік )|(Бульвар )|(бульвар )|" +
-                        "(Проїзд )|(проїзд )", "").trim()).build();
+                        "(Проїзд )|(проїзд )", "").trim()).build());
     }
 }

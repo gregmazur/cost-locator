@@ -150,6 +150,10 @@ public class TenderServiceImpl implements TenderService {
         return addresses;
     }
 
+    void checkAddresses(List<Address> addresses){
+
+    }
+
     Address saveAddressIfNeeded(Address address){
         Optional<Address> addressFromDB = addressRepository.find(address.getStreet(),address.getHouseNumber(), address.getIndex());
         if (addressFromDB.isPresent())

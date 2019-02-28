@@ -12,16 +12,16 @@ import java.util.Optional;
 import java.util.Set;
 
 @Repository
-public interface AddressRepository extends JpaRepository<Address, Long> {
+public interface AddressRepository {
 
 //    @Query("SELECT a FROM Address a WHERE a.street. = :sName AND a.houseNumber = :hn AND a.index = :ind")
 //    List<Address> findByStreet(@Param("sName") String street);
 
     List<Address> findByIndex(String index);
 
-    @Query("SELECT a FROM Address a WHERE a.street = :street AND a.houseNumber = :hn AND a.index = :ind")
+//    @Query("SELECT a FROM Address a WHERE a.street = :street AND a.houseNumber = :hn AND a.index = :ind")
     Optional<Address> find(@Param("street") Street street, @Param("hn") String hn, @Param("ind") String index);
 
 //    @Query(value = "select 1 from address a where exists (select * from address ia where ia.streetAddress = ?1)")
-//    boolean exists(String streetAddress);
+    boolean exists(String streetAddress);
 }

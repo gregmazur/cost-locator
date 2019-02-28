@@ -1,6 +1,5 @@
-package org.open.budget.costlocator.rest;
+package org.open.budget.costlocator;
 
-import org.open.budget.costlocator.service.StreetReaderServiceCsv;
 import org.open.budget.costlocator.service.StreetService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,11 +20,11 @@ public class Scheduler {
     @Value( "${need.to.read.csv:true}" )
     private boolean needToReadStreetsFile;
 
-    @Scheduled(fixedDelay = 10000)
+    @Scheduled(fixedDelay = 100000000)
     public void loadTenders() {
         log.warn("ATTENTION---STARTED TASK----------ATTENTION---------------ATTENTION---------------------");
         if (needToReadStreetsFile) {
-            StreetReaderServiceCsv readerServiceCsv = new StreetReaderServiceCsv(streetService);
+            StreetReaderCsv readerServiceCsv = new StreetReaderCsv(streetService);
             log.warn("ATTENTION---STARTED READ FROM HOUSES----------ATTENTION---------------ATTENTION---------------------");
             readerServiceCsv.start();
         }

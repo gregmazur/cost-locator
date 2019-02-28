@@ -1,4 +1,4 @@
-package org.open.budget.costlocator.rest;
+package org.open.budget.costlocator;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
