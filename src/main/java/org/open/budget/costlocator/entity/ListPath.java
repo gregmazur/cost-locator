@@ -1,4 +1,4 @@
-package org.open.budget.costlocator.api;
+package org.open.budget.costlocator.entity;
 
 import lombok.Builder;
 import lombok.Getter;

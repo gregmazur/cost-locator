@@ -2,11 +2,11 @@ package org.open.budget.costlocator;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import lombok.extern.slf4j.Slf4j;
 import org.open.budget.costlocator.api.*;
+import org.open.budget.costlocator.entity.Tender;
 import org.open.budget.costlocator.service.SearchCriteria;
 import org.open.budget.costlocator.service.TenderService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -21,9 +21,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
+@Slf4j
 public class Extractor {
-
-    private static final Logger log = LoggerFactory.getLogger(Extractor.class);
 
     static final String API_LINK = "https://public.api.openprocurement.org";
 
@@ -62,6 +61,7 @@ public class Extractor {
     }
 
     public void extract() {
+        log.warn("------RETRIEVING FROM API HAS STARTED-----");
         setUp();
         String path = tenderService.getLastListPath();
         TenderListWrapper tenderListWrapper = retrievePortion(path);
@@ -90,7 +90,7 @@ public class Extractor {
             Tender tender = cache.get(item.getId());
             if (tender == null) {
                 tender = getLatestTender(item);
-                if (tender.getItem().getDeliveryAddress() == null) {
+                if (tender.getTenderDetail().getDeliveryAddress() == null) {
                     log.info("NO DELIVERY ADRESS id {}", tender.getId());
                     continue;
                 }
@@ -116,7 +116,7 @@ public class Extractor {
 
     private boolean isNeededClassification(Tender tender){
         for (String prefix : CLASSIFICATION_PREFIXES) {
-            if (tender.getItem().getClassification().getId().startsWith(prefix))
+            if (tender.getTenderDetail().getClassification().getId().startsWith(prefix))
                 return true;
         }
         return false;

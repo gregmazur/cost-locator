@@ -1,10 +1,14 @@
 
-package org.open.budget.costlocator.api;
+package org.open.budget.costlocator.entity;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Getter;
+import org.open.budget.costlocator.api.AddressAPI;
+import org.open.budget.costlocator.api.ContactPoint;
+import org.open.budget.costlocator.entity.Identifier;
+import org.open.budget.costlocator.entity.Tender;
 
 import javax.persistence.*;
 import java.util.List;

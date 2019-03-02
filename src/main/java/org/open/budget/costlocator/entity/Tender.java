@@ -1,5 +1,5 @@
 
-package org.open.budget.costlocator.api;
+package org.open.budget.costlocator.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,6 +10,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Getter;
+import org.open.budget.costlocator.api.*;
 
 import javax.persistence.*;
 
@@ -56,9 +57,9 @@ public class Tender {
     private MinimalStep minimalStep;
     @SerializedName("items")
     @Transient
-    private List<Item> items;//for deserialization
+    private List<TenderDetail> tenderDetails;//for deserialization
     @Embedded
-    private Item item;
+    private TenderDetail tenderDetail;
     @SerializedName("procurementMethodType")
     @Expose
     private String procurementMethodType;
@@ -72,7 +73,6 @@ public class Tender {
     @SerializedName("procuringEntity")
     @Expose
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-//    @JoinColumn(name = "fk_issuer")
     private TenderIssuer issuer;
     @SerializedName("owner")
     @Expose
@@ -105,7 +105,7 @@ public class Tender {
     }
 
     public Tender(String id, String procurementMethod, String status, TenderPeriod tenderPeriod, List<Document> documents,
-                  Long numberOfBids, String description, String title, MinimalStep minimalStep, List<Item> items, Item item,
+                  Long numberOfBids, String description, String title, MinimalStep minimalStep, List<TenderDetail> tenderDetails, TenderDetail tenderDetail,
                   String procurementMethodType, Value value, String submissionMethod, TenderIssuer issuer, String owner,
                   String tenderID, EnquiryPeriod enquiryPeriod, Date date, Guarantee guarantee, Date dateModified,
                   String awardCriteria, List<Address> addresses) {
@@ -118,8 +118,8 @@ public class Tender {
         this.description = description;
         this.title = title;
         this.minimalStep = minimalStep;
-        this.items = items;
-        this.item = item;
+        this.tenderDetails = tenderDetails;
+        this.tenderDetail = tenderDetail;
         this.procurementMethodType = procurementMethodType;
         this.value = value;
         this.submissionMethod = submissionMethod;
@@ -134,8 +134,8 @@ public class Tender {
         this.addresses = addresses;
     }
 
-    public void setItem(Item item){
-        this.item = item;
+    public void setTenderDetail(TenderDetail tenderDetail){
+        this.tenderDetail = tenderDetail;
     }
 
     public void setIssuer(TenderIssuer issuer) {

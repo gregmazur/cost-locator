@@ -1,7 +1,8 @@
 package org.open.budget.costlocator.service;
 
 import lombok.Builder;
-import org.open.budget.costlocator.api.*;
+import org.open.budget.costlocator.api.AddressAPI;
+import org.open.budget.costlocator.entity.*;
 import org.open.budget.costlocator.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,13 +36,16 @@ public class TenderServiceImpl implements TenderService {
     private ListPathRepository listPathRepository;
     @Autowired
     private UnsuccessfulItemRepository unsuccessfulItemRepository;
+    @Autowired
+    private RegionRepository regionRepository;
 
-    private Set<String> regionCache;
+    private List<Region> regions;
 
     public TenderServiceImpl(TenderRepository tenderRepository, AddressRepository addressRepository,
                              StreetRepository streetRepository, ClassificationRepository classificationRepository,
                              TenderIssuerRepository tenderIssuerRepository, ListPathRepository listPathRepository,
-                             UnsuccessfulItemRepository unsuccessfulItemRepository, Set<String> regionCache) {
+                             UnsuccessfulItemRepository unsuccessfulItemRepository, RegionRepository regionRepository,
+                             List<Region> regions) {
         this.tenderRepository = tenderRepository;
         this.addressRepository = addressRepository;
         this.streetRepository = streetRepository;
@@ -49,20 +53,20 @@ public class TenderServiceImpl implements TenderService {
         this.tenderIssuerRepository = tenderIssuerRepository;
         this.listPathRepository = listPathRepository;
         this.unsuccessfulItemRepository = unsuccessfulItemRepository;
-        this.regionCache = regionCache;
+        this.regionRepository = regionRepository;
+        this.regions = regions;
     }
 
     @PostConstruct
     private void init() {
-        regionCache = streetRepository.getRegions();
-        regionCache.remove("київ");
+        regions = regionRepository.findAll();
     }
 
     @Override
     @Transactional
     public Tender save(Tender tender) {
         saveAddresses(tender);
-        if (tender.getAddresses().isEmpty()){
+        if (tender.getAddresses().isEmpty()) {
             log.warn("Could not find address for {} will be saved to unsuccessful ", tender.getId());
         }
         saveTenderIssuer(tender);
@@ -72,39 +76,40 @@ public class TenderServiceImpl implements TenderService {
     }
 
     private void saveAddresses(Tender tender) {
-        AddressAPI addressAPI = tender.getItem().getDeliveryAddress();
-        List<Street> potentialStreets = getPotentialStreets(addressAPI);
-        List<Address> addresses = getAdddresses(addressAPI, potentialStreets);
+        List<Address> addresses = findOrCreateAddresses(tender.getTenderDetail().getDeliveryAddress());
+        if (addresses.isEmpty())
+            addresses = findOrCreateAddresses(tender.getIssuer().getAddress());
         tender.getAddresses().addAll(addresses);
     }
 
-    List<Street> getPotentialStreets(AddressAPI addressAPI) {
-        Optional<String> region = findInAddressAPI(addressAPI, this::getValidRegionName);
-        List<Street> potentialStreets = new ArrayList<>();
-        if (region.isPresent())
-            potentialStreets = streetRepository.findByRegionContainingIgnoreCase(region.get());
-        if (potentialStreets.isEmpty()) {
-            Optional<String> index = findInAddressAPI(addressAPI, this::getValidPostIndex);
-            if (index.isPresent()) {
-                List<Address> addressesByIndex = addressRepository.findByIndex(index.get());
-                for (Address address : addressesByIndex) {
-                    potentialStreets.add(address.getStreet());
-                }
-            }
-        }
-        return potentialStreets;
+    private List<Address> findOrCreateAddresses(AddressAPI addressAPI) {
+        List<Street> potentialStreets = getPotentialStreets(addressAPI);
+        return getAdddresses(addressAPI, potentialStreets);
     }
 
-    Optional<String> getValidRegionName(String region) {
-        for (String regionName : regionCache) {
-            if (region.toLowerCase().contains(regionName))
-                return Optional.of(regionName);
+    List<Street> getPotentialStreets(AddressAPI addressAPI) {
+        Optional<String> index = findInAddressAPI(addressAPI, this::getValidPostIndex);
+        if (index.isPresent()) {
+            return streetRepository.findByIndex(index.get());
+        } else {
+            Optional<Region> region = findInAddressAPI(addressAPI, this::getValidRegionName);
+            if (index.isPresent()) {
+                return streetRepository.findByRegion(region.get());
+            }
+        }
+        return Collections.EMPTY_LIST;
+    }
+
+    Optional<Region> getValidRegionName(String regionRaw) {
+        for (Region region : regions) {
+            if (regionRaw.toLowerCase().contains(region.getName()))
+                return Optional.of(region);
         }
         return Optional.empty();
     }
 
-    Optional<String> findInAddressAPI(AddressAPI addressAPI, Function<String, Optional<String>> function) {
-        Optional<String> result = function.apply(addressAPI.getPostalCode());
+    <T> Optional<T> findInAddressAPI(AddressAPI addressAPI, Function<String, Optional<T>> function) {
+        Optional<T> result = function.apply(addressAPI.getPostalCode());
         if (result.isPresent())
             return result;
         result = function.apply(addressAPI.getRegion());
@@ -125,37 +130,53 @@ public class TenderServiceImpl implements TenderService {
         for (String streetAddress : splitedBySemiColumn) {
             String[] splitedByComma = streetAddress.split(",");
             Address.AddressBuilder addressBuilder = null;
-            for (String street : splitedByComma) {
-
-                Optional<Street> foundStreet = potentialStreets.stream().filter(s -> street.contains(s.getName())).findFirst();
+            for (int i = 0; i < splitedByComma.length; i++) {
+                String splitedByCommaText = splitedByComma[i];
+                Optional<Street> foundStreet = potentialStreets.stream().filter(s -> splitedByCommaText.contains(s.getName())).findFirst();
                 if (foundStreet.isPresent()) {
                     if (addressBuilder != null)
                         addresses.add(saveAddressIfNeeded(addressBuilder.build()));
 
                     addressBuilder = Address.builder();
-                    Optional<String> index = findInAddressAPI(addressAPI, this::getValidPostIndex);
-                    if (index.isPresent())
-                        addressBuilder.index(index.get());
 
                     addressBuilder.street(foundStreet.get());
+                    addressBuilder.city(foundStreet.get().getCity());
+                    if (i == splitedByComma.length - 1) {
+                        addresses.add(saveAddressIfNeeded(addressBuilder.build()));
+                    }
                 } else {
                     if (addressBuilder != null) {
-                        addressBuilder.houseNumber(street);
+                        addressBuilder.houseNumber(getValidHouseNumber(splitedByCommaText));
                         addresses.add(saveAddressIfNeeded(addressBuilder.build()));
                         addressBuilder = null;
                     }
                 }
             }
         }
+        if (addresses.isEmpty()) {
+            for (Street streetInList : potentialStreets) {
+                Optional<City> city = findInAddressAPI(addressAPI, s -> {
+                    if (s.contains(streetInList.getCity().getName()))
+                        return Optional.of(streetInList.getCity());
+                    return Optional.empty();
+                });
+
+                if (!city.isPresent())
+                    continue;
+                Address.AddressBuilder addressBuilder = Address.builder().city(city.get());
+                addresses.add(saveAddressIfNeeded(addressBuilder.build()));
+            }
+        }
         return addresses;
     }
 
-    void checkAddresses(List<Address> addresses){
-
-    }
-
-    Address saveAddressIfNeeded(Address address){
-        Optional<Address> addressFromDB = addressRepository.find(address.getStreet(),address.getHouseNumber(), address.getIndex());
+    Address saveAddressIfNeeded(Address address) {
+        Optional<Address> addressFromDB;
+        if (address.getStreet() == null) {
+            addressFromDB = addressRepository.find(address.getCity().getId());
+        } else {
+            addressFromDB = addressRepository.find(address.getCity().getId(), address.getStreet().getId(), address.getHouseNumber());
+        }
         if (addressFromDB.isPresent())
             return addressFromDB.get();
         return addressRepository.save(address);
@@ -171,10 +192,15 @@ public class TenderServiceImpl implements TenderService {
         return Optional.of(m.group(1));
     }
 
+    String getValidHouseNumber(String text) {
+        String[] splited = text.trim().split(" ");
+        return splited[0];
+    }
+
     private void saveTenderIssuer(Tender tender) {
         TenderIssuer tenderIssuer = tender.getIssuer();
         Optional<TenderIssuer> tenderIssuerFromDb = tenderIssuerRepository.findByIdentifier(tenderIssuer.getIdentifier());
-        if (!tenderIssuerFromDb.isPresent()){
+        if (!tenderIssuerFromDb.isPresent()) {
             formalize(tenderIssuer);
             tenderIssuerRepository.save(tenderIssuer);
         } else {
@@ -189,13 +215,13 @@ public class TenderServiceImpl implements TenderService {
         }
     }
 
-    private void saveClassification(Tender tender) {
-        Classification classification = tender.getItem().getClassification();
+    void saveClassification(Tender tender) {
+        Classification classification = tender.getTenderDetail().getClassification();
         Optional<Classification> classificationFromDB = classificationRepository.findById(classification.getId());
         if (!classificationFromDB.isPresent()) {
             classificationRepository.save(classification);
         } else {
-            tender.getItem().setClassification(classificationFromDB.get());
+            tender.getTenderDetail().setClassification(classificationFromDB.get());
         }
     }
 

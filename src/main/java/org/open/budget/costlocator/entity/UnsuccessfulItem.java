@@ -1,4 +1,4 @@
-package org.open.budget.costlocator.api;
+package org.open.budget.costlocator.entity;
 
 import lombok.Getter;
 
@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "item")
+@Table(name = "tenderDetail")
 @Getter
 public class UnsuccessfulItem {
     @Id

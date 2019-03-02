@@ -1,7 +1,8 @@
 package org.open.budget.costlocator.repository;
 
-import org.open.budget.costlocator.api.Address;
-import org.open.budget.costlocator.api.Street;
+import org.open.budget.costlocator.entity.Address;
+import org.open.budget.costlocator.entity.City;
+import org.open.budget.costlocator.entity.Street;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -9,19 +10,13 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Repository
-public interface AddressRepository {
+public interface AddressRepository extends JpaRepository<Address, Long> {
 
-//    @Query("SELECT a FROM Address a WHERE a.street. = :sName AND a.houseNumber = :hn AND a.index = :ind")
-//    List<Address> findByStreet(@Param("sName") String street);
+    @Query("SELECT a FROM Address a WHERE a.city.id = :city AND a.street.id = :street AND a.houseNumber = :hn")
+    Optional<Address> find(@Param("city") Long city, @Param("street") Long street, @Param("hn") String houseNumber);
 
-    List<Address> findByIndex(String index);
-
-//    @Query("SELECT a FROM Address a WHERE a.street = :street AND a.houseNumber = :hn AND a.index = :ind")
-    Optional<Address> find(@Param("street") Street street, @Param("hn") String hn, @Param("ind") String index);
-
-//    @Query(value = "select 1 from address a where exists (select * from address ia where ia.streetAddress = ?1)")
-    boolean exists(String streetAddress);
+    @Query("SELECT a FROM Address a WHERE a.city.id = :city AND a.street.id is null AND a.houseNumber is null")
+    Optional<Address> find(@Param("city") Long city);
 }

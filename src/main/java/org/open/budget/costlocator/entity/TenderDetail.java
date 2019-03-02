@@ -1,17 +1,19 @@
 
-package org.open.budget.costlocator.api;
+package org.open.budget.costlocator.entity;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Getter;
+import org.open.budget.costlocator.api.AddressAPI;
+import org.open.budget.costlocator.api.DeliveryDate;
 
 import javax.persistence.*;
 
 @Embeddable
 @Builder
 @Getter
-public class Item {
+public class TenderDetail {
 
     @SerializedName("description")
     @Expose
@@ -44,8 +46,8 @@ public class Item {
     @Expose
     private Long quantity;
 
-    public Item(String itemDescription, Classification classification, DeliveryLocation deliveryLocation,
-                AddressAPI deliveryAddress, DeliveryDate deliveryDate, String itemId, Unit unit, Long quantity) {
+    public TenderDetail(String itemDescription, Classification classification, DeliveryLocation deliveryLocation,
+                        AddressAPI deliveryAddress, DeliveryDate deliveryDate, String itemId, Unit unit, Long quantity) {
         this.itemDescription = itemDescription;
         this.classification = classification;
         this.deliveryLocation = deliveryLocation;
@@ -56,7 +58,7 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public Item() {
+    public TenderDetail() {
     }
 
     public void setDeliveryAddress(AddressAPI deliveryAddress) {

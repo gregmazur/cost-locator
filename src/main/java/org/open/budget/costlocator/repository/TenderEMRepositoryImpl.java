@@ -1,6 +1,6 @@
 package org.open.budget.costlocator.repository;
 
-import org.open.budget.costlocator.api.Tender;
+import org.open.budget.costlocator.entity.Tender;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Repository
-public class CustomTenderRepositoryImpl implements CustomTenderRepository{
+public class TenderEMRepositoryImpl implements TenderEMRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
