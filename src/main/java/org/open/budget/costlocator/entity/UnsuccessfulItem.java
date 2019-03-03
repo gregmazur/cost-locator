@@ -7,9 +7,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tenderDetail")
+@Table(name = "tender_not_saved")
 @Getter
 public class UnsuccessfulItem {
     @Id
     String id;
+
+    public UnsuccessfulItem(String id) {
+        this.id = id;
+    }
+
+    public UnsuccessfulItem() {
+    }
 }

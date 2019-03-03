@@ -18,20 +18,20 @@ public class AddressAPI {
     private Long id;
     @SerializedName("postalCode")
     @Expose
-    private String postalCode;
+    private String postalCode = "";
     @SerializedName("countryName")
     @Expose
-    private String countryName;
+    private String countryName = "";
     @SerializedName("streetAddress")
     @Expose
-    private String streetAddress;
+    private String streetAddress = "";
     @SerializedName("region")
     @Expose
     @Column(name = "region")
-    private String region;
+    private String region = "";
     @SerializedName("locality")
     @Expose
-    private String locality;
+    private String locality = "";
 
     public AddressAPI(Long id, String postalCode, String countryName, String streetAddress, String region, String locality) {
         this.id = id;

@@ -68,6 +68,7 @@ public class TenderServiceImpl implements TenderService {
         saveAddresses(tender);
         if (tender.getAddresses().isEmpty()) {
             log.warn("Could not find address for {} will be saved to unsuccessful ", tender.getId());
+            unsuccessfulItemRepository.save(new UnsuccessfulItem(tender.getId()));
         }
         saveTenderIssuer(tender);
         saveClassification(tender);
@@ -83,21 +84,21 @@ public class TenderServiceImpl implements TenderService {
     }
 
     private List<Address> findOrCreateAddresses(AddressAPI addressAPI) {
-        List<Street> potentialStreets = getPotentialStreets(addressAPI);
+        Collection<Street> potentialStreets = getPotentialStreets(addressAPI);
         return getAdddresses(addressAPI, potentialStreets);
     }
 
-    List<Street> getPotentialStreets(AddressAPI addressAPI) {
+    Collection<Street> getPotentialStreets(AddressAPI addressAPI) {
         Optional<String> index = findInAddressAPI(addressAPI, this::getValidPostIndex);
+        Set<Street> potentialStreets = new HashSet<>();
         if (index.isPresent()) {
-            return streetRepository.findByIndex(index.get());
-        } else {
-            Optional<Region> region = findInAddressAPI(addressAPI, this::getValidRegionName);
-            if (index.isPresent()) {
-                return streetRepository.findByRegion(region.get());
-            }
+            potentialStreets.addAll(streetRepository.findByIndex(index.get()));
         }
-        return Collections.EMPTY_LIST;
+        Optional<Region> region = findInAddressAPI(addressAPI, this::getValidRegionName);
+        if (region.isPresent()) {
+            potentialStreets.addAll(streetRepository.findByRegion(region.get()));
+        }
+        return potentialStreets;
     }
 
     Optional<Region> getValidRegionName(String regionRaw) {
@@ -124,7 +125,7 @@ public class TenderServiceImpl implements TenderService {
         return Optional.empty();
     }
 
-    List<Address> getAdddresses(AddressAPI addressAPI, List<Street> potentialStreets) {
+    List<Address> getAdddresses(AddressAPI addressAPI, Collection<Street> potentialStreets) {
         String[] splitedBySemiColumn = addressAPI.getStreetAddress().split(";");
         List<Address> addresses = new ArrayList<>();
         for (String streetAddress : splitedBySemiColumn) {

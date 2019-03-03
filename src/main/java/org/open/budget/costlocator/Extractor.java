@@ -77,7 +77,23 @@ public class Extractor {
     }
 
     private TenderListWrapper retrievePortion(String listPath) {
-        return restTemplate.getForObject(API_LINK + listPath, TenderListWrapper.class);
+        TenderListWrapper wrapper = null;
+        int i = 0;
+        while (wrapper == null && i++ < 3) {
+            try {
+                wrapper = restTemplate.getForObject(API_LINK + listPath, TenderListWrapper.class);;
+            } catch (Exception e) {
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                log.warn("ResourceAccessException attempt " + i +" for " + listPath, e);
+            }
+        }
+        if (wrapper == null)
+            throw new ResourceAccessException("unable to get response");
+        return wrapper;
     }
 
     private void preLoadPortion(TenderListWrapper tenderListWrapper) {
@@ -134,7 +150,7 @@ public class Extractor {
         while (tender == null && i++ < 3) {
             try {
                 tender = getLatestTenderImpl(item);
-            } catch (ResourceAccessException e) {
+            } catch (Exception e) {
                 try {
                     Thread.sleep(10000);
                 } catch (InterruptedException e1) {
