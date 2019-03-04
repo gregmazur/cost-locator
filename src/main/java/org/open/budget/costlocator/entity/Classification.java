@@ -1,8 +1,6 @@
 
 package org.open.budget.costlocator.entity;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -17,14 +15,8 @@ public class Classification {
 
     @Id
     @Column(unique = true, length = 32)
-    @SerializedName("id")
-    @Expose
     private String id;
-    @SerializedName("scheme")
-    @Expose
     private String scheme;
-    @SerializedName("description")
-    @Expose
     @Column(length = 1000, columnDefinition = "text")
     private String description;
     @OneToMany

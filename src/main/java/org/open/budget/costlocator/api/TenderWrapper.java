@@ -9,9 +9,9 @@ public class TenderWrapper {
 
     @SerializedName("data")
     @Expose
-    private Tender tender;
+    private TenderAPI tender;
 
-    public Tender getTender() {
+    public TenderAPI getTender() {
         return tender;
     }
 

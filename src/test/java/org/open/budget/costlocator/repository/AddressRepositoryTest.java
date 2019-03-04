@@ -64,13 +64,13 @@ public class AddressRepositoryTest {
         addressRepository.flush();
     }
 
-    @Test(expected = DataIntegrityViolationException.class)
-    public void notUniqueSaveAddressWithNoStreet_shouldThrowError() {
-        Address nonUniqueAddress =
-                Address.builder().city(city).build();
-        addressRepository.save(nonUniqueAddress);
-        addressRepository.flush();
-    }
+//    @Test(expected = DataIntegrityViolationException.class)
+//    public void notUniqueSaveAddressWithNoStreet_shouldThrowError() {
+//        Address nonUniqueAddress =
+//                Address.builder().city(city).build();
+//        addressRepository.save(nonUniqueAddress);
+//        addressRepository.flush();
+//    }
 
     @Test(expected = DataIntegrityViolationException.class)
     public void notUniqueSaveStreet_shouldThrowError() {

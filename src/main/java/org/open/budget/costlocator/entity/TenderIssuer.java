@@ -1,14 +1,9 @@
 
 package org.open.budget.costlocator.entity;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Getter;
-import org.open.budget.costlocator.api.AddressAPI;
-import org.open.budget.costlocator.api.ContactPoint;
-import org.open.budget.costlocator.entity.Identifier;
-import org.open.budget.costlocator.entity.Tender;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,43 +14,39 @@ import java.util.List;
 @Getter
 public class TenderIssuer {
 
-    @SerializedName("contactPoint")
-    @Expose
-    @Transient
-    private ContactPoint contactPoint;
-    @SerializedName("identifier")
-    @Expose
-    @EmbeddedId
-    private Identifier identifier;
-    @SerializedName("name")
-    @Expose
+    @Id
+    @Column(length = 8)
+    private String id;
     @Column(columnDefinition = "text")
     private String name;
-    @SerializedName("kind")
-    @Expose
     @Column(length = 10)
     private String kind;
-    @SerializedName("address")
-    @Expose
-    @Transient
-    private AddressAPI address;
+    @ColumnDefault(value = "''")
+    @Column(length = 32)
+    private String scheme;
+    @ColumnDefault(value = "''")
+    @Column(length = 500)
+    private String legalName = "";
     @OneToMany(mappedBy = "issuer")
     private List<Tender> tenders;
 
-    public TenderIssuer(ContactPoint contactPoint, Identifier identifier, String name, String kind, AddressAPI address,
-                        List<Tender> tenders) {
-        this.contactPoint = contactPoint;
-        this.identifier = identifier;
+    public TenderIssuer(String id, String name, String kind, String scheme, String legalName, List<Tender> tenders) {
+        this.id = id;
         this.name = name;
         this.kind = kind;
-        this.address = address;
+        this.scheme = scheme;
+        this.legalName = legalName;
         this.tenders = tenders;
     }
 
     public TenderIssuer() {
     }
 
-    public void setAddress(AddressAPI address) {
-        this.address = address;
+    public void setLegalName(String legalName) {
+        this.legalName = legalName;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

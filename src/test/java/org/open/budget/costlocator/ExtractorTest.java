@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
+import org.open.budget.costlocator.api.TenderAPI;
 import org.open.budget.costlocator.entity.Tender;
 import org.open.budget.costlocator.api.TenderListItem;
 import org.open.budget.costlocator.api.TenderWrapper;
@@ -23,7 +24,6 @@ public class ExtractorTest {
     private Extractor extractor;
     private Map<String, Tender> cache;
     private TenderWrapper tenderWrapper;
-    private Tender tender;
     @Mock
     public TenderService tenderService;
 
@@ -32,7 +32,7 @@ public class ExtractorTest {
         restTemplate = mock(RestTemplate.class);
         cache = new HashMap<>();
         extractor = new Extractor(restTemplate, cache, tenderService);
-        tender = mock(Tender.class);
+        TenderAPI tender = mock(TenderAPI.class);
         tenderWrapper = mock(TenderWrapper.class);
         when(tenderWrapper.getTender()).thenReturn(tender);
     }

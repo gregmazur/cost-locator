@@ -25,14 +25,4 @@ public class StreetRepositoryEmImpl implements StreetRepositoryEm {
         query.setParameter(1, region.getId());
         return query.getResultList();
     }
-
-    @Override
-    public Optional<Street> find(City city, String name, String index) {
-        Query query = entityManager.createNativeQuery("select * from street " +
-                "where fk_city = ? and name = ? and p_index = ?", Street.class);
-        query.setParameter(1, city.getId());
-        query.setParameter(2, name);
-        query.setParameter(3, index);
-        return  query.getResultStream().findFirst();
-    }
 }

@@ -10,6 +10,4 @@ import java.util.Optional;
 public interface StreetRepositoryEm {
 
     List<Street> findByRegion(Region region);
-
-    Optional<Street> find(City city, String name, String index);
 }

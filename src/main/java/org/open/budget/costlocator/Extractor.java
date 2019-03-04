@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.open.budget.costlocator.api.*;
 import org.open.budget.costlocator.entity.Tender;
+import org.open.budget.costlocator.entity.mapper.TenderMapper;
 import org.open.budget.costlocator.service.SearchCriteria;
 import org.open.budget.costlocator.service.TenderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,8 +49,7 @@ public class Extractor {
 
     private void setUp() {
         GsonHttpMessageConverter gsonHttpMessageConverter = new GsonHttpMessageConverter();
-        Gson gson = new GsonBuilder().registerTypeAdapter(Tender.class, new TenderDeserializer())
-                .create();
+        Gson gson = new GsonBuilder().create();
         gsonHttpMessageConverter.setGson(gson);
         List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
         messageConverters.add(gsonHttpMessageConverter);
@@ -105,47 +105,46 @@ public class Extractor {
         for (TenderListItem item : tenderListWrapper.getTenderList()) {
             Tender tender = cache.get(item.getId());
             if (tender == null) {
-                tender = getLatestTender(item);
-                if (tender.getTenderDetail().getDeliveryAddress() == null) {
-                    log.info("NO DELIVERY ADRESS id {}", tender.getId());
+                TenderAPI tenderApi = getLatestTender(item);
+                if (tenderApi.getItems().get(0).getDeliveryAddress() == null || tenderApi.getIssuer().getAddress() == null) {
+                    log.info("NO DELIVERY ADRESS id {}", tenderApi.getId());
                     continue;
                 }
-                if (tender.getStatus().equals("unsuccessful") || tender.getStatus().equals("cancelled")) {
-                    log.info("CANCELED or UNSUCCESSFUL id {}", tender.getId());
+                if (tenderApi.getStatus().equals("unsuccessful") || tender.getStatus().equals("cancelled")) {
+                    log.info("CANCELED or UNSUCCESSFUL id {}", tenderApi.getId());
                     continue;
                 }
-                if (!isNeededClassification(tender)){
-                    log.info("UNSUITABLE CLASSIFICATION id {}",tender.getId());
+                if (!isNeededClassification(tenderApi)){
+                    log.info("UNSUITABLE CLASSIFICATION id {}",tenderApi.getId());
                     continue;
                 }
-                tenderService.save(tender);
+                tenderService.save(tenderApi);
                 log.info("-----CREATED NEW TENDER-----", tender);
             }
             if (!tender.getDateModified().equals(item.getDateModified())) {
-                tender = getLatestTender(item);
-                tenderService.save(tender);
+                tenderService.save(getLatestTender(item));
             }
         }
         cache.clear();
 //        tenderService.flush();
     }
 
-    private boolean isNeededClassification(Tender tender){
+    private boolean isNeededClassification(TenderAPI tender){
         for (String prefix : CLASSIFICATION_PREFIXES) {
-            if (tender.getTenderDetail().getClassification().getId().startsWith(prefix))
+            if (tender.getItems().get(0).getClassification().getId().startsWith(prefix))
                 return true;
         }
         return false;
     }
 
-    Tender getLatestTenderImpl(TenderListItem item) {
+    TenderAPI getLatestTenderImpl(TenderListItem item) {
         log.info("---REST REQUEST---- FOR: {}", item.getId());
         TenderWrapper tenderWrapper = restTemplate.getForObject(TENDER_LINK + item.getId(), TenderWrapper.class);
         return tenderWrapper.getTender();
     }
 
-    Tender getLatestTender(TenderListItem item) {
-        Tender tender = null;
+    TenderAPI getLatestTender(TenderListItem item) {
+        TenderAPI tender = null;
         int i = 0;
         while (tender == null && i++ < 3) {
             try {

@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Before;
 import org.junit.Test;
-import org.open.budget.costlocator.entity.Tender;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,7 +18,6 @@ public class GsonTest {
     @Before
     public void setUp() throws IOException {
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(Tender.class, new TenderDeserializer());
         gson = gsonBuilder.create();
     }
 
@@ -59,7 +57,7 @@ public class GsonTest {
         assertNotNull(tenderWrapper);
         assertEquals(tenderWrapper.getTender().getIssuer().getIdentifier().getId(), "26506412");
         assertEquals(tenderWrapper.getTender().getId(), "ca301663b4f7423f944411d22543a037");
-        assertEquals(tenderWrapper.getTender().getTenderDetail().getDeliveryAddress().getStreetAddress(),
+        assertEquals(tenderWrapper.getTender().getItems().get(0).getDeliveryAddress().getStreetAddress(),
                 "test street");
     }
 }

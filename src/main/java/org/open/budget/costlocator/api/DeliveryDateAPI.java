@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Embeddable
-public class DeliveryDate {
+public class DeliveryDateAPI {
 
     @SerializedName("startDate")
     @Expose
