@@ -8,8 +8,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "street", indexes = {@Index(unique = true, columnList = "fk_city,name,p_index"),
-        @Index(columnList = "name"), @Index(columnList = "p_index")})
+@Table(name = "street", indexes = {@Index(unique = true, columnList = "fk_city,name,p_index")})
 @Getter
 @Builder
 @EqualsAndHashCode(exclude = {"id", "addresses"})

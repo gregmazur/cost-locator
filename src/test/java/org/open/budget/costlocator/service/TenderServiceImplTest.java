@@ -28,7 +28,7 @@ public class TenderServiceImplTest {
     @Mock
     private AddressRepository addressRepository;
     @Mock
-    private StreetJPARepository streetRepository;
+    private StreetRepository streetRepository;
     @Mock
     private ClassificationRepository classificationRepository;
     @Mock
@@ -69,7 +69,7 @@ public class TenderServiceImplTest {
     }
 
     @Test
-    public void getAdddresses_shouldPass() {
+    public void getAddresses_shouldPass() {
         AddressAPI addressAPI = AddressAPI.builder()
                 .streetAddress("вул. Зарічна, 8 с. Кам'яний Брід  Коростишівського р-ну Житомирської обл.")
                 .countryName("Україна")
@@ -99,11 +99,17 @@ public class TenderServiceImplTest {
                 .region("Одеська область").build();
         Region region = Region.builder().name("одеська").build();
         City city = City.builder().name("Ізмаїл").region(region).id(33L).build();
-        Street street = Street.builder().city(city).name("name").index("123").build();
-        Address mockAddress = Address.builder().city(city).build();
-        when(addressRepository.find(eq(city.getId()))).thenReturn(Optional.of(mockAddress));
+        Street street = Street.builder().city(city).name("name").index("123").id(2L).build();
+        Street mockStreet = Street.builder().index("N/A").name("N/A").city(city).id(3L).build();
+        Address mockAddress = Address.builder().city(city).street(mockStreet).houseNumber("N/A").build();
+        when(streetRepository.find(eq(city), eq(mockStreet.getName()), eq(mockStreet.getIndex()))).thenReturn(Optional.empty());
+        when(streetRepository.save(eq(mockStreet))).thenReturn(mockStreet);
+        when(addressRepository.find(eq(city.getId()), eq(mockStreet.getId()), eq(mockAddress.getHouseNumber())))
+                .thenReturn(Optional.empty());
+        when(addressRepository.save(eq(mockAddress))).thenReturn(mockAddress);
         List<Address> addresses = tenderService.getAdddresses(addressAPI, Arrays.asList(street));
-        verify(addressRepository, times(1)).find(eq(33L));
+        verify(addressRepository, times(1)).find(eq(33L), eq(3L), eq("N/A"));
+        verify(streetRepository, times(1)).save(mockStreet);
         assertEquals(1, addresses.size());
     }
 
@@ -112,5 +118,15 @@ public class TenderServiceImplTest {
         String[] invalid = {"123", "someText234,", "0000", "00000", ".", "    "};
         for (String test : invalid)
             assertEquals(false, tenderService.getValidPostIndex(test).isPresent());
+    }
+
+
+    @Test
+    public void testGetCorrectIssuerID(){
+        assertEquals("12345678", tenderService.getCorrectIssuerID("12345678"));
+        assertEquals("00123456", tenderService.getCorrectIssuerID("0123456"));
+        assertEquals("04061814", tenderService.getCorrectIssuerID("4061814"));
+        assertEquals("00012345", tenderService.getCorrectIssuerID("12345"));
+        assertEquals("00012345", tenderService.getCorrectIssuerID("0000012345"));
     }
 }

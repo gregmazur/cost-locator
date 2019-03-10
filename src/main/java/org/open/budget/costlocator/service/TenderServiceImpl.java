@@ -1,13 +1,12 @@
 package org.open.budget.costlocator.service;
 
 import lombok.Builder;
+import lombok.extern.slf4j.Slf4j;
 import org.open.budget.costlocator.api.AddressAPI;
 import org.open.budget.costlocator.api.TenderAPI;
 import org.open.budget.costlocator.entity.*;
-import org.open.budget.costlocator.entity.mapper.TenderMapper;
+import org.open.budget.costlocator.mapper.TenderMapperAPI;
 import org.open.budget.costlocator.repository.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +19,8 @@ import java.util.regex.Pattern;
 
 @Service
 @Builder
+@Slf4j
 public class TenderServiceImpl implements TenderService {
-
-    private static final Logger log = LoggerFactory.getLogger(TenderServiceImpl.class);
 
     @Autowired
     private TenderRepository tenderRepository;
@@ -40,6 +38,8 @@ public class TenderServiceImpl implements TenderService {
     private UnsuccessfulItemRepository unsuccessfulItemRepository;
     @Autowired
     private RegionRepository regionRepository;
+    @Autowired
+    private TenderDetailRepository tenderDetailRepository;
 
     private List<Region> regions;
 
@@ -47,7 +47,7 @@ public class TenderServiceImpl implements TenderService {
                              StreetRepository streetRepository, ClassificationRepository classificationRepository,
                              TenderIssuerRepository tenderIssuerRepository, ListPathRepository listPathRepository,
                              UnsuccessfulItemRepository unsuccessfulItemRepository, RegionRepository regionRepository,
-                             List<Region> regions) {
+                             TenderDetailRepository tenderDetailRepository, List<Region> regions) {
         this.tenderRepository = tenderRepository;
         this.addressRepository = addressRepository;
         this.streetRepository = streetRepository;
@@ -57,6 +57,7 @@ public class TenderServiceImpl implements TenderService {
         this.unsuccessfulItemRepository = unsuccessfulItemRepository;
         this.regionRepository = regionRepository;
         this.regions = regions;
+        this.tenderDetailRepository = tenderDetailRepository;
     }
 
     @PostConstruct
@@ -67,25 +68,28 @@ public class TenderServiceImpl implements TenderService {
     @Override
     @Transactional
     public void save(TenderAPI tenderAPI) {
-        if (tenderAPI.getStatus().equals("active")) {
+        if (tenderAPI.getStatus().startsWith("active") &&
+                (!tenderAPI.getProcurementMethod().equals("reporting") ||
+                !tenderAPI.getProcurementMethod().equals("belowThreshold"))) {
             log.warn("Tender is in active status {} will be saved to unsuccessful ", tenderAPI.getId());
-            unsuccessfulItemRepository.save(new UnsuccessfulItem(tenderAPI.getId()));
+            unsuccessfulItemRepository.save(new UnsuccessfulItem(tenderAPI.getId(), true));
             return;
         }
-        Tender tender = TenderMapper.INSTANCE.tenderApiToTender(tenderAPI);
+        Tender tender = TenderMapperAPI.INSTANCE.tenderApiToTender(tenderAPI);
         saveAddresses(tenderAPI, tender);
         if (tender.getAddresses().isEmpty()) {
             log.warn("Could not find address for {} will be saved to unsuccessful ", tenderAPI.getId());
-            unsuccessfulItemRepository.save(new UnsuccessfulItem(tenderAPI.getId()));
+            unsuccessfulItemRepository.save(new UnsuccessfulItem(tenderAPI.getId(), false));
             return;
         }
         saveTenderIssuer(tender);
         saveClassification(tender);
+        saveTenderDetail(tender);
         tenderRepository.save(tender);
     }
 
     private void saveAddresses(TenderAPI tenderAPI, Tender tender) {
-        List<Address> addresses = findOrCreateAddresses(tenderAPI.getItems().get(0).getDeliveryAddress());
+        List<Address> addresses = findOrCreateAddresses(tenderAPI.getItemAPIS().get(0).getDeliveryAddress());
         if (addresses.isEmpty())
             addresses = findOrCreateAddresses(tenderAPI.getIssuer().getAddress());
         tender.getAddresses().addAll(addresses);
@@ -151,7 +155,7 @@ public class TenderServiceImpl implements TenderService {
                     addressBuilder.street(foundStreet.get());
                     addressBuilder.city(foundStreet.get().getCity());
                     if (i == splitedByComma.length - 1) {
-                        addresses.add(saveAddressIfNeeded(addressBuilder.build()));
+                        addresses.add(saveAddressIfNeeded(addressBuilder.houseNumber("N/A").build()));
                     }
                 } else {
                     if (addressBuilder != null) {
@@ -182,11 +186,8 @@ public class TenderServiceImpl implements TenderService {
 
     Address saveAddressIfNeeded(Address address) {
         Optional<Address> addressFromDB;
-        if (address.getStreet() == null) {
-            addressFromDB = addressRepository.find(address.getCity().getId());
-        } else {
-            addressFromDB = addressRepository.find(address.getCity().getId(), address.getStreet().getId(), address.getHouseNumber());
-        }
+        addressFromDB = addressRepository.find(address.getCity().getId(), address.getStreet().getId(), address.getHouseNumber());
+
         if (addressFromDB.isPresent())
             return addressFromDB.get();
         return addressRepository.save(address);
@@ -207,9 +208,9 @@ public class TenderServiceImpl implements TenderService {
         return splited[0];
     }
 
-    Street saveIfNeeded(Street street, City city){
+    Street saveIfNeeded(Street street, City city) {
         Optional<Street> streetFromDB = streetRepository.find(city, street.getName(), street.getIndex());
-        if (!streetFromDB.isPresent()){
+        if (!streetFromDB.isPresent()) {
             street = Street.builder().name(street.getName()).index(street.getIndex()).city(city).build();
             return streetRepository.save(street);
         }
@@ -227,12 +228,19 @@ public class TenderServiceImpl implements TenderService {
         }
     }
 
-    String getCorrectIssuerID(String text){
+    String getCorrectIssuerID(String text) {
         if (text.length() == 8)
             return text;
-        if (text.length() > 8)
+        String result = null;
+        for (int i = 0; i < text.length(); i++){
+            if (text.charAt(i) != '0'){
+                result = text.substring(i);
+                break;
+            }
+        }
+        if (result == null || result.length() > 8)
             throw new IllegalStateException("Tender issuer ID can`t be bigger then 8 : " + text);
-        return ("00000000" + text).substring(text.length());
+        return ("00000000" + result).substring(result.length());
     }
 
     void formalize(TenderIssuer tenderIssuer) {
@@ -250,6 +258,16 @@ public class TenderServiceImpl implements TenderService {
             classificationRepository.save(classification);
         } else {
             tender.setClassification(classificationFromDB.get());
+        }
+    }
+
+    void saveTenderDetail(Tender tender) {
+        TenderDetail tenderDetail = tender.getTenderDetail();
+        Optional<TenderDetail> tenderDetailFromDB = tenderDetailRepository.findById(tenderDetail.getId());
+        if (!tenderDetailFromDB.isPresent()) {
+            tenderDetailRepository.save(tenderDetail);
+        } else {
+            tender.setTenderDetail(tenderDetailFromDB.get());
         }
     }
 
@@ -271,5 +289,10 @@ public class TenderServiceImpl implements TenderService {
     @Transactional
     public ListPath save(String path) {
         return listPathRepository.save(new ListPath(1L, path));
+    }
+
+    @Override
+    public List<UnsuccessfulItem> getAllUnsuccessful() {
+        return unsuccessfulItemRepository.findAll();
     }
 }

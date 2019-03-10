@@ -3,9 +3,13 @@ package org.open.budget.costlocator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.extern.slf4j.Slf4j;
-import org.open.budget.costlocator.api.*;
+import org.open.budget.costlocator.api.TenderAPI;
+import org.open.budget.costlocator.api.TenderListItem;
+import org.open.budget.costlocator.api.TenderListWrapper;
+import org.open.budget.costlocator.api.TenderWrapper;
+import org.open.budget.costlocator.entity.Item;
 import org.open.budget.costlocator.entity.Tender;
-import org.open.budget.costlocator.entity.mapper.TenderMapper;
+import org.open.budget.costlocator.entity.UnsuccessfulItem;
 import org.open.budget.costlocator.service.SearchCriteria;
 import org.open.budget.costlocator.service.TenderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +20,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
@@ -69,10 +71,11 @@ public class Extractor {
             preLoadPortion(tenderListWrapper);
             path = tenderListWrapper.getNextPage().getPath();
             log.info("loaded list, path : {}", path);
-            persistPortion(tenderListWrapper);
+            persistPortion(tenderListWrapper.getTenderList());
             tenderService.save(path);
             tenderListWrapper = retrievePortion(path);
         }
+        persistPortion(tenderService.getAllUnsuccessful());
         log.warn("-----EXTRACTION FINISHED--------");
     }
 
@@ -81,14 +84,15 @@ public class Extractor {
         int i = 0;
         while (wrapper == null && i++ < 3) {
             try {
-                wrapper = restTemplate.getForObject(API_LINK + listPath, TenderListWrapper.class);;
+                wrapper = restTemplate.getForObject(API_LINK + listPath, TenderListWrapper.class);
+                ;
             } catch (Exception e) {
                 try {
                     Thread.sleep(10000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }
-                log.warn("ResourceAccessException attempt " + i +" for " + listPath, e);
+                log.warn("ResourceAccessException attempt " + i + " for " + listPath, e);
             }
         }
         if (wrapper == null)
@@ -101,49 +105,58 @@ public class Extractor {
         cache = tenderService.search(SearchCriteria.builder().tenderIds(ids).build());
     }
 
-    private void persistPortion(TenderListWrapper tenderListWrapper) {
-        for (TenderListItem item : tenderListWrapper.getTenderList()) {
+    private void persistPortion(List<? extends Item> items) {
+        for (Item item : items) {
             Tender tender = cache.get(item.getId());
             if (tender == null) {
-                TenderAPI tenderApi = getLatestTender(item);
-                if (tenderApi.getItems().get(0).getDeliveryAddress() == null || tenderApi.getIssuer().getAddress() == null) {
-                    log.info("NO DELIVERY ADRESS id {}", tenderApi.getId());
-                    continue;
+                tryToCreateTender(item);
+            } else {
+                if (item instanceof TenderListItem) {
+                    if (!tender.getDateModified().equals(((TenderListItem) item).getDateModified())) {
+                        tenderService.save(getLatestTender(item));
+                    }
+                } else {
+                    tryToCreateTender(item);
                 }
-                if (tenderApi.getStatus().equals("unsuccessful") || tender.getStatus().equals("cancelled")) {
-                    log.info("CANCELED or UNSUCCESSFUL id {}", tenderApi.getId());
-                    continue;
-                }
-                if (!isNeededClassification(tenderApi)){
-                    log.info("UNSUITABLE CLASSIFICATION id {}",tenderApi.getId());
-                    continue;
-                }
-                tenderService.save(tenderApi);
-                log.info("-----CREATED NEW TENDER-----", tender);
-            }
-            if (!tender.getDateModified().equals(item.getDateModified())) {
-                tenderService.save(getLatestTender(item));
             }
         }
         cache.clear();
 //        tenderService.flush();
     }
 
-    private boolean isNeededClassification(TenderAPI tender){
+    private void tryToCreateTender(Item item) {
+        TenderAPI tenderApi = getLatestTender(item);
+        if (tenderApi.getItemAPIS().get(0).getDeliveryAddress() == null || tenderApi.getIssuer().getAddress() == null) {
+            log.info("NO DELIVERY ADRESS id {}", tenderApi.getId());
+            return;
+        }
+        if (tenderApi.getStatus().equals("unsuccessful") || tenderApi.getStatus().equals("cancelled")) {
+            log.info("CANCELED or UNSUCCESSFUL id {}", tenderApi.getId());
+            return;
+        }
+        if (!isNeededClassification(tenderApi)) {
+            log.info("UNSUITABLE CLASSIFICATION id {}", tenderApi.getId());
+            return;
+        }
+        tenderService.save(tenderApi);
+        log.info("-----CREATED NEW TENDER----- {}", tenderApi.getId());
+    }
+
+    private boolean isNeededClassification(TenderAPI tender) {
         for (String prefix : CLASSIFICATION_PREFIXES) {
-            if (tender.getItems().get(0).getClassification().getId().startsWith(prefix))
+            if (tender.getItemAPIS().get(0).getClassification().getId().startsWith(prefix))
                 return true;
         }
         return false;
     }
 
-    TenderAPI getLatestTenderImpl(TenderListItem item) {
+    TenderAPI getLatestTenderImpl(Item item) {
         log.info("---REST REQUEST---- FOR: {}", item.getId());
         TenderWrapper tenderWrapper = restTemplate.getForObject(TENDER_LINK + item.getId(), TenderWrapper.class);
         return tenderWrapper.getTender();
     }
 
-    TenderAPI getLatestTender(TenderListItem item) {
+    TenderAPI getLatestTender(Item item) {
         TenderAPI tender = null;
         int i = 0;
         while (tender == null && i++ < 3) {
@@ -155,7 +168,7 @@ public class Extractor {
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }
-                log.warn("ResourceAccessException attempt " + i +" for " + item.getId(), e);
+                log.warn("ResourceAccessException attempt " + i + " for " + item.getId(), e);
             }
         }
         if (tender == null)

@@ -20,7 +20,7 @@ public class Scheduler {
     @Value( "${need.to.read.csv:true}" )
     private boolean needToReadStreetsFile;
 
-    @Scheduled(fixedDelay = 100000000)
+    @Scheduled(fixedDelay = 1000000)
     public void loadTenders() {
         log.warn("ATTENTION---STARTED TASK----------ATTENTION---------------ATTENTION---------------------");
         if (needToReadStreetsFile) {

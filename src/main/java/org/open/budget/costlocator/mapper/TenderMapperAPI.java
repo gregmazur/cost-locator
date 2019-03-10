@@ -1,14 +1,16 @@
-package org.open.budget.costlocator.entity.mapper;
+package org.open.budget.costlocator.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.open.budget.costlocator.api.*;
 import org.open.budget.costlocator.entity.*;
 
-@Mapper
-public interface TenderMapper {
+import java.util.ArrayList;
 
-    TenderMapper INSTANCE = Mappers.getMapper(TenderMapper.class);
+@Mapper
+public interface TenderMapperAPI {
+
+    TenderMapperAPI INSTANCE = Mappers.getMapper(TenderMapperAPI.class);
 
     Classification classificationAPIToClassification(ClassificationAPI classificationAPI);
 
@@ -18,9 +20,16 @@ public interface TenderMapper {
 
     Unit unitApiToUnit(UnitAPI unitAPI);
 
+    default Value valueApiToValue(ValueAPI valueAPI){
+        return Value.builder().amount(valueAPI.getAmount().longValue()).currency(valueAPI.getCurrency())
+                .valueAddedTaxIncluded(valueAPI.getValueAddedTaxIncluded()).build();
+    }
+
     default Tender tenderApiToTender(TenderAPI tenderAPI) {
-        Item item = tenderAPI.getItems().get(0);
+        ItemAPI item = tenderAPI.getItemAPIS().get(0);
         TenderIssuerAPI tenderIssuerAPI = tenderAPI.getIssuer();
+        ValueAPI valueAPI = tenderAPI.getValue() != null ? tenderAPI.getValue() :
+                tenderAPI.getAwards().get(0).getValue();
         TenderIssuer tenderIssuer = TenderIssuer.builder().name(tenderIssuerAPI.getName()).kind(tenderIssuerAPI.getKind())
                 .id(tenderIssuerAPI.getIdentifier().getId()).legalName(tenderIssuerAPI.getIdentifier().getLegalName())
                 .scheme(tenderIssuerAPI.getIdentifier().getScheme()).build();
@@ -28,7 +37,8 @@ public interface TenderMapper {
                 .deliveryDate(deliveryDateAPIToDeliveryDate(item.getDeliveryDateAPI())).id(item.getItemId())
                 .quantity(item.getQuantity()).awardCriteria(tenderAPI.getAwardCriteria()).description(item.getItemDescription())
                 .unit(unitApiToUnit(item.getUnit())).procurementMethodType(tenderAPI.getProcurementMethodType())
-                .submissionMethod(tenderAPI.getSubmissionMethod()).value(tenderAPI.getValue()).build();
+                .submissionMethod(tenderAPI.getSubmissionMethod())
+                .value(valueApiToValue(valueAPI)).build();
         return Tender.builder().id(tenderAPI.getId()).title(tenderAPI.getTitle()).date(tenderAPI.getDate())
                 .dateModified(tenderAPI.getDateModified()).description(tenderAPI.getDescription())
                 .issuer(tenderIssuer)
@@ -36,6 +46,7 @@ public interface TenderMapper {
                 .status(tenderAPI.getStatus()).tenderID(tenderAPI.getTenderID())
                 .classification(classificationAPIToClassification(item.getClassification()))
                 .deliveryLocation(deliveryLocationAPIToDeliveryLocation(item.getDeliveryLocation()))
+                .addresses(new ArrayList<>())
                 .tenderDetail(tenderDetail).build();
     }
 }

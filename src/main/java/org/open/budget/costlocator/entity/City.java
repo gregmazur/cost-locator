@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "city", indexes = {@Index(columnList = "name"),@Index(columnList = "fk_region,name")})
+@Table(name = "city", indexes = {@Index(unique = true, columnList = "fk_region,name")})
 @Getter
 @Builder
 public class City {

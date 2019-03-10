@@ -1,0 +1,81 @@
+{
+  "data": {
+    "procurementMethod": "open",
+    "status": "unsuccessful",
+    "tenderPeriod": {
+      "startDate": "2015-05-14T17:00:00+03:00",
+      "endDate": "2015-05-15T16:00:00+03:00"
+    },
+    "numberOfBids": 0,
+    "description": "30 мл, фіолетова",
+    "title": "Штемпельна фарба",
+    "minimalStep": {
+      "currency": "UAH",
+      "amount": 5,
+      "valueAddedTaxIncluded": true
+    },
+    "items": [
+      {
+        "description": "30 мл, фіолетова",
+        "classification": {
+          "scheme": "CPV",
+          "description": "Матеріали друковані та суміжна продукція",
+          "id": "22000000-0"
+        },
+        "additionalClassifications": [
+          {
+            "scheme": "ДКПП",
+            "id": "17",
+            "description": "Папір і паперові вироби"
+          }
+        ],
+        "deliveryDate": {
+          "startDate": "2015-05-18T00:00:00+03:00",
+          "endDate": "2015-05-19T23:59:59.999999+03:00"
+        },
+        "id": "d921e9dba5ef40f6974838095f7d1023",
+        "unit": {
+          "code": "H87",
+          "name": "штуки"
+        },
+        "quantity": 2
+      }
+    ],
+    "id": "961ca51cce1648778802c50e55256cb6",
+    "procurementMethodType": "belowThreshold",
+    "value": {
+      "currency": "UAH",
+      "amount": 36.6,
+      "valueAddedTaxIncluded": true
+    },
+    "submissionMethod": "electronicAuction",
+    "procuringEntity": {
+      "contactPoint": {
+        "telephone": "+380567454531",
+        "name": "Оксана Бірюк",
+        "email": "ditor@a-teleport.com"
+      },
+      "identifier": {
+        "scheme": "UA-EDR",
+        "id": "00193370",
+        "legalName": "ДЗ \"ДІПРО\""
+      },
+      "name": "ДЗ \"ДІПРО\"",
+      "address": {
+        "postalCode": "49000",
+        "countryName": "Украина",
+        "streetAddress": "м. Дніпропетровськ, пр. К. Маркса, 71",
+        "region": "Днепропетровская",
+        "locality": "Днепропетровск"
+      }
+    },
+    "tenderID": "UA-2015-05-13-000006",
+    "enquiryPeriod": {
+      "startDate": "2015-05-13T11:25:24.564860+03:00",
+      "endDate": "2015-05-14T16:00:00+03:00"
+    },
+    "owner": "prom.ua",
+    "dateModified": "2015-05-15T16:00:04.456675+03:00",
+    "awardCriteria": "lowestCost"
+  }
+}

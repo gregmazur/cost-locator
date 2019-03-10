@@ -1,46 +1,26 @@
 
 package org.open.budget.costlocator.entity;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import lombok.Builder;
+import lombok.Getter;
 
-import javax.persistence.*;
+import javax.persistence.Embeddable;
 
 @Embeddable
+@Builder
+@Getter
 public class Value {
 
-    @SerializedName("currency")
-    @Expose
     private String currency;
-    @SerializedName("amount")
-    @Expose
     private Long amount;
-    @SerializedName("valueAddedTaxIncluded")
-    @Expose
     private Boolean valueAddedTaxIncluded;
 
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
+    public Value(String currency, Long amount, Boolean valueAddedTaxIncluded) {
         this.currency = currency;
-    }
-
-    public Long getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Long amount) {
         this.amount = amount;
-    }
-
-    public Boolean getValueAddedTaxIncluded() {
-        return valueAddedTaxIncluded;
-    }
-
-    public void setValueAddedTaxIncluded(Boolean valueAddedTaxIncluded) {
         this.valueAddedTaxIncluded = valueAddedTaxIncluded;
     }
 
+    public Value() {
+    }
 }

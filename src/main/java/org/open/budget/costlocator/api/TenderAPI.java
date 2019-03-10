@@ -5,7 +5,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Getter;
-import org.open.budget.costlocator.entity.Value;
 
 import java.util.Date;
 import java.util.List;
@@ -33,10 +32,10 @@ public class TenderAPI {
     @Expose
     private String title;
     @SerializedName("items")
-    private List<Item> items;
+    private List<ItemAPI> itemAPIS;
     @SerializedName("value")
     @Expose
-    private Value value;
+    private ValueAPI value;
     @SerializedName("submissionMethod")
     @Expose
     private String submissionMethod;
@@ -58,21 +57,24 @@ public class TenderAPI {
     @SerializedName("awardCriteria")
     @Expose
     private String awardCriteria;
+    @SerializedName("awards")
+    @Expose
+    private List<Award> awards;
 
     public TenderAPI() {
     }
 
     public TenderAPI(String id, String procurementMethod, String procurementMethodType, String status,
-                     String description, String title, List<Item> items, Value value, String submissionMethod,
+                     String description, String title, List<ItemAPI> itemAPIS, ValueAPI value, String submissionMethod,
                      TenderIssuerAPI issuer, String owner, String tenderID, Date date, Date dateModified,
-                     String awardCriteria) {
+                     String awardCriteria, List<Award> awards) {
         this.id = id;
         this.procurementMethod = procurementMethod;
         this.procurementMethodType = procurementMethodType;
         this.status = status;
         this.description = description;
         this.title = title;
-        this.items = items;
+        this.itemAPIS = itemAPIS;
         this.value = value;
         this.submissionMethod = submissionMethod;
         this.issuer = issuer;
@@ -81,5 +83,6 @@ public class TenderAPI {
         this.date = date;
         this.dateModified = dateModified;
         this.awardCriteria = awardCriteria;
+        this.awards = awards;
     }
 }

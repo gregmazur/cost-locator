@@ -1,0 +1,1674 @@
+{
+  "data": {
+    "procurementMethod": "open",
+    "numberOfBids": 3,
+    "awardPeriod": {
+      "startDate": "2018-03-14T15:37:14.341717+02:00",
+      "endDate": "2018-03-21T12:48:26.471927+02:00"
+    },
+    "complaintPeriod": {
+      "startDate": "2017-12-28T13:20:04.540321+02:00",
+      "endDate": "2018-01-25T00:00:00+02:00"
+    },
+    "auctionUrl": "https://auction.openprocurement.org/esco-tenders/22e170ffa6de437fa24facfcf365a342",
+    "enquiryPeriod": {
+      "startDate": "2017-12-28T13:20:04.540321+02:00",
+      "clarificationsUntil": "2018-01-24T15:00:00+02:00",
+      "endDate": "2018-01-19T15:00:00+02:00",
+      "invalidationDate": "2017-12-28T13:22:45.680488+02:00"
+    },
+    "submissionMethod": "electronicAuction",
+    "procurementMethodType": "esco",
+    "procuringEntity": {
+      "kind": "general",
+      "name": "Управління освіти, молоді та спорту",
+      "address": {
+        "postalCode": "66200",
+        "countryName": "Україна",
+        "streetAddress": "вул.Миру, 84, смт.Саврань, Одеської обл.",
+        "region": "Одеська область",
+        "locality": "Саврань"
+      },
+      "contactPoint": {
+        "name_ru": "  ",
+        "name": "Кизима Инна Миколаївна",
+        "telephone": "+380486531308",
+        "name_en": "Olexandrov Olexander ",
+        "email": "savran_osvita@ukr.net",
+        "availableLanguage": "uk"
+      },
+      "identifier": {
+        "scheme": "UA-EDR",
+        "legalName_en": "Department of Education, Youth and Sports of Savran District State Administration of the Odessa region",
+        "id": "40636122",
+        "legalName": "Управління освіти, молоді та спорту"
+      },
+      "name_en": "Department of Education, Youth and Sports of Savran District State Administration of the Odessa region"
+    },
+    "owner": "netcast.com.ua",
+    "qualifications": [
+      {
+        "status": "active",
+        "documents": [
+          {
+            "hash": "md5:10488c8763cd6b24d5696edc47e2cd17",
+            "author": "bots",
+            "language": "uk",
+            "format": "application/yaml",
+            "url": "https://public.docs.openprocurement.org/get/18f6929f996c4fa8a3ebcf70262fbc96?KeyID=52462340&Signature=WYJO5oQlTceic5KefLoW%252BPl6zmJ%252BboJIru%252B06QEvClHwpvQlP%252BG8ymXNmFqAJd2R9kZWLfsarZCByd6envlvDQ%253D%253D",
+            "title": "edr_identification.yaml",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T15:02:48.547952+02:00",
+            "documentType": "registerExtract",
+            "dateModified": "2018-01-29T15:02:48.547966+02:00",
+            "id": "2f23e01b417946b2b3d828955cdfd965"
+          },
+          {
+            "hash": "md5:e1e5bb47d1fa6fc864dc13675954db43",
+            "description": "SHA1: ccb72f963b0797d6364e935455fc3e1954716084; SHA2-384: 44401ad2149316460412ab4836a3d9ecca4a1b27c79eebaf67de28ac5e382ae4069a0dcf41d1de74f464da2490080d3a; Antivirus: ESET Antivirus",
+            "language": "uk",
+            "title": "ПР 17 розгляд  Саврань ТОВ ІНТЕРЕНЕРГО СЕРВІС.doc",
+            "url": "https://public.docs.openprocurement.org/get/15b73c053ac44cefb74fa76b71288117?KeyID=52462340&Signature=vlUma7b%252BcinYe5EKdgYQMaoHHNpGqeGXwjB4a8rICAv6PjMtamUebwvI2gM7qwmx2pXvEu3%2FSBR1pbZArNqCDg%253D%253D",
+            "format": "application/msword",
+            "title_en": "ПР 17 розгляд  Саврань ТОВ ІНТЕРЕНЕРГО СЕРВІС.doc",
+            "documentOf": "tender",
+            "datePublished": "2018-02-09T16:52:38.558979+02:00",
+            "author": "tender_owner",
+            "title_ru": "ПР 17 розгляд  Саврань ТОВ ІНТЕРЕНЕРГО СЕРВІС.doc",
+            "dateModified": "2018-02-09T16:52:38.558994+02:00",
+            "id": "0bd662641b2f47108ac1c961e3ba7a35"
+          },
+          {
+            "hash": "md5:b19ea5f2baff7146c57d89f71d592b59",
+            "description": "SHA1: 35f41d299f518cbb898a6aa415383b6aa1b13d27; SHA2-384: d2026db551868540c04402d73dec1a86e3a9b81c363075e660fa212d8f3caeb86e11d8254a4b130fb946163b2250c14d; Antivirus: ESET Antivirus",
+            "language": "uk",
+            "title": "sign.p7s",
+            "url": "https://public.docs.openprocurement.org/get/37b4a3e3e93c49268b3c55394c50f13a?KeyID=52462340&Signature=puiRfVsWCdHL2vyNj4W8pGjFYUVoi3uRWdXHJis46EoHqQzuVZFCK8jWiuNBRssKOjPtgsvKHDAdEPMW1%252BmRDg%253D%253D",
+            "format": "application/pkcs7-signature",
+            "title_en": "sign.p7s",
+            "documentOf": "tender",
+            "datePublished": "2018-02-09T16:55:15.648602+02:00",
+            "author": "tender_owner",
+            "title_ru": "sign.p7s",
+            "dateModified": "2018-02-09T16:55:15.648618+02:00",
+            "id": "ad27d6d8c39b4a6fa0b1c307cb5de596"
+          }
+        ],
+        "eligible": true,
+        "qualified": true,
+        "bidID": "814f713e02644820ad64c3e462e7bea2",
+        "date": "2018-02-09T16:55:18.568781+02:00",
+        "id": "dd4aa8c511b84989944d71b1c4679a3d"
+      },
+      {
+        "status": "active",
+        "documents": [
+          {
+            "hash": "md5:d4054a8b87b3a816cd485fa76f03cbdb",
+            "author": "bots",
+            "language": "uk",
+            "format": "application/yaml",
+            "url": "https://public.docs.openprocurement.org/get/d0943eb0f85d43c09ea87a14a7eb2bd0?KeyID=52462340&Signature=kPGTa1guW4PUKrpKP8KjGQOTv4kX06kkf8Lawa5lgpMW6A%252BkjRXstIzxlcJTLmDa92a3cT03L99H%252B4Izf%252BM8Cg%253D%253D",
+            "title": "edr_identification.yaml",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T15:02:47.479580+02:00",
+            "documentType": "registerExtract",
+            "dateModified": "2018-01-29T15:02:47.479595+02:00",
+            "id": "cba10db7d75a4605b3e8040e789d1ceb"
+          },
+          {
+            "hash": "md5:4491bd0cb5d9ba68a085899e4b70b4bb",
+            "description": "SHA1: b1e5eecb7ae1bf9036189a253748f4461910ccd7; SHA2-384: 85d0f48148ef7664b284d38296db2c29dcb43393934ef30997699f1558673152b1f07710e165445cea4941b3a0888f43; Antivirus: ESET Antivirus",
+            "language": "uk",
+            "title": "ПР 16 розгляд Саврань КИЇВОБЛБУДІНВЕСТ.doc",
+            "url": "https://public.docs.openprocurement.org/get/d3da4a57c2d84204bc113ef486dcb5a1?KeyID=52462340&Signature=W9Ao1HZiP8MKPl%252BcAvEO2w4Rq1cpb9cd77Blt9cz13RYQYjAyb%252Bcc2ErZ%2FkupQNHOquj5yEHUYDQNm2Qt2f3Dw%253D%253D",
+            "format": "application/msword",
+            "title_en": "ПР 16 розгляд Саврань КИЇВОБЛБУДІНВЕСТ.doc",
+            "documentOf": "tender",
+            "datePublished": "2018-02-09T16:53:42.634103+02:00",
+            "author": "tender_owner",
+            "title_ru": "ПР 16 розгляд Саврань КИЇВОБЛБУДІНВЕСТ.doc",
+            "dateModified": "2018-02-09T16:53:42.634128+02:00",
+            "id": "5ec1fbbe351244398eb2f5e8bd7a195a"
+          },
+          {
+            "hash": "md5:371bb3c44c205cf6c168ab296605bc2d",
+            "description": "SHA1: d79c8f33fbeed06e31d76817bb286875c5f53c7f; SHA2-384: 77ba4e2b823f88c05418716e641ce9e2fcede43f7295678840695de8a5fb3f0c0ce99e2844382625c34cc9ac63cd722a; Antivirus: ESET Antivirus",
+            "language": "uk",
+            "title": "sign.p7s",
+            "url": "https://public.docs.openprocurement.org/get/6c0715b216974d168c6644b316a70f90?KeyID=52462340&Signature=NcELkQnUuAjrQzxDmsQDJxESmFQNhff9ngHTq3XZDrDjyiciP44HYeLkj4utICQpIt01AT0n2uo3%252BbfcJDukBA%253D%253D",
+            "format": "application/pkcs7-signature",
+            "title_en": "sign.p7s",
+            "documentOf": "tender",
+            "datePublished": "2018-02-09T16:56:09.016043+02:00",
+            "author": "tender_owner",
+            "title_ru": "sign.p7s",
+            "dateModified": "2018-02-09T16:56:09.016058+02:00",
+            "id": "6f67b8d74b3c4bc49b7f8e179cbf8044"
+          }
+        ],
+        "eligible": true,
+        "qualified": true,
+        "bidID": "53dad07c86e64450992e2df103563317",
+        "date": "2018-02-09T16:56:14.684270+02:00",
+        "id": "aff99c58ba6e4333b791d02fb8a23e1b"
+      },
+      {
+        "status": "active",
+        "documents": [
+          {
+            "hash": "md5:350c3f819fe2d7254cd80dcdabdd93cc",
+            "author": "bots",
+            "language": "uk",
+            "format": "application/yaml",
+            "url": "https://public.docs.openprocurement.org/get/06fef3527d61488ab77eb67108a11b27?KeyID=52462340&Signature=lUK2POQkjThcmrALgQIcvtNaaM4HwutR7k6umww1DLA5kEM7EYDU4WgZ4VNBJFA%252BWEsaibaO3L4z9bxQ4XGXAA%253D%253D",
+            "title": "edr_identification.yaml",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T15:02:48.947007+02:00",
+            "documentType": "registerExtract",
+            "dateModified": "2018-01-29T15:02:48.947033+02:00",
+            "id": "e459b9e43058481292752885205b2fab"
+          },
+          {
+            "hash": "md5:e2a838cf03e5ea4ea9af6f4a867201e6",
+            "description": "SHA1: 8e469562d35d1751012c58d608682b9688b486a2; SHA2-384: 88a57ca41871c78eed53a75afe13422c68fe5f26cb7c818f3679413519fe08ae448adde3e21bc958e6b708e54f365598; Antivirus: ESET Antivirus",
+            "language": "uk",
+            "title": "ПР 15 розгляд Саврань ТОВ УПС.doc",
+            "url": "https://public.docs.openprocurement.org/get/b8f0839db43b4a7ea28fee7fcf7fe9a0?KeyID=52462340&Signature=9Aa81V%2FuTyFYXWiz7TR2Ci4rilyGQORFbqNt0xM4EkHvIX51fWII7CSNAU9vXcc%252Bi1XAGrAtCXn6cvCmv%2FqACQ%253D%253D",
+            "format": "application/msword",
+            "title_en": "ПР 15 розгляд Саврань ТОВ УПС.doc",
+            "documentOf": "tender",
+            "datePublished": "2018-02-09T16:54:28.244864+02:00",
+            "author": "tender_owner",
+            "title_ru": "ПР 15 розгляд Саврань ТОВ УПС.doc",
+            "dateModified": "2018-02-09T16:54:28.244887+02:00",
+            "id": "a567508b4f264884a3270878a62a6649"
+          },
+          {
+            "hash": "md5:098469acb98624873f4ab81fb6612c77",
+            "description": "SHA1: de883e5d3e51e3ffee8f92ccba2bbd86bab6b076; SHA2-384: 051bbf5a7f786315d415a7a36116af5b81d9575e230f22574372ecdd6b01b33de43aa0d18edb28176b9ac29945057801; Antivirus: ESET Antivirus",
+            "language": "uk",
+            "title": "sign.p7s",
+            "url": "https://public.docs.openprocurement.org/get/64d84bf0f6a1482da78c91a7a4a11cea?KeyID=52462340&Signature=5I0R%2FquPqD8UQsk9NBZV%252BjojY5F2ShFeNv%2FWcdxbQ%252BVUeHKqZCSGGyACWnvCNc4fWV9%252BzSA6M0JrC1COfYwoBA%253D%253D",
+            "format": "application/pkcs7-signature",
+            "title_en": "sign.p7s",
+            "documentOf": "tender",
+            "datePublished": "2018-02-09T16:56:44.087882+02:00",
+            "author": "tender_owner",
+            "title_ru": "sign.p7s",
+            "dateModified": "2018-02-09T16:56:44.087897+02:00",
+            "id": "71d57aeeab694e5bbc226d7d5b349a21"
+          }
+        ],
+        "eligible": true,
+        "qualified": true,
+        "bidID": "d675e893668846d39a8ed2d9f0bc026b",
+        "date": "2018-02-09T16:56:47.227620+02:00",
+        "id": "36873e2d83ab435da18ae18c1ecbeca3"
+      }
+    ],
+    "id": "22e170ffa6de437fa24facfcf365a342",
+    "guarantee": {
+      "currency": "UAH",
+      "amount": 0
+    },
+    "documents": [
+      {
+        "hash": "md5:c827eae0db8106d4c5ffa9879d17423a",
+        "description": "SHA1: 6f05e7ddfcfcd32d0f557571e7f93c1f8b1904be",
+        "language": "uk",
+        "title": "ТД Саврань.docx",
+        "url": "https://public.docs.openprocurement.org/get/7364a06a764f4f6ab7d0fbcb6e5900d0?KeyID=52462340&Signature=vo7t3nWjQ1dzAkrEg2zGiEyRRp%252Bppahk6%252BOnxVtjj5rGHttvhdlIiskKoc7ySNd3G95LHnW4iRB1AWt6bcDdDw%253D%253D",
+        "format": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "title_en": "ТД Саврань.docx",
+        "documentOf": "tender",
+        "datePublished": "2017-12-28T13:20:20.740905+02:00",
+        "author": "tender_owner",
+        "title_ru": "ТД Саврань.docx",
+        "dateModified": "2017-12-28T13:20:20.740932+02:00",
+        "id": "aaea2c5c580344499a419be15f7745c4"
+      },
+      {
+        "hash": "md5:654c6942587e471b592bdc11b0942c6f",
+        "description": "SHA1: 272c3ddbdcd2aaaed617514ea672fe6c7fb16aa0",
+        "language": "uk",
+        "title": "sign.p7s",
+        "url": "https://public.docs.openprocurement.org/get/e8a0bd09710d41fa9cdb47e405413bb0?KeyID=52462340&Signature=rul%252BHpUqqSkdBvT8i%252BaUC8xVj78QPduI0q2raziWoPTSo7tJ%252BKqkVl3PHddGVnu%252BvA2rDr5s7nLq%252BuzepvPuAg%253D%253D",
+        "format": "application/pkcs7-signature",
+        "title_en": "sign.p7s",
+        "documentOf": "tender",
+        "datePublished": "2017-12-28T13:22:45.679833+02:00",
+        "author": "tender_owner",
+        "title_ru": "sign.p7s",
+        "dateModified": "2017-12-28T13:22:45.679849+02:00",
+        "id": "9c3b99c4431e458cafc607fe360ce1e0"
+      },
+      {
+        "hash": "md5:645383df0a33a85de6378fd09ff2cd00",
+        "author": "auction",
+        "language": "uk",
+        "format": "text/plain",
+        "url": "https://public.docs.openprocurement.org/get/44df0352287b40d7af86563bd701cb10?KeyID=52462340&Signature=PBLHyZ9HM7WuGfpU%252BouRGqDC%252BCqd1a7qH61uLfwo6X2E2ybNi2IDNTBeNlnPO1UGcAXKoSQszJZqo3WPR9qYBg%253D%253D",
+        "title": "audit_22e170ffa6de437fa24facfcf365a342.yaml",
+        "documentOf": "tender",
+        "datePublished": "2018-03-14T15:37:13.575891+02:00",
+        "dateModified": "2018-03-14T15:37:13.575926+02:00",
+        "id": "0337ab4cd8aa4ceaa32159896a177e1a"
+      },
+      {
+        "hash": "md5:8d94518705401765cb66742565b6e86e",
+        "author": "auction",
+        "language": "uk",
+        "format": "text/plain",
+        "url": "https://public.docs.openprocurement.org/get/f5a86c9f3d1b41409126996cb478da8d?KeyID=52462340&Signature=cCpcqCwCtkOUIEnCQEXsfB53w4KQetvxB%252B4%2FYx98Y7nyjYeHeGHfCi0AecoRPU%2FDdxnFFo4KXJL2AAV1AkjhAg%253D%253D",
+        "title": "audit_22e170ffa6de437fa24facfcf365a342.yaml",
+        "documentOf": "tender",
+        "datePublished": "2018-03-14T15:37:13.575891+02:00",
+        "dateModified": "2018-03-14T15:37:15.006010+02:00",
+        "id": "0337ab4cd8aa4ceaa32159896a177e1a"
+      }
+    ],
+    "title": "Енергосервіс будівель Савранської  загальноосвітньої школи І-ІІІ ступенів  за адресою: Одеська область, Савранський район, смт. Саврань, вул. Миру, 68",
+    "qualificationPeriod": {
+      "startDate": "2018-01-29T15:02:35.126890+02:00",
+      "endDate": "2018-03-13T00:00:00+02:00"
+    },
+    "tenderID": "UA-2017-12-28-001225-b",
+    "minimalStepPercentage": 0.01,
+    "NBUdiscountRate": 0.145,
+    "dateModified": "2018-06-19T22:09:47.144415+03:00",
+    "status": "complete",
+    "tenderPeriod": {
+      "startDate": "2017-12-28T13:20:04.540321+02:00",
+      "endDate": "2018-01-29T15:00:00+02:00"
+    },
+    "contracts": [
+      {
+        "status": "active",
+        "documents": [
+          {
+            "hash": "md5:165901a3d1fe5d924721cba06b56051b",
+            "description": "SHA1: fbfca44f6b102e348837ce29302cf847c8d489fd; SHA2-384: 09e94be2493523dfd599d1e28f7ca2df6eca3b6349abb184d854a38c093091c5fdd44a2522ab00c24a1a31d2e989d3cb; Antivirus: ESET Antivirus",
+            "language": "uk",
+            "title": "Договір 2 енергосервіс Саврань.pdf",
+            "url": "https://public.docs.openprocurement.org/get/a4b99dc9fc3d48a28e7cafe85edeaca8?KeyID=52462340&Signature=4L9Jw5VVJF%2F9LTycs1za3bS%252BXI9INwCioKZWw5YgTQJblaO7qjOcP9Q2VqhSrgZ8Xtnh4OPEQN312ed%2Fmk%252BJCg%253D%253D",
+            "format": "application/pdf",
+            "title_en": "Договір 2 енергосервіс Саврань.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-06-19T22:08:05.435373+03:00",
+            "title_ru": "Договір 2 енергосервіс Саврань.pdf",
+            "documentType": "contractSigned",
+            "dateModified": "2018-06-19T22:08:05.435401+03:00",
+            "id": "8d27e62fb67e41b7a62c38e97e40b5b2"
+          },
+          {
+            "hash": "md5:f2a43044c9230e6e01ec79706b78c9da",
+            "description": "SHA1: cb09278f3f8a7c67e9b62ea47aebb48ce5d70874; SHA2-384: f10e1f5a151abadd8690af93901c091dc603a652f850412d64432ff80c8d5cfdf8e680c7b0c61c905b878f70c3075b4c; Antivirus: ESET Antivirus",
+            "language": "uk",
+            "title": "sign.p7s",
+            "url": "https://public.docs.openprocurement.org/get/2faa18443bbd4eebadbff57c5de8fc7a?KeyID=52462340&Signature=m96f4K16Zv%252BdVONZAGkqobiGmT5syrzyGfmKFL1UalQgFoYL5DxUOQ%2FY3E5f8ebyvj%2F8kipjpmybcIbYXPe%252BCA%253D%253D",
+            "format": "application/pkcs7-signature",
+            "title_en": "sign.p7s",
+            "documentOf": "tender",
+            "datePublished": "2018-06-19T22:09:44.639320+03:00",
+            "title_ru": "sign.p7s",
+            "dateModified": "2018-06-19T22:09:44.639339+03:00",
+            "id": "620901bf3f0540dab16137910d345fbb"
+          }
+        ],
+        "items": [
+          {
+            "deliveryAddress": {
+              "postalCode": "66200",
+              "countryName": "Україна",
+              "streetAddress": "вул. Миру, 68",
+              "region": "Одеська область",
+              "locality": "смт. Саврань"
+            },
+            "description_en": "Energy service of buildings of Savrans’ka secondary school of I-III degrees, 68, Myru Street, Savran district, Odessa region",
+            "id": "d3ad7896da2bc6dbc572a97141607c16",
+            "classification": {
+              "scheme": "ДК021",
+              "description": "Консультаційні послуги у галузях інженерії та будівництва",
+              "id": "71310000-4"
+            },
+            "description": "Енергосервіс будівель Савранської  загальноосвітньої школи І-ІІІ ступенів  за адресою: Одеська область, Савранський район, смт. Саврань, вул. Миру, 68"
+          }
+        ],
+        "suppliers": [
+          {
+            "contactPoint": {
+              "telephone": "+380969596456",
+              "faxNumber": "",
+              "name": "Ситнік Катерина Олексіївна",
+              "email": "interserv2@ukr.net"
+            },
+            "identifier": {
+              "scheme": "UA-EDR",
+              "id": "39400969",
+              "legalName": "Товариство з обмеженою відповідальністю \"ІНТЕРЕНЕРГО СЕРВІС\""
+            },
+            "name": "ТОВ \"ІНТЕРЕНЕРГО СЕРВІС\"",
+            "address": {
+              "postalCode": "01054",
+              "countryName": "Україна",
+              "streetAddress": "вул. Павлівська, 17",
+              "region": "місто Київ",
+              "locality": "Київ"
+            }
+          }
+        ],
+        "contractNumber": "2",
+        "period": {
+          "startDate": "2018-06-18T00:00:00+03:00",
+          "endDate": "2033-06-18T23:59:59+03:00"
+        },
+        "dateSigned": "2018-06-18T00:00:00+03:00",
+        "value": {
+          "yearlyPaymentsPercentage": 0.97,
+          "amountPerformance": 225750.96,
+          "currency": "UAH",
+          "amount": 5349749.85,
+          "contractDuration": {
+            "days": 0,
+            "years": 15
+          },
+          "valueAddedTaxIncluded": true,
+          "annualCostsReduction": [
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54
+          ]
+        },
+        "date": "2018-06-19T22:09:47.144415+03:00",
+        "awardID": "bcc6e3f610b44ae3bcbde99ef66d330c",
+        "id": "092b2105dbe54535aac3e211e5c24d45",
+        "contractID": "UA-2017-12-28-001225-b-c1"
+      }
+    ],
+    "auctionPeriod": {
+      "startDate": "2018-03-14T15:10:13+02:00",
+      "endDate": "2018-03-14T15:37:14.277451+02:00"
+    },
+    "yearlyPaymentsPercentageRange": 0.8,
+    "title_en": "Energy service of buildings of Savrans’ka secondary school of I-III degrees, 68, Myru Street, Savran district, Odessa region",
+    "awards": [
+      {
+        "status": "active",
+        "documents": [
+          {
+            "hash": "md5:76224c9745a2c46af22f2b95d60e7ccd",
+            "author": "bots",
+            "language": "uk",
+            "format": "application/yaml",
+            "url": "https://public.docs.openprocurement.org/get/5e5d34c2509545cba8b2f5ca155e8a22?KeyID=52462340&Signature=jHckxp2WbVHjs6BBvP3PTXAz4e00HErfXeBN4ECJR0PFG2sVUU%252BcPyVrsTjFZCPO86NN0pK%2FLSLhnDnFKlQ%2FCA%253D%253D",
+            "title": "edr_identification.yaml",
+            "documentOf": "tender",
+            "datePublished": "2018-03-14T15:37:29.363563+02:00",
+            "documentType": "registerExtract",
+            "dateModified": "2018-03-14T15:37:29.363594+02:00",
+            "id": "dbe6cf04d52c48269bc5972e9b206028"
+          },
+          {
+            "hash": "md5:712e62b8b578112d5e1e736b144f8c6f",
+            "description": "SHA1: 10f4a5f437521a34dca6b5d18163f735c48d595b; SHA2-384: 8161b78eedd41b0d547bc86333bf22cdfd036854bb1098cb245fa191b65439f291be9f9a0cdd65e2e73a3a29691ec2c9; Antivirus: ESET Antivirus",
+            "language": "uk",
+            "title": "ПР 23 пов намір укласти договір Саврань .docx",
+            "url": "https://public.docs.openprocurement.org/get/c7e184ffec734f7c920c68dade751959?KeyID=52462340&Signature=hOwlPlUXbfw6d3gg6Opdv%2FqpMTPJ1PGPl46cA4GLLsrUAHI%252BcFauXcBdErJ3SIFjI%252BQK%2F0ojSWd5BGtikysVDQ%253D%253D",
+            "format": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            "title_en": "ПР 23 пов намір укласти договір Саврань .docx",
+            "documentOf": "tender",
+            "datePublished": "2018-03-21T12:47:11.218773+02:00",
+            "author": "tender_owner",
+            "title_ru": "ПР 23 пов намір укласти договір Саврань .docx",
+            "documentType": "notice",
+            "dateModified": "2018-03-21T12:47:11.218795+02:00",
+            "id": "7961762e3602438a89b45f8772bb1e61"
+          },
+          {
+            "hash": "md5:74f293ab38d045a5a0a1f4e9d320577d",
+            "description": "SHA1: b35303eb256d6e6b8ab303eda23ec269e53e8cc8; SHA2-384: f718fdd858445821f10746cec38130c7ed67dc1573dbb1d602a9f5a4077e0ae2425d0e4ddace3d890857df79399f9971; Antivirus: ESET Antivirus",
+            "language": "uk",
+            "title": "sign.p7s",
+            "url": "https://public.docs.openprocurement.org/get/1ec7310ae6b74561970e9c615fb4f8b3?KeyID=52462340&Signature=wNyrBjA3tntH3rdGTcTuavib7OIHdVwes9gewrPId3jnIDic%2FKDkBzzTmgERsOdtzHY9zAATWFO727At0HQTBA%253D%253D",
+            "format": "application/pkcs7-signature",
+            "title_en": "sign.p7s",
+            "documentOf": "tender",
+            "datePublished": "2018-03-21T12:48:23.816587+02:00",
+            "author": "tender_owner",
+            "title_ru": "sign.p7s",
+            "dateModified": "2018-03-21T12:48:23.816605+02:00",
+            "id": "fd895562dbc94f758378b5bc43f98aaa"
+          }
+        ],
+        "complaintPeriod": {
+          "startDate": "2018-03-14T15:37:14.368961+02:00",
+          "endDate": "2018-04-01T00:00:00+02:00"
+        },
+        "suppliers": [
+          {
+            "contactPoint": {
+              "telephone": "+380969596456",
+              "faxNumber": "",
+              "name": "Ситнік Катерина Олексіївна",
+              "email": "interserv2@ukr.net"
+            },
+            "identifier": {
+              "scheme": "UA-EDR",
+              "id": "39400969",
+              "legalName": "Товариство з обмеженою відповідальністю \"ІНТЕРЕНЕРГО СЕРВІС\""
+            },
+            "name": "ТОВ \"ІНТЕРЕНЕРГО СЕРВІС\"",
+            "address": {
+              "postalCode": "01054",
+              "countryName": "Україна",
+              "streetAddress": "вул. Павлівська, 17",
+              "region": "місто Київ",
+              "locality": "Київ"
+            }
+          }
+        ],
+        "bid_id": "814f713e02644820ad64c3e462e7bea2",
+        "value": {
+          "yearlyPaymentsPercentage": 0.97,
+          "amountPerformance": 225750.96,
+          "currency": "UAH",
+          "amount": 5349749.85,
+          "contractDuration": {
+            "days": 0,
+            "years": 15
+          },
+          "valueAddedTaxIncluded": true,
+          "annualCostsReduction": [
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54
+          ]
+        },
+        "date": "2018-03-21T12:48:26.516635+02:00",
+        "id": "bcc6e3f610b44ae3bcbde99ef66d330c"
+      }
+    ],
+    "date": "2018-06-19T22:09:47.144415+03:00",
+    "minValue": {
+      "currency": "UAH",
+      "amount": 0,
+      "valueAddedTaxIncluded": true
+    },
+    "fundingKind": "other",
+    "items": [
+      {
+        "deliveryAddress": {
+          "postalCode": "66200",
+          "countryName": "Україна",
+          "streetAddress": "вул. Миру, 68",
+          "region": "Одеська область",
+          "locality": "смт. Саврань"
+        },
+        "description_en": "Energy service of buildings of Savrans’ka secondary school of I-III degrees, 68, Myru Street, Savran district, Odessa region",
+        "id": "d3ad7896da2bc6dbc572a97141607c16",
+        "classification": {
+          "scheme": "ДК021",
+          "description": "Консультаційні послуги у галузях інженерії та будівництва",
+          "id": "71310000-4"
+        },
+        "description": "Енергосервіс будівель Савранської  загальноосвітньої школи І-ІІІ ступенів  за адресою: Одеська область, Савранський район, смт. Саврань, вул. Миру, 68"
+      }
+    ],
+    "bids": [
+      {
+        "status": "active",
+        "documents": [
+          {
+            "hash": "md5:8ce80a0880ea311f52f419f830a34ae8",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/38af6948c8ab4267bf9fa33da5bc7c2f?KeyID=52462340&Signature=ZcxqWEfmO5zSQAatMXD7gcTlwpycFNqUcZApwh5alWxa8j6AMqFg%252BP8XS0GcrS7ZyEM4oADMtUd3QShTzcf5Cw%253D%253D",
+            "title": "2. Статут.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:12.826489+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:12.826504+02:00",
+            "id": "e48d0f650554412d988536f8b38ba51e"
+          },
+          {
+            "hash": "md5:6b9a230d17894928b46dd16edd91c0cf",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/b37be43974db45b6acea8c5352fbed75?KeyID=52462340&Signature=Rzen43QAD60tyLgVs2JIo3Pgdpkxhu9bftOtmGK%2FaSO2uawf0dJPiF5CTlCGIPEULY9q59D8N3n0oGSt0UinDA%253D%253D",
+            "title": "20. Про небанкрутство.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:14.586312+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:14.586326+02:00",
+            "id": "cedefed8125241098b136474ff9a1992"
+          },
+          {
+            "hash": "md5:c8cfb47d9568bdc12291ce5b9dc9705c",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/aeb5309ee23d4de19a6ec88efb3eca4f?KeyID=52462340&Signature=U5fGXuRzR7K%2FZM0hAr9DdoKCViiC8pL74X8fnJRUvEWBEVHGokoJJ%2FtNnP3RDy300MAbYq3Ud3Bm2Ivpx%252BpUCw%253D%253D",
+            "title": "11. Кінцевий бенефіціар.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:17.338934+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:17.338950+02:00",
+            "id": "542e3c2c24b244ca87223c4a8378f7d1"
+          },
+          {
+            "hash": "md5:c934cc7c25a04896a5c78b04a5bda4f1",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/0ed85ebdb12c49ef8008f19cdc017637?KeyID=52462340&Signature=9LjxnQnlxLvDa7vlTnPNrS%252BOSnwDMCI4daXspYnBCdfEflzGe1B4avu4YtjO2EXAb3Gfcw9kl4GtzNQXHk35AA%253D%253D",
+            "title": "4. Протокол.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:17.955521+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:17.955536+02:00",
+            "id": "ac39b535d3ea461a922055f00b77bf3a"
+          },
+          {
+            "hash": "md5:3ca7966ff6856a10c5b1b81393fc2881",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/0bde393abb5a4c6281ed5b97054ee521?KeyID=52462340&Signature=Mzn4%252BOxi%2FgOl%252BCi6o7kTlz6KjBmCiBpW8zEyWGCRkCSg6monGcVLpc4syPgfs3sIe5z6ku3DT%2FvViQ5ze1GUCQ%253D%253D",
+            "title": "13. Захист довкілля.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:18.504998+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:18.505019+02:00",
+            "id": "362d4ce5d8d147d8b13199d1ccefa87e"
+          },
+          {
+            "hash": "md5:fd2acfdbe736251313920a70fe8219c8",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/7e3775117b4a4613b58dbe2e8a997baa?KeyID=52462340&Signature=5kluWNoRXA9ERjlw5FNgzcpd6mSiZh0vvnk%2FrNyeGigK9n7cW2aOKnWXIKEZ0Wshr9KdmsM1gJ%252BzAg%252BuLZ3TAA%253D%253D",
+            "title": "12. Відсутність заборгованості.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:20.264763+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:20.264777+02:00",
+            "id": "cbcc033cc261447ba4725df0c467d663"
+          },
+          {
+            "hash": "md5:8d1dd4c93035ce5f8ee3254dd3afe05e",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/1bd885e5ed7d47da90851d696934961c?KeyID=52462340&Signature=sKFk%2FXlaIhL4AR3Heq2Fukr7WIJWGuUTG8QRxJSSqZOD7PYqnirynUH%252BTR29cXrcwH365IMdTVrReiRz4AL1Cg%253D%253D",
+            "title": "3. Наказ.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:20.805009+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:20.805024+02:00",
+            "id": "05dd096bc4124e62a6e6ea98cbf02775"
+          },
+          {
+            "hash": "md5:961690a0d5c68f8ada058872999a53a7",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/4a5c6c1fc7734f519dd2047230b8ad9f?KeyID=52462340&Signature=%252BBmS2ZwfVevk4zMp3aWDVj%252B9TYjeQ7QAo1TOPbllMvVEhxfHdbWClRC1%252BNDvuUyXijggz18MEjIg4NB2vvn1Bw%253D%253D",
+            "title": "17. Несудимість директора.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:26.439892+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:26.439908+02:00",
+            "id": "038bd1ad00b143fe8646b9771d34cf2c"
+          },
+          {
+            "hash": "md5:808fdf3280ba71b7e83969ec1ece5aab",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/e90724fcbd0c4586a69f3ef986cd7565?KeyID=52462340&Signature=Cok%2FgR7D%2FFCeTVT%2FbfAvhHHqf6BSv0m7RgK%2F5GLy6uTDopumn%2F8EdomOqwal2J9UNVQczFSYXXYwz2tvb9NEDg%253D%253D",
+            "title": "5. Держреєстр.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:28.255041+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:28.255056+02:00",
+            "id": "4c06c9e2815440daa81e5de481439ac2"
+          },
+          {
+            "hash": "md5:f5487a7bdafe86025cfb67516fb0a731",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/e5c81673f10a4f6c843707040bbd768d?KeyID=52462340&Signature=0IuZw0cybr9sL%2FxQ3GhTAREcONSjrjRs%2FI%252BDWft0PHU48FK4IA5mOlUkeSrn9W3kcmnylKDn7aSF1SNBTeJHBQ%253D%253D",
+            "title": "16. Непідкупність.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:29.000280+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:29.000295+02:00",
+            "id": "4386647ca2de4f71bef0963e197a72d2"
+          },
+          {
+            "hash": "md5:16ae52c1bb446f3c3c3a26fde1593200",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/2e48e052950d409e83bb826135948eff?KeyID=52462340&Signature=vhk%252BP%252B6keFG4bOyL%2F3qz7qChBCBCsgOcZfjKTp0KEn2YKdLGXV9cHSM4cEgdc1Que5pTXufNbPdZIqfrSJnoAg%253D%253D",
+            "title": "19. Несудимість представника Юр.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:29.628175+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:29.628190+02:00",
+            "id": "938e9d908f6440cfacdf9fa89123b467"
+          },
+          {
+            "hash": "md5:78df7eed51e478fbe2c262fa7a700d3d",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/4a6b9f6e34644f948b0364605923d68d?KeyID=52462340&Signature=0N9wROEnfGhxULwUeSrINOUeqyt%2FVRJ7hdyv81AznwBCIUnR96WAJf9TkC6ruKWF3EyY0YyVW0OO64eF850LDQ%253D%253D",
+            "title": "15. Технічні характеристики.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:30.349262+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:30.349276+02:00",
+            "id": "798e8bce4f63465298cb8dc470f0dd7c"
+          },
+          {
+            "hash": "md5:4947082c6c71c0be45d06073a7776f1f",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/9fef8f20a71a484688fb4c799fc31824?KeyID=52462340&Signature=xhmlwDJM3TuFghko2hGbh8gx1fBvbCib0BEzA85gH1gN70qxc%252BRJ9VvybhjK9IVbq0MWhiFzuTF%2F3Lrq%252BRxBCw%253D%253D",
+            "title": "18. Несудимість представника Фіз.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:30.893665+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:30.893680+02:00",
+            "id": "ad090944acf945659da8890e3db1c36b"
+          },
+          {
+            "hash": "md5:4c336cd64ec2811e2434f60217940f91",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/ae36c984ecf849578372e4285df8e0f7?KeyID=52462340&Signature=wyWnDLaZ3Ai%252BBOGIEi2k9Bf1UJtu2ngJx7u0tCsziK%252ByITv74tmnROm7h0ezeOIulu3XTnmiSg7jgMYEQrrxAg%253D%253D",
+            "title": "10. Несудимість юрособа Договір.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:31.477382+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:31.477396+02:00",
+            "id": "d01bee14f88b4c49a07af29527ac0d18"
+          },
+          {
+            "hash": "md5:91900cd65778e00f87424f49eb345c99",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/0177c8de84ae40c49d2729f4acd2b545?KeyID=52462340&Signature=RazVDQkEwup7fDOB5vYQPXTlwYsvlTaMlOS9sAIavZym4fXm1KEz21Ow1O8%252BcZ2lqXGXJbZTsJJQuExp5f%2FaBA%253D%253D",
+            "title": "14. Перелік заходів.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:32.180163+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:32.180178+02:00",
+            "id": "81661485a6fe4f7aab81567cff19abf7"
+          },
+          {
+            "hash": "md5:2c5c1ced02dc65a5510a39eee45518fe",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/709bec4fece345c29bbf46acd0f4e2cd?KeyID=52462340&Signature=mAa2hPq%252BkfRSmtsAPMFMcYCNcgp9FMQtRvHMn%252BE3t%252BYgOX6ZM33ZblQxtQyWQf2uIgaKs9VoIM8MosqUFtqlDA%253D%253D",
+            "title": "7. Несудимість фізособа ТП.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:32.735264+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:32.735280+02:00",
+            "id": "3f8e553ee0d64491bdbc59dc554ffcca"
+          },
+          {
+            "hash": "md5:1882e8ad97052584687e43d43a3ff42d",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/a3f27f4b4e9d4734bd84064a04764662?KeyID=52462340&Signature=v4vI2Ba7qx6b%252BeH4UGGmBZjQOY5HItJ0Lqa4Q%252BbBMKxOTFAhuWOysDxZXpJ7BrwDtrpFZ0krcPtYAvwK8H2EDw%253D%253D",
+            "title": "9. Несудимість юрособа ТП.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:33.452939+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:33.452961+02:00",
+            "id": "a16b466e823a42c2a1c770379a176b28"
+          },
+          {
+            "hash": "md5:4c9354ec1e77c0690e7ebf52fc0cb027",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/b05d362a035746ac89625caf87c484c6?KeyID=52462340&Signature=KZnLJOxxqhpXOpu3VCdsx1Y333MvX6F%2FVzbB3L56hUPDmh%2FUWSygsObgvv3eCLOI6yU%252BxlH6YhVd7JgZVmQkBg%253D%253D",
+            "title": "8. Несудимість фізособа Договір.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:34.053689+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:34.053705+02:00",
+            "id": "04a10200a4954a59bc1096c5d3b471a7"
+          },
+          {
+            "hash": "md5:b036753c7379b82a9c5ed880295e3bdf",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/b5a3ddf0a76b492b97b6b6cd69fe5069?KeyID=52462340&Signature=AYRbFyf5tnuDGee76xK%252BqZmXkjmhXo%2F%252BNgknhyNS7e77htROg2owth0ljYgHHOEiYGUc1aP0s8c60Fr3DoF4Dg%253D%253D",
+            "title": "6. Конкуренція.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:35.290391+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:35.290405+02:00",
+            "id": "10d8f4976da548bbac4609c2d584888f"
+          },
+          {
+            "hash": "md5:555d011b42927e3e6a9306d56ebae86b",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/2019f5c5d54d4e92af185fc50580645e?KeyID=52462340&Signature=D53HwzIzXpWrLXI%2FRnt7AC3puCQw%2FFBpxUn3Dtdwy7XRrypyCgZ%2FXYcAIaPdmA9Q1YOrMZO4V57%2FTTa3tI8BDw%253D%253D",
+            "title": "21. Антикорупційна програма.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:35.899612+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T08:15:35.899626+02:00",
+            "id": "a5993dfa7d8244779734c640c120d297"
+          },
+          {
+            "hash": "md5:cc6ea2ef4226c5ef4e30410389571e5d",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pkcs7-signature",
+            "url": "https://public.docs.openprocurement.org/get/58ec74df6b40430fb0ee92fd3abba0e2?KeyID=52462340&Signature=oLx6%252BNuUBSNjTRLwqBhfREskEdaIA8%2F6WgktcoBmEnR7ZkdtZH8MndVAnKEoRGaH2KiiKHNAtlkKADuJnkkeBQ%253D%253D",
+            "title": "sign.p7s",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T10:02:04.405588+02:00",
+            "dateModified": "2018-01-29T10:02:04.405614+02:00",
+            "id": "d1e541b673e3453ba9776e8d2e618c7e"
+          },
+          {
+            "hash": "md5:42630f9db9ca2a42c1506cad0331bcef",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/d94f0db092c641098785090fe5fd09a9?KeyID=52462340&Signature=ZIw%2FYokGw9H0Uj6KmDLwUls9mFhHpq%2F21FoZ92%252B70ubv%2F6natvSy4ifq%2F%252BAKL64guvZoSYN%2F0dm%2FmZSZCVS9Bw%253D%253D",
+            "confidentialityRationale": "",
+            "title": "Відсутність судимості особи_(на підписання договору).pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-03-22T10:02:21.326225+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-03-22T10:02:21.326246+02:00",
+            "id": "6f9332a206a84fa0943cd6db93958f26"
+          },
+          {
+            "hash": "md5:80d31f47bbd73328a20640b13794eb68",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/fbf24cd943fd4828b0241891ea57ece1?KeyID=52462340&Signature=D3BN%252BHRRuUumC87k5NO1FesTmIhfT5nIed4phXmBRfOxtaZysWGK6DZuI7lvDLDFFqhFyMgjVz8b6mC%2FaNoZAg%253D%253D",
+            "confidentialityRationale": "",
+            "title": "Відсутність судимості особи_(на тендерну пропозицію).pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-03-22T10:02:30.384160+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-03-22T10:02:30.384183+02:00",
+            "id": "ff7b13d8b8ff4aab9eea609a23d1497a"
+          },
+          {
+            "hash": "md5:643bac9cf0613c3b87c0503eb0ff45a1",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/7fdd39d2781544c9898f0439e715e962?KeyID=52462340&Signature=nwcAPmtF%252BEZQHiysJx5XgVNihBDJgLRDilKLK7gZ%252BMCI63sX7my0aZgSvmptwy%252BV7uuxU2dtitM0t1bX4svVAQ%253D%253D",
+            "confidentialityRationale": "",
+            "title": "Довідка МВС.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-03-22T10:02:37.226641+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-03-22T10:02:37.226660+02:00",
+            "id": "d8340c0f888548149f85aea3c64f58f7"
+          },
+          {
+            "hash": "md5:a3aaee24d01b71638db3108f05024e50",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/24d94ec2f3714a2f8cd5c1ecf616c3e3?KeyID=52462340&Signature=nMa05t0LEqYyO4BZoGNfJOk2EWM3M3CuOTrgO1Rkrjpera7NjJOxUOL4I3q7G6xKt40s15GG0kqHr%2FYEL9OZDg%253D%253D",
+            "confidentialityRationale": "",
+            "title": "Довідка_ДФС.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-03-22T10:02:46.159269+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-03-22T10:02:46.159293+02:00",
+            "id": "bd01170b7e234dd69eb300d118d06f5a"
+          },
+          {
+            "hash": "md5:e75c6023d545f89c1a69015d9d2d1850",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/d5e2024c91074338b8c753f97517d625?KeyID=52462340&Signature=Z27h%252BJAiUG89Hga%2FMS0CVeAvYnhHzMEsU8HN%252BICfGr3L9fqcBEcxYrlOrDUMI389AIlTuE9etiEfVCxDuaX6CA%253D%253D",
+            "confidentialityRationale": "",
+            "title": "Юр.особа_відсутність правопорушень.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-03-22T10:02:53.605151+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-03-22T10:02:53.605172+02:00",
+            "id": "9b821574195545a3b561a7eac1efdd3a"
+          }
+        ],
+        "selfEligible": true,
+        "value": {
+          "yearlyPaymentsPercentage": 0.97,
+          "amountPerformance": 225750.96,
+          "currency": "UAH",
+          "amount": 5349749.85,
+          "contractDuration": {
+            "days": 0,
+            "years": 15
+          },
+          "valueAddedTaxIncluded": true,
+          "annualCostsReduction": [
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54,
+            344877.54
+          ]
+        },
+        "subcontractingDetails": "",
+        "selfQualified": true,
+        "financialDocuments": [
+          {
+            "hash": "md5:67baa7d82302f01808dba04953ae5b49",
+            "confidentiality": "buyerOnly",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.api.openprocurement.org/api/2.4/tenders/22e170ffa6de437fa24facfcf365a342/bids/814f713e02644820ad64c3e462e7bea2/financial_documents/081dacb706994221b37a324a16d48b4c?download=46bfaafb8d584338b0fc6ea06bdc1d70",
+            "confidentialityRationale": "Даний файл містить розрахунки вартості енергосервісного договору",
+            "title": "1. Тендерна пропозиція.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:27.691971+02:00",
+            "documentType": "commercialProposal",
+            "dateModified": "2018-01-29T08:15:27.691987+02:00",
+            "id": "081dacb706994221b37a324a16d48b4c"
+          },
+          {
+            "hash": "md5:b49f6b143d9a434f21661a61f20bf2eb",
+            "confidentiality": "buyerOnly",
+            "language": "uk",
+            "format": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "url": "https://public.api.openprocurement.org/api/2.4/tenders/22e170ffa6de437fa24facfcf365a342/bids/814f713e02644820ad64c3e462e7bea2/financial_documents/8f200830a6a44820b5af0e8369270308?download=acd67bcdf27543f8a214085ab3af0e24",
+            "confidentialityRationale": "Даний файл містить розрахунки вартості енергосервісного договору",
+            "title": "22. Розрахунок щорічного скорочення витрат (Саврань).xlsx",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T08:15:34.525595+02:00",
+            "documentType": "commercialProposal",
+            "dateModified": "2018-01-29T08:15:34.525609+02:00",
+            "id": "8f200830a6a44820b5af0e8369270308"
+          }
+        ],
+        "tenderers": [
+          {
+            "contactPoint": {
+              "telephone": "+380969596456",
+              "faxNumber": "",
+              "name": "Ситнік Катерина Олексіївна",
+              "email": "interserv2@ukr.net"
+            },
+            "identifier": {
+              "scheme": "UA-EDR",
+              "id": "39400969",
+              "legalName": "Товариство з обмеженою відповідальністю \"ІНТЕРЕНЕРГО СЕРВІС\""
+            },
+            "name": "ТОВ \"ІНТЕРЕНЕРГО СЕРВІС\"",
+            "address": {
+              "postalCode": "01054",
+              "countryName": "Україна",
+              "streetAddress": "вул. Павлівська, 17",
+              "region": "місто Київ",
+              "locality": "Київ"
+            }
+          }
+        ],
+        "date": "2018-01-29T08:15:10.151431+02:00",
+        "id": "814f713e02644820ad64c3e462e7bea2",
+        "participationUrl": "https://auction.openprocurement.org/esco-tenders/22e170ffa6de437fa24facfcf365a342/login?bidder_id=814f713e02644820ad64c3e462e7bea2&hash=d9c83ce3cde33eccb5379ee6af485bff8384d002"
+      },
+      {
+        "status": "active",
+        "documents": [
+          {
+            "hash": "md5:092593872fae75e45ebc0e71823326f5",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/fb20e1f4c9284cf58dee8a2669b30321?KeyID=52462340&Signature=QKADCAqupmahVRr2UFL%252BRg6Ov9DFrNDzBPA1IiqZj1wHXKZzlGvj670m3hhRzBNlEsVMC%252BwRNWBuBGXMkyvXDA%253D%253D",
+            "title": "Положення.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:17.244427+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:17.244453+02:00",
+            "id": "906b4f5bd515485584995a9e44577644"
+          },
+          {
+            "hash": "md5:8ea6c89e150a6e519bd4fbe1a48ab099",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/c4dd403bf5bd446eb0de2bdcd4152a52?KeyID=52462340&Signature=wnzIcobGJo3j8dyv4cKstTEL%252BcKWxYN6KH49u63W5%252BNePK7sHeVKSuDDg%252BlMHlkA0jasb4wnPhAB%2FPxxNFixBA%253D%253D",
+            "title": "ФО Дог.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:18.913819+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:18.913843+02:00",
+            "id": "f8a2b0de79984f0f8c96457d6386f9b4"
+          },
+          {
+            "hash": "md5:d4dd57bb7c8e61b1d6965bc40ac844f1",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/869b43ab901f40edb3a8a782cec9e1e7?KeyID=52462340&Signature=mG6xl%252BbPXXRKBZJ6GHNwVDyAJ2FCQ2e423PV4S45E%252Bms95XOyFAWJBvg%252BFvcjM1fVufB9qsXxyrET4dktfSQAw%253D%253D",
+            "title": "Антикорупційна.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:19.673004+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:19.673028+02:00",
+            "id": "ecc43f63d9ac4bad849d8b25ff9a3dae"
+          },
+          {
+            "hash": "md5:a092be6fc8843467e9ec677cdf343481",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/74054a5528374eafa436e7c74f908df5?KeyID=52462340&Signature=HhOFfG9Oh2SqjchxJQqKGXRbrbmUOnui0dPv1miOWfBZ3X2d7sTi2u03PzmPwasziuPet7RB9vZBnhCKtQ0vBQ%253D%253D",
+            "title": "Не банкрут.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:21.570689+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:21.570715+02:00",
+            "id": "66b54c39eb9e489eaa935620793b7464"
+          },
+          {
+            "hash": "md5:9ed64933256dad4651c0bdc393db93ae",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/fb7968820de44e489c61a3d647bf10e7?KeyID=52462340&Signature=bE2OXUKheIYOKfEZctY5XiMvGDwkBNelSu%252BBZIZ8irDJD9c0oVJ%252BrBRB50oYRQc5hoC8iiWirXQOPkzVTL5FDw%253D%253D",
+            "title": "Відсутність зв'язків.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:22.548605+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:22.548619+02:00",
+            "id": "290bf72d588a439d9d67c25dd2fc285b"
+          },
+          {
+            "hash": "md5:b931ca93f11f28f017eaf25626ae4149",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/62ee024eebee4f16a98b7a67aa98ef28?KeyID=52462340&Signature=PO4%2F5eS8l6wW2Pez%252BKbODx%2F5R5b5TpRIKKxWUosgWon5vUn8h%252BJyGORwGukpgKBQUH1FAH4dGZUdY1ITQu8LAQ%253D%253D",
+            "title": "Заходи.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:23.308530+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:23.308556+02:00",
+            "id": "c98fb1e9dfd646e7b9ae23c7db2429a9"
+          },
+          {
+            "hash": "md5:9d96bce9f96db9804bc2d1c76869a9c4",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/36965b43aaa54b73ba908dc682683a81?KeyID=52462340&Signature=D2og8awnCpjivpaj%2FYyFS9jGsNXG4AhoZzNJz7DLNMgKWUbsH%252BUTMl4sG2xTeIib4nLAmMLq%2FE3zRVMtCsZYAw%253D%253D",
+            "title": "ЮО Дог.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:24.001635+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:24.001660+02:00",
+            "id": "9e160f0f0a3f47fc97d960773bae6f54"
+          },
+          {
+            "hash": "md5:7d1d97615e9ee86c84463eee83a88d83",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/b63ab87af49145fd88cc4d72bebc2479?KeyID=52462340&Signature=ygdC4tWgO9H2oR9dxIxGpIIIwKn3jd7HQGWrsDyzh0KWGCqL6fJtwhVOA0C4TF2I5kFAd9HYPGNAWgSHcQuuDg%253D%253D",
+            "title": "Державна реєстрація.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:24.873419+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:24.873433+02:00",
+            "id": "ae14849316814da6ae182beab96aa6de"
+          },
+          {
+            "hash": "md5:ff089510617b8e37048604b0044d9b73",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/7cdec5e26e0240899afc0f47eb234cb3?KeyID=52462340&Signature=I5mdXUMKu19KGPA6%252BApx8vDrDva9UT8zhyM8bf0mUFKZnKnYKTdcKCLTMoqgIOl6yTXQwrc2EeoMUuvHnS%252BACQ%253D%253D",
+            "title": "Не дача винагороди.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:25.645010+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:25.645036+02:00",
+            "id": "e926243955734d7f89061aaebb0a9e91"
+          },
+          {
+            "hash": "md5:8602410bbfe0e97ca0cbe3836211947a",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/ba749a561e8d4f31a6e779e45de7ac0f?KeyID=52462340&Signature=lMn7lGMqH9TSPNqEzCFtXjZYPFYEq73VUaAhiNM1Gym%2FiT%2FIREWOIVDwzZkMMhWSs3LhiYPOjiIMwuPzCwrRDg%253D%253D",
+            "title": "Кінцевий власник.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:26.544553+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:26.544567+02:00",
+            "id": "ac6f0778910e4992a35577df73fb02c0"
+          },
+          {
+            "hash": "md5:bafca5f8314baaf0c00f2ae077879f76",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/a4ed3f8994344c7f9df476ed81168288?KeyID=52462340&Signature=q4ZwBQyfIBDRikZK9BCzbV9CSId%2FoN017m9PHkhbvQ8HaNCUdHQVjEg3IAFOrxImDsnbZssesLM%2Fzlj7fEIZDA%253D%253D",
+            "title": "Представник ЮО не засуд..pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:27.194675+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:27.194689+02:00",
+            "id": "e0a39fe75aec4b6a8154066ddcde45b9"
+          },
+          {
+            "hash": "md5:78da9c12d4f9706f61517655ce84db36",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/a3ac1192a52e4d40beb9e73fc8676de8?KeyID=52462340&Signature=r0an%252BwdAtRPIRzv%252BX%252BKtEJSxBDbJqYwWp6hKMZvswuYOA%252BwENR9KWbbugyQe2WjqP9KFWEkqZsL6RwfubX5ZDg%253D%253D",
+            "title": "Наказ призначення.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:28.490470+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:28.490484+02:00",
+            "id": "9b73e283f92344b2a7e3b87694b62100"
+          },
+          {
+            "hash": "md5:6a617ee1a4d2bf95dea15aeb7afe9b4b",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/56525e4ec5494bc7bdabf493d9491a4d?KeyID=52462340&Signature=He%252B7WcL%2F%2FtHbvTyl8QOLxTbqXgG9YbcdA%252BFQNr%2FbRll%252BLc279L1DeJMq7WTUTQeSZq0JDAgNyRme85rYrrlGBQ%253D%253D",
+            "title": "Наказ про прийняття на роботу.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:30.239457+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:30.239483+02:00",
+            "id": "4c2acf15430541319926a074581e00a4"
+          },
+          {
+            "hash": "md5:8dddcf6792da70f01f0004b4bdc39771",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/4d74628cdcf44a4aa5a3249f4f11811f?KeyID=52462340&Signature=jazJ94KpGuTpzl3fRIqw03lV8qVlH3QIm7SrCSB0wtnAB%2FRzFzW%252B1vtyyR5ABNkfc7GTq7ALU%2FD%2FeoskyW%252BgAA%253D%253D",
+            "title": "ЮО ТП.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:31.117818+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:31.117832+02:00",
+            "id": "d371fd69ddce4bca9fc9844ab34e657d"
+          },
+          {
+            "hash": "md5:3878f6b0d7de66b6994a1f41440fd8f2",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/2d41514c10294b96872ad7577a765e4e?KeyID=52462340&Signature=xaMJbkgZWJ8AgqcnYZFiMEzT2151n8%252BySNtholxk4Q76ZpzE6Zv%252B0AQNLV0iEbDimzIZ02xvHccwz4KOq5HFAQ%253D%253D",
+            "title": "Відсутність заборгованості.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:31.969289+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:31.969314+02:00",
+            "id": "2761df43ad29412b83dd8e292920deb5"
+          },
+          {
+            "hash": "md5:7d963a60c77cd82414e41cadcb00c61e",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/232f6e0ecd2a407582910dbedabf4fa9?KeyID=52462340&Signature=5ASuoSn132nTbRIXw2ZteCbcIryB9bBFFt3WwTVPWnKuIf7BZxg87oG599pLQiPCGJdBaWzMm8kMo8UIjrsVDA%253D%253D",
+            "title": "Представник ФО не засуд..pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:32.899339+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:32.899353+02:00",
+            "id": "d8a4ca4e0f704c1f91fda4046fe2f0b5"
+          },
+          {
+            "hash": "md5:98702ab0425c73f5eebfad74d58ca13c",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/5159958eeb2c456399207db5e7d5b660?KeyID=52462340&Signature=YNpciS4b%252BqLln9ydF%2FdSG2kauypVDy9pt7BStIw6K8drEwLHchXKRPa8QWOWmxm%252BvD36WbVjL%252B5F%2FNoPxhimAg%253D%253D",
+            "title": "Якісні характеристики.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:34.047455+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:34.047469+02:00",
+            "id": "d0b87049e89043019e9af4cca740e8ad"
+          },
+          {
+            "hash": "md5:0342fb3a336035fed26f8db347c6ad88",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/c302544c570e499dad9c6111dfb3eac9?KeyID=52462340&Signature=LlvJdPXnnzSRazBcQocSZb7wd0z4P5uBaExONpsbLR%252BVe0QBkulbJ9SweQUaOj5lH9HMRPGrP5ET0L%2FmEa1XCg%253D%253D",
+            "title": "Захист довкілля.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:35.076879+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:35.076894+02:00",
+            "id": "c3be02602d7e47ebac196f6b1d14acc2"
+          },
+          {
+            "hash": "md5:a77d88f0f39845060deea04b7a0f8fda",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/a5ecf5c8b51d483ebb1b4f69fe9dccc5?KeyID=52462340&Signature=QLyRq6%2Fg%2FhhoktOgFhaN9z9NtsmMgBePZ1nUMBa%252Bq%252B88dNjqSvbTbaI2Z3X%252BUFlRWZbF%2FlSNYZaF5bNmr%2FYQBg%253D%253D",
+            "title": "Конкуренція.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:36.396079+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:36.396105+02:00",
+            "id": "92cc1ec00163455a9bf2cdab20f085c7"
+          },
+          {
+            "hash": "md5:e87fe5445eaa0bcc4382a79791742fdc",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/362bab1773674709a5797d8d343e30ce?KeyID=52462340&Signature=CC2KxcOD%252BPS9ggC05DsZl0IYCUVSY6dhqs2ygorhRjCR2zEmlqUVVEASEejvlesiD7E%2FcZz3M78q2Xej6PpdAQ%253D%253D",
+            "title": "ФО ТП.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:37.823816+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T09:38:37.823841+02:00",
+            "id": "d9cef7b7b2324e3bbd7bc32bf7ce1b9f"
+          },
+          {
+            "hash": "md5:1e9ab6da04d87d27f5bba5393a508b50",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pkcs7-signature",
+            "url": "https://public.docs.openprocurement.org/get/9d1118a5ed6540feaf2485f446cd96f3?KeyID=52462340&Signature=Pmpmw5GPxt94t6yUz4P77BUTMpy28aF7F8wMHG6p1w6L1r%252BJoxJioGfjYT063R6ukQne6I68%252B6XOMndKk22UCQ%253D%253D",
+            "title": "sign.p7s",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:41:10.982219+02:00",
+            "dateModified": "2018-01-29T09:41:10.982246+02:00",
+            "id": "417e486b8dd849f994cf764428846b53"
+          }
+        ],
+        "selfEligible": true,
+        "value": {
+          "yearlyPaymentsPercentage": 0.97,
+          "amountPerformance": 110473.87,
+          "currency": "UAH",
+          "amount": 2617962.69,
+          "contractDuration": {
+            "days": 0,
+            "years": 15
+          },
+          "valueAddedTaxIncluded": true,
+          "annualCostsReduction": [
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86,
+            168769.86
+          ]
+        },
+        "subcontractingDetails": "",
+        "selfQualified": true,
+        "financialDocuments": [
+          {
+            "hash": "md5:2faee51e89515d1a8f668c9db2a4bd43",
+            "confidentiality": "buyerOnly",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.api.openprocurement.org/api/2.4/tenders/22e170ffa6de437fa24facfcf365a342/bids/53dad07c86e64450992e2df103563317/financial_documents/a01787d900ed45899d96cac0b323a4bd?download=5ffce2033e1c42d490947d62ed2da773",
+            "confidentialityRationale": "Цінова пропозиція не має бути у публічному доступі",
+            "title": "ТП.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:29.382284+02:00",
+            "documentType": "commercialProposal",
+            "dateModified": "2018-01-29T09:38:29.382298+02:00",
+            "id": "a01787d900ed45899d96cac0b323a4bd"
+          },
+          {
+            "hash": "md5:4a1c7964c1383b3b8180063559ddaafe",
+            "confidentiality": "buyerOnly",
+            "language": "uk",
+            "format": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "url": "https://public.api.openprocurement.org/api/2.4/tenders/22e170ffa6de437fa24facfcf365a342/bids/53dad07c86e64450992e2df103563317/financial_documents/af561a46bad146d98d4082735469ec6a?download=069e4f79e9d24ceba7a809f657b8d83a",
+            "confidentialityRationale": "Цінова пропозиція не має бути у публічному доступі",
+            "title": "Скорочення витрат для Савранської ЗОШ.xlsx",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T09:38:38.540295+02:00",
+            "documentType": "commercialProposal",
+            "dateModified": "2018-01-29T09:38:38.540322+02:00",
+            "id": "af561a46bad146d98d4082735469ec6a"
+          }
+        ],
+        "tenderers": [
+          {
+            "contactPoint": {
+              "telephone": "+380972528894",
+              "faxNumber": "",
+              "name": "Синецька Людмила Русланівна",
+              "email": "koece@ukr.net"
+            },
+            "identifier": {
+              "scheme": "UA-EDR",
+              "id": "40983293",
+              "legalName": "Відокремлений підрозділ \"КИЇВСЬКИЙ ОБЛАСНИЙ ЕКСПЕРТНИЙ ЦЕНТР ЕНЕРГОЕФЕКТИВНОСТІ\" Державного підприємства \"КИЇВОБЛБУДІНВЕСТ\""
+            },
+            "name": "ВП \"КИЇВСЬКИЙ ОБЛАСНИЙ ЕКСПЕРТНИЙ ЦЕНТР ЕНЕРГОЕФЕКТИВНОСТІ\" ДП \"КИЇВОБЛБУДІНВЕСТ\"",
+            "address": {
+              "postalCode": "04050",
+              "countryName": "Україна",
+              "streetAddress": "вул. Глибочицька, 28",
+              "region": "місто Київ",
+              "locality": "Київ"
+            }
+          }
+        ],
+        "date": "2018-03-14T15:25:23.701785+02:00",
+        "id": "53dad07c86e64450992e2df103563317",
+        "participationUrl": "https://auction.openprocurement.org/esco-tenders/22e170ffa6de437fa24facfcf365a342/login?bidder_id=53dad07c86e64450992e2df103563317&hash=a5902df5daba02f46c2eaa621ee0860651daa098"
+      },
+      {
+        "status": "active",
+        "documents": [
+          {
+            "hash": "md5:b3a3327a65d2206a5db1dffa50721f98",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/46c938fd4fe34fce9eb28a6cefd06e54?KeyID=52462340&Signature=q0RkHLT8X0vhSr0q3oGN%252BX7ejcOdl%2F%2F76t5Y8%252BZE9cN%252BKUc5Skk%252BwlngemnxrsXYUXOiyU4VE4VrModzmHtcBw%253D%253D",
+            "title": "Довідка_відсутність судимості_3.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:38.104699+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T12:33:38.104725+02:00",
+            "id": "bb2bd206304744efa61487bb35015b4b"
+          },
+          {
+            "hash": "md5:8699acda9288e71be1e18574d82b5c26",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/f8b8af03cf7c4535b4bd28b0a5144a14?KeyID=52462340&Signature=4Fh%252BUdp9jvnonlUTtrTjZ03ZkqfR3od8dGpGvmpRTyp43JAQuZ%2FvYmd%2F14xoF0jihaJ0ST%252Byoj6eKzeZXskFDQ%253D%253D",
+            "title": "Наказ.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:38.940406+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T12:33:38.940433+02:00",
+            "id": "7809f0ce23704e1590cb8bb7eab49d7f"
+          },
+          {
+            "hash": "md5:6b59cafdf835b64de97301ddb1e10251",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/b314caa0c9d84cf0af73e20a761ff3df?KeyID=52462340&Signature=9EielMzDS%252B60MhFM79yx6ZZX7xHoAuu7tZtIWHI07wph1Bp5l1FwDraWLUX%2FKD0CvgJk9v3YKEaln2BiHlzSCA%253D%253D",
+            "title": "Довідка_захист довкілля_2.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:39.755821+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T12:33:39.755836+02:00",
+            "id": "74b2ca0567824d30ac46dcadb8aa6481"
+          },
+          {
+            "hash": "md5:b7c75d6b2e389a17caa3d964a47c5e78",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/2bfb98ccfb2a43c4b514fd24975968e9?KeyID=52462340&Signature=CWcEnKw1TMUXuiPbhvvlJ3p91d%2FUyTScFh%2F5KKzzEjqkjBaD1Rc67k%2Fty5H8QysjGZOrXQCsx64r3ejJE0i8DA%253D%253D",
+            "title": "Довідка_відсутність порушень.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:40.682682+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T12:33:40.682698+02:00",
+            "id": "969e9c3e4b1248a0971c66a0cda502a5"
+          },
+          {
+            "hash": "md5:61563cbe7581163107f7b4dcf8a922a4",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/c83deb9ec5864ac690c3c4402b5ec7e0?KeyID=52462340&Signature=Zg%252Boi2kADMTX2tOxK8Ps7ThHLh0FadXYnTWm%2Fw8gyEuJQxrTzecQeWUIfJ360XrcxERLUt6PsIZxAbWuOQuvCA%253D%253D",
+            "title": "Довідка_бенефіціар.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:41.405694+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T12:33:41.405721+02:00",
+            "id": "5f941bec9d7d4078b6e134e14731b23a"
+          },
+          {
+            "hash": "md5:c556f581eb777715113de4050eb2e3b5",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/7a8de3857b8743df8255bd92d66ccee6?KeyID=52462340&Signature=0ig6%2Fd7Ih%2FlxLF8O%252BBNDveKukuMrCnBUbKMqTcoc98DiewJhtEmvjoTE8NvchUxTnSWZUdbyZSODkeLT22UUAA%253D%253D",
+            "title": "Статут.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:44.739092+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T12:33:44.739117+02:00",
+            "id": "aa65dd2626314aceb066f16d45a5432e"
+          },
+          {
+            "hash": "md5:0bfee05dc6dc08d268310822bd8e972b",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/d3d0e8ae6e07417ea96c3cbc53c8c0fb?KeyID=52462340&Signature=CXJwxFyWrQ5huezcDLQqPSlnXxUU8qdlIDiPxcxA570diAboG0ipGY6Zk1uOaRV027gBev3emdOl3Pk79ESwCw%253D%253D",
+            "title": "Довідка_відсутність судимості_1.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:45.510883+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T12:33:45.510911+02:00",
+            "id": "a416c779a4034c3d9b8b617f18084fb6"
+          },
+          {
+            "hash": "md5:3b19753c43e7dddb99f0b39c3c4deb7d",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/436ad94e89ce4fab8db71328ee9436a0?KeyID=52462340&Signature=XupIdjwqT13fLBfsFVBN7n4Y2yk4r49FbRVuwy727FTzmkthmJzM82MrG2RPmbpE7ycpEjflGts1ArBZ%252Bds1DQ%253D%253D",
+            "title": "Протокол.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:46.221926+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T12:33:46.221941+02:00",
+            "id": "924cfd7b00ab4e748502e15358e2fe36"
+          },
+          {
+            "hash": "md5:ae81e4eaf1b02e9f2ec79ef3b296cadb",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/9acc6f524b30431e941373ea3a447fe1?KeyID=52462340&Signature=fKl75CQPW0PlTGwaXF5EzSEz0%2FMWRSDAH1%252BSavXPPzHdD2Yd%252BnTN5AUPnAFXCMjJ6KODy4eO1cr2K1CtklL1Bw%253D%253D",
+            "title": "Стаття 17.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:47.883811+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T12:33:47.883836+02:00",
+            "id": "1a06a9c0ea5e4f3193fe8dda38ef7101"
+          },
+          {
+            "hash": "md5:7b79a4b8c7b63a5657de3f143c79805a",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/b0ffe7f6b4e84c08aad761b07b0c549d?KeyID=52462340&Signature=v1lQqPbwYW7zS50klcdx5KHgH%2Fp2Fotk%2FKbXESWiJ%2FXn0mE4PiXKlfpalJXeUUB1Q1YoFkD87HuPsns5MHgXAg%253D%253D",
+            "title": "Довідка_захист довкілля.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:48.588834+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T12:33:48.588861+02:00",
+            "id": "c99e83bdea144d1ba866cc9e9cc13033"
+          },
+          {
+            "hash": "md5:d752e7c4cad4cc22cec50046e5db1a6f",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/b1833866bde44259beee2aa8b8640ffb?KeyID=52462340&Signature=iisVrz8o0B00Z2IfLEpKlkPcr%2F7QXGQubrbplKEWxI3KJteyyDjlH12RCZMdrhK34bUBKiWURdNdxxXemoCTCw%253D%253D",
+            "title": "Перелік заходів.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:49.375401+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T12:33:49.375426+02:00",
+            "id": "bde046ec01c74aca9976c6bc7af4cf05"
+          },
+          {
+            "hash": "md5:eb817e028cee89dcc45139203c93bd82",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/cb2b0e557b4248218958766b38996823?KeyID=52462340&Signature=HJ19HjpNAXB9YaRHzcBoS8zdZq7A2CkAxUySxMba0fbwfOOb%2FNOnZRFLStua1eARSHvnfdNVixs5OtN4rqKfBA%253D%253D",
+            "title": "Довідка_відсутність судимості_2.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:50.153935+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T12:33:50.153950+02:00",
+            "id": "d00157a316354bdfb5b17dad62e49f33"
+          },
+          {
+            "hash": "md5:8b22bf6d4b35e506aa05a8130ccc64f7",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/2f06871f885c46619f87615f754cb990?KeyID=52462340&Signature=MX47UqIrAzrqKlsEssxLgYQsMBzBz7MCxPcLqajysdudj3TtomIEkAsRah2RV7KjOBVuHf2hhzlg%252BxEdH1JACg%253D%253D",
+            "title": "Довідка_відсутність заборгованості.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:51.581169+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T12:33:51.581184+02:00",
+            "id": "f4544137a3fb44a2bb3e38e477e89e4c"
+          },
+          {
+            "hash": "md5:985e9e2f8f543248eaaed261fb176db8",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/45e9ee11363a4df8804cb2d7e5a1a228?KeyID=52462340&Signature=jATiv1BkNOXZZld4fYXTSTFjlJuTbMvpkRQ%252BK4thimDO%2FQQpGWFsk737J%2FWuLpk92Inow8N6%2FA7ttr0QhlndAA%253D%253D",
+            "title": "Довідка_відсутність корупції.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:52.334359+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T12:33:52.334373+02:00",
+            "id": "37f9772d8ba3497581ef1a10ee19cc53"
+          },
+          {
+            "hash": "md5:f37151cf90aac1b9d3631cfdd92ca461",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/3986b0ce4554412dae0613d27912baf7?KeyID=52462340&Signature=FPpsQMKrF1IobhZqgMBX7oH79fjlOLZsLIKRSLHhubgNbnzL2%252BtdUau7i8pP%2FAjCw2WBBmlRhFoI6seNzM%2FJDg%253D%253D",
+            "title": "Довідка_відсутність судимості_4.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:53.124830+02:00",
+            "documentType": "qualificationDocuments",
+            "dateModified": "2018-01-29T12:33:53.124845+02:00",
+            "id": "04eedc41e6b7400d8dc4280d9d97b91d"
+          },
+          {
+            "hash": "md5:240dec858203e8ada045f6488bb6d1f0",
+            "confidentiality": "public",
+            "language": "uk",
+            "format": "application/pkcs7-signature",
+            "url": "https://public.docs.openprocurement.org/get/e4dfb6c2d5fb4e9382108a6a02da39e5?KeyID=52462340&Signature=CxPXLnV5VJXZOiLnT%252BPoY3LQMkwni30iNBwkTl%252BbOM2cnUNQiwNA2Fx8i5FibHzN9wk3XEMb9K2kHD3ti4ITBQ%253D%253D",
+            "title": "sign.p7s",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:35:00.622956+02:00",
+            "dateModified": "2018-01-29T12:35:00.622979+02:00",
+            "id": "ef06e085c5314206864b47aecf2dd942"
+          }
+        ],
+        "selfEligible": true,
+        "value": {
+          "yearlyPaymentsPercentage": 0.93,
+          "amountPerformance": 102789.35,
+          "currency": "UAH",
+          "amount": 1636960.09,
+          "contractDuration": {
+            "days": 0,
+            "years": 15
+          },
+          "valueAddedTaxIncluded": true,
+          "annualCostsReduction": [
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3,
+            110067.3
+          ]
+        },
+        "subcontractingDetails": "",
+        "selfQualified": true,
+        "financialDocuments": [
+          {
+            "hash": "md5:87ac2a1f49173c67d6d4114ec0b8871d",
+            "confidentiality": "buyerOnly",
+            "language": "uk",
+            "format": "application/pdf",
+            "url": "https://public.api.openprocurement.org/api/2.4/tenders/22e170ffa6de437fa24facfcf365a342/bids/d675e893668846d39a8ed2d9f0bc026b/financial_documents/e6c99fefc862464abfdf7b94eb727e95?download=c6e36675dd2c432c964f668d6fcb9dc6",
+            "confidentialityRationale": "В документі наведені розрахунки виплат учаснику закупівлі ",
+            "title": "Тендерна пропозиція.pdf",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:47.131980+02:00",
+            "documentType": "commercialProposal",
+            "dateModified": "2018-01-29T12:33:47.132015+02:00",
+            "id": "e6c99fefc862464abfdf7b94eb727e95"
+          },
+          {
+            "hash": "md5:34ce030d5894ca93b2c758ea9aff4d19",
+            "confidentiality": "buyerOnly",
+            "language": "uk",
+            "format": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "url": "https://public.api.openprocurement.org/api/2.4/tenders/22e170ffa6de437fa24facfcf365a342/bids/d675e893668846d39a8ed2d9f0bc026b/financial_documents/6b8b6dbb6e744f429d1d63c4a3a003f2?download=84d95abcab4f498fbc1b13f3b45bd69b",
+            "confidentialityRationale": "В документі наведені розрахунки виплат учаснику закупівлі ",
+            "title": "Скорочення витрат.xlsx",
+            "documentOf": "tender",
+            "datePublished": "2018-01-29T12:33:50.837614+02:00",
+            "documentType": "commercialProposal",
+            "dateModified": "2018-01-29T12:33:50.837629+02:00",
+            "id": "6b8b6dbb6e744f429d1d63c4a3a003f2"
+          }
+        ],
+        "tenderers": [
+          {
+            "contactPoint": {
+              "telephone": "+380934650472",
+              "faxNumber": "",
+              "name": "Форостовець Олеся Володимирівна",
+              "email": "ukrprosys@ukr.net"
+            },
+            "identifier": {
+              "scheme": "UA-EDR",
+              "id": "36469420",
+              "legalName": "ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ \"УКРАЇНСЬКА ПРОЕКТНА СИСТЕМА\""
+            },
+            "name": "ТОВ \"УПС\"",
+            "address": {
+              "postalCode": "01042",
+              "countryName": "Україна",
+              "streetAddress": "вул. Чигоріна, 18",
+              "region": "місто Київ",
+              "locality": "м. Київ"
+            }
+          }
+        ],
+        "date": "2018-03-14T15:23:51.502284+02:00",
+        "id": "d675e893668846d39a8ed2d9f0bc026b",
+        "participationUrl": "https://auction.openprocurement.org/esco-tenders/22e170ffa6de437fa24facfcf365a342/login?bidder_id=d675e893668846d39a8ed2d9f0bc026b&hash=cec79285fb8a9b235ec1dcad62eaeef6b3fb68f9"
+      }
+    ],
+    "noticePublicationDate": "2017-12-28T13:20:04.850598+02:00",
+    "awardCriteria": "ratedCriteria"
+  }
+}

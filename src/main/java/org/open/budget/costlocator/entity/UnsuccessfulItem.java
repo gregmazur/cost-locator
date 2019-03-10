@@ -9,12 +9,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tender_not_saved")
 @Getter
-public class UnsuccessfulItem {
+public class UnsuccessfulItem implements Item{
     @Id
     String id;
 
-    public UnsuccessfulItem(String id) {
+    boolean active;
+
+    public UnsuccessfulItem(String id, boolean active) {
         this.id = id;
+        this.active = active;
     }
 
     public UnsuccessfulItem() {

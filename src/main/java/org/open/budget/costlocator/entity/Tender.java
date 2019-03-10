@@ -31,7 +31,7 @@ public class Tender {
     private Date date;
     private Date dateModified;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private TenderDetail tenderDetail;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Classification classification;
@@ -40,7 +40,7 @@ public class Tender {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private TenderIssuer issuer;
     @ManyToMany
-    private List<Address> addresses = new ArrayList<>();
+    private List<Address> addresses;
 
     public Tender() {
     }
@@ -74,6 +74,10 @@ public class Tender {
 
     public void setClassification(Classification classification) {
         this.classification = classification;
+    }
+
+    public void setTenderDetail(TenderDetail tenderDetail) {
+        this.tenderDetail = tenderDetail;
     }
 
     @Override

@@ -4,12 +4,12 @@ package org.open.budget.costlocator.api;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
+import org.open.budget.costlocator.entity.Item;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Builder
-public class TenderListItem {
+public class TenderListItem implements Item {
 
     @SerializedName("id")
     @Expose

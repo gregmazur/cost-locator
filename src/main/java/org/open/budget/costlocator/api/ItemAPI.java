@@ -9,7 +9,7 @@ import org.open.budget.costlocator.entity.Unit;
 
 @Builder
 @Getter
-public class Item {
+public class ItemAPI {
 
     @SerializedName("description")
     @Expose
@@ -36,8 +36,8 @@ public class Item {
     @Expose
     private Long quantity;
 
-    public Item(String itemDescription, ClassificationAPI classification, DeliveryLocationApi deliveryLocation,
-                AddressAPI deliveryAddress, DeliveryDateAPI deliveryDateAPI, String itemId, UnitAPI unit, Long quantity) {
+    public ItemAPI(String itemDescription, ClassificationAPI classification, DeliveryLocationApi deliveryLocation,
+                   AddressAPI deliveryAddress, DeliveryDateAPI deliveryDateAPI, String itemId, UnitAPI unit, Long quantity) {
         this.itemDescription = itemDescription;
         this.classification = classification;
         this.deliveryLocation = deliveryLocation;
@@ -48,6 +48,6 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public Item() {
+    public ItemAPI() {
     }
 }
