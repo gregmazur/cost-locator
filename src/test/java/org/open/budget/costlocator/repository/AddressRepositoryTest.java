@@ -42,8 +42,10 @@ public class AddressRepositoryTest {
     public void setUp() throws Exception {
         Region region = Region.builder().name("Odessa").build();
         region = regionRepository.save(region);
+        regionRepository.flush();
         city = City.builder().name("Odessa").region(region).build();
         city = cityRepository.save(city);
+        cityRepository.flush();
         street = Street.builder().city(city).name("Street").index("65091").build();
         street = streetRepository.save(street);
         streetRepository.flush();
@@ -79,6 +81,16 @@ public class AddressRepositoryTest {
         streetRepository.save(nonUniqueStreet);
         streetRepository.flush();
     }
+
+//    @Test
+//    public void getStreets_shouldReturn(){
+//        assertEquals(1, cityRepository.findAll().get(0).getStreets().size());
+//    }
+//
+//    @Test
+//    public void getCities_shouldReturn(){
+//        assertEquals(1, regionRepository.findAll().get(0).getCities().size());
+//    }
 
     @Test
     public void findByIndex_shouldReturn() {

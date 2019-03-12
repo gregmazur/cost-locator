@@ -20,9 +20,9 @@ public class City {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fk_region")
     private Region region;
-    @OneToMany
+    @OneToMany(mappedBy = "city")
     private List<Street> streets;
-    @OneToMany
+    @OneToMany(mappedBy = "city")
     private List<Address> addresses;
 
     public City(Long id, String name, Region region, List<Street> streets, List<Address> addresses) {

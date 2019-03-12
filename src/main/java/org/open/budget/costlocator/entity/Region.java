@@ -16,7 +16,7 @@ public class Region {
     private Long id;
     @Column(length = 20)
     private String name;
-    @OneToMany(mappedBy = "region")
+    @OneToMany(mappedBy = "region", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<City> cities;
 
     public Region(Long id, String name, List<City> cities) {
