@@ -1,13 +1,12 @@
 package org.open.budget.costlocator.service;
 
 import org.open.budget.costlocator.dto.*;
+import org.open.budget.costlocator.entity.Address;
 import org.open.budget.costlocator.entity.City;
 import org.open.budget.costlocator.entity.Region;
 import org.open.budget.costlocator.entity.Street;
 import org.open.budget.costlocator.mapper.TenderMapperDTO;
-import org.open.budget.costlocator.repository.CityRepository;
-import org.open.budget.costlocator.repository.RegionRepository;
-import org.open.budget.costlocator.repository.StreetRepository;
+import org.open.budget.costlocator.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,9 +14,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static org.springframework.data.domain.PageRequest.of;
 
 @Service
 @Transactional(readOnly = true)
@@ -30,8 +30,12 @@ public class WebServiceImpl implements WebService {
     private CityRepository cityRepository;
     @Autowired
     private StreetRepository streetRepository;
+    @Autowired
+    private AddressRepository addressRepository;
+    @Autowired
+    private TenderRepository tenderRepository;
 
-    private List<Region> cache;
+//    private List<Region> cache; TODO
 
 
     @Override
@@ -66,6 +70,14 @@ public class WebServiceImpl implements WebService {
 
     @Override
     public Collection<TenderDTO> getTendersBySearchCriteria(SearchCriteria searchCriteria) {
-        return null;
+        Long address = searchCriteria.getAddress();
+        if (address == null) {
+            Long street = searchCriteria.getStreet();
+            if (street == null){
+                street = cityRepository.
+            }
+        }
+        return tenderRepository.findByAddress(address, of(0, 20)).stream()
+                .map(TenderMapperDTO.INSTANCE::convertToDto).collect(Collectors.toList());
     }
 }

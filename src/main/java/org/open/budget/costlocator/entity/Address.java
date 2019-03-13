@@ -26,7 +26,7 @@ public class Address {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_street")
     private Street street;
-    @ManyToMany
+    @ManyToMany(mappedBy = "addresses")
     private List<Tender> tenders;
 
     public Address(Long id, String houseNumber, City city, Street street, List<Tender> tenders) {

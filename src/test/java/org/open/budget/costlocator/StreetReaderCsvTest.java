@@ -36,7 +36,7 @@ public class StreetReaderCsvTest {
     public void start() {
         serviceCsv.start();
         verify(streetService,times(2)).save(any(Region.class), any(City.class), any(Street.class)
-//                Street.builder().region("вінницька").city("Бар").name("Андрія Малишка").build()
+//                Street.builder().region("вінницька").city("Бар").officeName("Андрія Малишка").build()
         );
     }
 

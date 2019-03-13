@@ -14,6 +14,9 @@ import java.util.Optional;
 @Repository
 public interface AddressRepository extends JpaRepository<Address, Long> {
 
-    @Query("SELECT a FROM Address a WHERE a.city.id = :city AND a.street.id = :street AND a.houseNumber = :hn")
+    @Query("SELECT a FROM Address a where a.city.id = :city AND a.street.id = :street AND a.houseNumber = :hn")
     Optional<Address> find(@Param("city") Long city, @Param("street") Long street, @Param("hn") String houseNumber);
+
+    @Query("select a from Address a where s.city.id = :cityId and s.name = 'N/A'")
+    Optional<Address> findNA(@Param("cityId") Long cityId);
 }

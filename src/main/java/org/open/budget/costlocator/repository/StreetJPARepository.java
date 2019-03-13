@@ -17,4 +17,7 @@ public interface StreetJPARepository extends JpaRepository<Street, Long> {
 
     @Query("select s from Street s where s.city.id = :#{#city.id} and s.name = :name and s.index = :index")
     Optional<Street> find(@Param("city") City city, @Param("name") String name, @Param("index") String index);
+
+    @Query("select s from Street s where s.city.id = :cityId and s.name = 'N/A'")
+    Optional<Street> findNA(@Param("cityId") Long cityId);
 }

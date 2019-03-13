@@ -40,6 +40,10 @@ public class Tender {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private TenderIssuer issuer;
     @ManyToMany
+    @JoinTable(name = "tender_addresses",
+            joinColumns = @JoinColumn(name = "tender_id"),
+            inverseJoinColumns = @JoinColumn(name = "addresses_id")
+    )
     private List<Address> addresses;
 
     public Tender() {
