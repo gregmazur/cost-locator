@@ -6,12 +6,13 @@ import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "address", indexes = {@Index(name = "STREET_INDEX", unique = true, columnList = "fk_city, fk_street, house_number")})
 @Getter
 @Builder
-@EqualsAndHashCode(exclude = {"id", "tenders"})
+@EqualsAndHashCode(of = {"id"})
 public class Address {
 
     @Id
@@ -27,9 +28,9 @@ public class Address {
     @JoinColumn(name = "fk_street")
     private Street street;
     @ManyToMany(mappedBy = "addresses")
-    private List<Tender> tenders;
+    private Set<Tender> tenders;
 
-    public Address(Long id, String houseNumber, City city, Street street, List<Tender> tenders) {
+    public Address(Long id, String houseNumber, City city, Street street, Set<Tender> tenders) {
         this.id = id;
         this.houseNumber = houseNumber;
         this.city = city;

@@ -6,6 +6,7 @@ import org.open.budget.costlocator.api.*;
 import org.open.budget.costlocator.entity.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 @Mapper
 public interface TenderMapperAPI {
@@ -46,7 +47,7 @@ public interface TenderMapperAPI {
                 .status(tenderAPI.getStatus()).tenderID(tenderAPI.getTenderID())
                 .classification(classificationAPIToClassification(item.getClassification()))
                 .deliveryLocation(deliveryLocationAPIToDeliveryLocation(item.getDeliveryLocation()))
-                .addresses(new ArrayList<>())
+                .addresses(new HashSet<>())
                 .tenderDetail(tenderDetail).build();
     }
 }

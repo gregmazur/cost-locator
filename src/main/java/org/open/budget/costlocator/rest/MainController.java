@@ -41,7 +41,7 @@ public class MainController {
 
     @PostMapping("/search")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Collection<TenderDTO> getTenders(@RequestBody SearchCriteria searchCriteria) {
+    public Collection<TenderDTO> getTenders(@ModelAttribute SearchCriteria searchCriteria) {
 //        if (searchCriteria == null || searchCriteria.getCity())
 //            return Collections.EMPTY_LIST;
         return webService.getTendersBySearchCriteria(searchCriteria);

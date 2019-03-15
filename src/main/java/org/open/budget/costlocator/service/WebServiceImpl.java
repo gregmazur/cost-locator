@@ -1,19 +1,18 @@
 package org.open.budget.costlocator.service;
 
 import org.open.budget.costlocator.dto.*;
-import org.open.budget.costlocator.entity.Address;
-import org.open.budget.costlocator.entity.City;
-import org.open.budget.costlocator.entity.Region;
-import org.open.budget.costlocator.entity.Street;
+import org.open.budget.costlocator.entity.*;
 import org.open.budget.costlocator.mapper.TenderMapperDTO;
 import org.open.budget.costlocator.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -70,15 +69,21 @@ public class WebServiceImpl implements WebService {
 
     @Override
     public Collection<TenderDTO> getTendersBySearchCriteria(SearchCriteria searchCriteria) {
-//        Long address = searchCriteria.getAddress();
-//        if (address == null) {
-//            Long street = searchCriteria.getStreet();
-//            if (street == null){
-//                street = cityRepository.
-//            }
-//        }
-//        return tenderRepository.findByAddress(address, of(0, 20)).stream()
-//                .map(TenderMapperDTO.INSTANCE::convertToDto).collect(Collectors.toList());
-        return Collections.emptyList();
+        Pageable pageable = of(0, 20);
+        List <Tender> tenders;
+        Long address = searchCriteria.getAddress();
+        Long street = searchCriteria.getStreet();
+        Long city = searchCriteria.getCity();
+        if (address != null) {
+            tenders = tenderRepository.findByAddress(address, pageable);
+        } else if (street != null) {
+            tenders = tenderRepository.findByStreet(street, pageable);
+        } else if (city != null) {
+            tenders = tenderRepository.findByCity(city, pageable);
+        } else {
+            throw new IllegalStateException("not able to find tenders without at least cityId");
+        }
+        return tenders.stream()
+                .map(TenderMapperDTO.INSTANCE::convertToDto).collect(Collectors.toList());
     }
 }

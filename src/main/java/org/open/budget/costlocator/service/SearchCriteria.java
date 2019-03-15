@@ -7,13 +7,14 @@ import org.open.budget.costlocator.entity.City;
 import org.open.budget.costlocator.entity.Region;
 import org.open.budget.costlocator.entity.Street;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static java.util.Collections.EMPTY_LIST;
 
 @Builder
 @Getter
-public class SearchCriteria {
+public class SearchCriteria implements Serializable {
 
     private Long city;
 

@@ -23,7 +23,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Component
 @Slf4j
 public class Extractor {
 
