@@ -16,8 +16,8 @@ public interface TenderJpaRepository extends JpaRepository<Tender, Long> {
 
     List<Tender> findByTenderID(String name);
 
-    @Query(value = "select * from tender " +
-            "join tender_addresses on tender.id=tender_addresses.tender_id " +
-            "where tender_addresses.addresses_id= :address", nativeQuery = true)
+    @Query(value = "select * from Tender t " +
+            "inner join tender_addresses ta on ta.tenderId=t.id " +
+            "where ta.addresses_id= :address", nativeQuery = true)
     List<Tender> findByAddress(@Param("address") Long address, Pageable pageable);
 }

@@ -70,14 +70,15 @@ public class WebServiceImpl implements WebService {
 
     @Override
     public Collection<TenderDTO> getTendersBySearchCriteria(SearchCriteria searchCriteria) {
-        Long address = searchCriteria.getAddress();
-        if (address == null) {
-            Long street = searchCriteria.getStreet();
-            if (street == null){
-                street = cityRepository.
-            }
-        }
-        return tenderRepository.findByAddress(address, of(0, 20)).stream()
-                .map(TenderMapperDTO.INSTANCE::convertToDto).collect(Collectors.toList());
+//        Long address = searchCriteria.getAddress();
+//        if (address == null) {
+//            Long street = searchCriteria.getStreet();
+//            if (street == null){
+//                street = cityRepository.
+//            }
+//        }
+//        return tenderRepository.findByAddress(address, of(0, 20)).stream()
+//                .map(TenderMapperDTO.INSTANCE::convertToDto).collect(Collectors.toList());
+        return Collections.emptyList();
     }
 }

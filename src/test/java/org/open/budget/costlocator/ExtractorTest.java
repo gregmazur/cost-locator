@@ -31,7 +31,7 @@ public class ExtractorTest {
     public void setUp() throws Exception {
         restTemplate = mock(RestTemplate.class);
         cache = new HashMap<>();
-        extractor = new Extractor(restTemplate, cache, tenderService);
+        extractor = new Extractor(cache, tenderService, restTemplate);
         TenderAPI tender = mock(TenderAPI.class);
         tenderWrapper = mock(TenderWrapper.class);
         when(tenderWrapper.getTender()).thenReturn(tender);

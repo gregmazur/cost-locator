@@ -33,16 +33,19 @@ public class Extractor {
 
     private static final String[] CLASSIFICATION_PREFIXES = {"44", "45", "507", "70", "71", "90"};
 
-    private RestTemplate restTemplate;
+    private RestTemplate restTemplate = new RestTemplate();
 
     private Map<String, Tender> cache;
 
-    @Autowired
     private TenderService tenderService;
 
-    public Extractor(RestTemplate restTemplate, Map<String, Tender> cache, TenderService tenderService) {
-        this.restTemplate = restTemplate;
+    public Extractor(Map<String, Tender> cache, TenderService tenderService, RestTemplate restTemplate) {
         this.cache = cache;
+        this.tenderService = tenderService;
+        this.restTemplate = restTemplate;
+    }
+
+    public Extractor(TenderService tenderService) {
         this.tenderService = tenderService;
     }
 
