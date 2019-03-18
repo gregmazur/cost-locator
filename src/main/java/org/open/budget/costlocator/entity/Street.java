@@ -1,8 +1,6 @@
 package org.open.budget.costlocator.entity;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,7 +9,9 @@ import java.util.List;
 @Table(name = "street", indexes = {@Index(unique = true, columnList = "fk_city,name,p_index")})
 @Getter
 @Builder
-@EqualsAndHashCode(exclude = {"id", "addresses"})
+@EqualsAndHashCode(of = {"id"})
+@NoArgsConstructor
+@AllArgsConstructor
 public class Street {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,20 +20,10 @@ public class Street {
     private String name;
     @Column(length = 6, name = "p_index")
     private String index;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_city")
     private City city;
     @OneToMany(mappedBy = "street")
     private List<Address> addresses;
 
-    public Street(Long id, String name, String index, City city, List<Address> addresses) {
-        this.id = id;
-        this.name = name;
-        this.index = index;
-        this.city = city;
-        this.addresses = addresses;
-    }
-
-    public Street() {
-    }
 }

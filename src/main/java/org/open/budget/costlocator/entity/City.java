@@ -17,7 +17,7 @@ public class City {
     private Long id;
     @Column(length = 60)
     private String name;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_region")
     private Region region;
     @OneToMany(mappedBy = "city")

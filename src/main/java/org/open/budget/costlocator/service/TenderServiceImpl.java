@@ -1,6 +1,8 @@
 package org.open.budget.costlocator.service;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.open.budget.costlocator.api.AddressAPI;
 import org.open.budget.costlocator.api.TenderAPI;
@@ -8,6 +10,7 @@ import org.open.budget.costlocator.entity.*;
 import org.open.budget.costlocator.mapper.TenderMapperAPI;
 import org.open.budget.costlocator.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -16,10 +19,13 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Service
 @Builder
 @Slf4j
+@NoArgsConstructor
+@AllArgsConstructor
 public class TenderServiceImpl implements TenderService {
 
     @Autowired
@@ -41,29 +47,6 @@ public class TenderServiceImpl implements TenderService {
     @Autowired
     private TenderDetailRepository tenderDetailRepository;
 
-    private List<Region> regions;
-
-    public TenderServiceImpl(TenderRepository tenderRepository, AddressRepository addressRepository,
-                             StreetRepository streetRepository, ClassificationRepository classificationRepository,
-                             TenderIssuerRepository tenderIssuerRepository, ListPathRepository listPathRepository,
-                             UnsuccessfulItemRepository unsuccessfulItemRepository, RegionRepository regionRepository,
-                             TenderDetailRepository tenderDetailRepository, List<Region> regions) {
-        this.tenderRepository = tenderRepository;
-        this.addressRepository = addressRepository;
-        this.streetRepository = streetRepository;
-        this.classificationRepository = classificationRepository;
-        this.tenderIssuerRepository = tenderIssuerRepository;
-        this.listPathRepository = listPathRepository;
-        this.unsuccessfulItemRepository = unsuccessfulItemRepository;
-        this.regionRepository = regionRepository;
-        this.regions = regions;
-        this.tenderDetailRepository = tenderDetailRepository;
-    }
-
-    @PostConstruct
-    private void init() {
-        regions = regionRepository.findAll();
-    }
 
     @Override
     @Transactional
@@ -89,13 +72,13 @@ public class TenderServiceImpl implements TenderService {
     }
 
     private void saveAddresses(TenderAPI tenderAPI, Tender tender) {
-        List<Address> addresses = findOrCreateAddresses(tenderAPI.getItemAPIS().get(0).getDeliveryAddress());
+        Set<Address> addresses = findOrCreateAddresses(tenderAPI.getItemAPIS().get(0).getDeliveryAddress());
         if (addresses.isEmpty())
             addresses = findOrCreateAddresses(tenderAPI.getIssuer().getAddress());
         tender.getAddresses().addAll(addresses);
     }
 
-    private List<Address> findOrCreateAddresses(AddressAPI addressAPI) {
+    private Set<Address> findOrCreateAddresses(AddressAPI addressAPI) {
         Collection<Street> potentialStreets = getPotentialStreets(addressAPI);
         return getAdddresses(addressAPI, potentialStreets);
     }
@@ -104,21 +87,36 @@ public class TenderServiceImpl implements TenderService {
         Optional<String> index = findInAddressAPI(addressAPI, this::getValidPostIndex);
         Set<Street> potentialStreets = new HashSet<>();
         if (index.isPresent()) {
-            potentialStreets.addAll(streetRepository.findByIndex(index.get()));
+            potentialStreets.addAll(getStreetsByIndex(index.get()));
         }
         Optional<Region> region = findInAddressAPI(addressAPI, this::getValidRegionName);
         if (region.isPresent()) {
-            potentialStreets.addAll(streetRepository.findByRegion(region.get()));
+            potentialStreets.addAll(getStreetsOfRegion(region.get()));
         }
         return potentialStreets;
     }
 
+    @Cacheable("streetsByIndex")
+    Collection<Street> getStreetsByIndex(String index){
+        return streetRepository.findByIndex(index);
+    }
+
+    @Cacheable("streetsByRegion")
+    Collection<Street> getStreetsOfRegion(Region region){
+        return streetRepository.findByRegion(region);
+    }
+
     Optional<Region> getValidRegionName(String regionRaw) {
-        for (Region region : regions) {
+        for (Region region : getRegions()) {
             if (regionRaw.toLowerCase().contains(region.getName()))
                 return Optional.of(region);
         }
         return Optional.empty();
+    }
+
+    @Cacheable("regions")
+    Collection<Region> getRegions(){
+        return regionRepository.findAll();
     }
 
     <T> Optional<T> findInAddressAPI(AddressAPI addressAPI, Function<String, Optional<T>> function) {
@@ -137,9 +135,9 @@ public class TenderServiceImpl implements TenderService {
         return Optional.empty();
     }
 
-    List<Address> getAdddresses(AddressAPI addressAPI, Collection<Street> potentialStreets) {
+    Set<Address> getAdddresses(AddressAPI addressAPI, Collection<Street> potentialStreets) {
         String[] splitedBySemiColumn = addressAPI.getStreetAddress().split(";");
-        List<Address> addresses = new ArrayList<>();
+        Set<Address> addresses = new HashSet<>();
         for (String streetAddress : splitedBySemiColumn) {
             String[] splitedByComma = streetAddress.split(",");
             Address.AddressBuilder addressBuilder = null;
@@ -167,17 +165,15 @@ public class TenderServiceImpl implements TenderService {
             }
         }
         if (addresses.isEmpty()) {
-            for (Street streetInList : potentialStreets) {
-                Optional<City> city = findInAddressAPI(addressAPI, s -> {
-                    if (s.contains(streetInList.getCity().getName()))
-                        return Optional.of(streetInList.getCity());
-                    return Optional.empty();
-                });
+            Collection<City> foundCities = potentialStreets.stream().map(street -> findInAddressAPI(addressAPI, s -> {
+                if (s.contains(street.getCity().getName()))
+                    return Optional.of(street.getCity());
+                return Optional.empty();
+            })).filter(o -> o.isPresent()).map(Optional::get).collect(Collectors.toSet());
 
-                if (!city.isPresent())
-                    continue;
-                Street street = saveIfNeeded(Street.builder().city(city.get()).index("N/A").name("N/A").build(), city.get());
-                Address.AddressBuilder addressBuilder = Address.builder().city(city.get()).street(street).houseNumber("N/A");
+            for (City city : foundCities) {
+                Street street = saveIfNeeded(Street.builder().city(city).index("N/A").name("N/A").build(), city);
+                Address.AddressBuilder addressBuilder = Address.builder().city(city).street(street).houseNumber("N/A");
                 addresses.add(saveAddressIfNeeded(addressBuilder.build()));
             }
         }

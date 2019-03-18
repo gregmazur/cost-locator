@@ -39,7 +39,7 @@ public class MainController {
         return webService.getAddressesByStreetId(id);
     }
 
-    @PostMapping("/search")
+    @PostMapping(value = "/search", consumes = "application/json")
     @CrossOrigin(origins = "http://localhost:4200")
     public Collection<TenderDTO> getTenders(@ModelAttribute SearchCriteria searchCriteria) {
 //        if (searchCriteria == null || searchCriteria.getCity())

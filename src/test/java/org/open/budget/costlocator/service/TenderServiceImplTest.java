@@ -16,6 +16,7 @@ import org.open.budget.costlocator.repository.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.eq;
@@ -81,10 +82,10 @@ public class TenderServiceImplTest {
         Street street = Street.builder().city(city).name("Зарічна").id(1L).index("12511").build();
         Address mockAddress = Address.builder().street(street).houseNumber("8").city(city).build();
         when(addressRepository.find(eq(street.getCity().getId()),eq(street.getId()), eq("8"))).thenReturn(Optional.of(mockAddress));
-        List<Address> addresses = tenderService.getAdddresses(addressAPI, Arrays.asList(street));
+        Set<Address> addresses = tenderService.getAdddresses(addressAPI, Arrays.asList(street));
         verify(addressRepository,times(1)).find(eq(street.getCity().getId()),eq(street.getId()), eq("8"));
         assertEquals(1, addresses.size());
-        Address address = addresses.get(0);
+        Address address = addresses.iterator().next();
         assertEquals(street, address.getStreet());
         assertEquals("8", address.getHouseNumber());
     }
@@ -102,14 +103,12 @@ public class TenderServiceImplTest {
         Street street = Street.builder().city(city).name("name").index("123").id(2L).build();
         Street mockStreet = Street.builder().index("N/A").name("N/A").city(city).id(3L).build();
         Address mockAddress = Address.builder().city(city).street(mockStreet).houseNumber("N/A").build();
-        when(streetRepository.find(eq(city), eq(mockStreet.getName()), eq(mockStreet.getIndex()))).thenReturn(Optional.empty());
-        when(streetRepository.save(eq(mockStreet))).thenReturn(mockStreet);
+        when(streetRepository.find(eq(city), eq(mockStreet.getName()), eq(mockStreet.getIndex()))).thenReturn(Optional.of(mockStreet));
         when(addressRepository.find(eq(city.getId()), eq(mockStreet.getId()), eq(mockAddress.getHouseNumber())))
                 .thenReturn(Optional.empty());
         when(addressRepository.save(eq(mockAddress))).thenReturn(mockAddress);
-        List<Address> addresses = tenderService.getAdddresses(addressAPI, Arrays.asList(street));
+        Set<Address> addresses = tenderService.getAdddresses(addressAPI, Arrays.asList(street));
         verify(addressRepository, times(1)).find(eq(33L), eq(3L), eq("N/A"));
-        verify(streetRepository, times(1)).save(mockStreet);
         assertEquals(1, addresses.size());
     }
 
