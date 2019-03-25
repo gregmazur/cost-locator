@@ -62,13 +62,15 @@ public class StreetReaderCsv {
         if (regionText.equals("київ")){
             regionText = regionText.replace("київ", "київська");
         }
-        Region region = Region.builder().name(regionText).build();
-        City city = City.builder().name(csvRecord[2].replaceAll("^(смт)|(с\\. )|(м\\. )|(с-ще )", "").trim()).build();
+        Region region = Region.builder().name(regionText).fullName(csvRecord[0]).build();
+        City city = City.builder().
+                name(csvRecord[2].replaceAll("^(смт)|(с\\. )|(м\\. )|(с-ще )", "").trim())
+                .fullName(csvRecord[2]).build();
         String index = csvRecord[3];
         String streetName = csvRecord[4].replaceAll("^(просп\\. )|(пл\\. )|(вул\\. )|(пров\\. )|(бульв\\. )|(вулиця )|" +
                 "(Вулиця)|(Проспект )|(Провулок )|(Площа )|(площа )|(тупік )|(Тупік )|(Бульвар )|(бульвар )|" +
                 "(Проїзд )|(проїзд )", "").trim();
-        Street street = Street.builder().name(streetName).index(index).build();
+        Street street = Street.builder().name(streetName).fullName(csvRecord[4]).index(index).build();
         return Optional.of(new Wrapper(region, city, street));
     }
 

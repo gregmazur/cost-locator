@@ -18,6 +18,8 @@ public class Street {
     private Long id;
     @Column(length = 60)
     private String name;
+    @Column(length = 60, name = "full_name")
+    private String fullName;
     @Column(length = 6, name = "p_index")
     private String index;
     @ManyToOne(fetch = FetchType.LAZY)

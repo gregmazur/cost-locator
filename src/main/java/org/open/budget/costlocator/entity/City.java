@@ -1,7 +1,9 @@
 package org.open.budget.costlocator.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,12 +13,16 @@ import java.util.Objects;
 @Table(name = "city", indexes = {@Index(unique = true, columnList = "fk_region,name")})
 @Getter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(length = 60)
     private String name;
+    @Column(length = 60, name = "full_name")
+    private String fullName;
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_region")
     private Region region;
@@ -24,17 +30,6 @@ public class City {
     private List<Street> streets;
     @OneToMany(mappedBy = "city")
     private List<Address> addresses;
-
-    public City(Long id, String name, Region region, List<Street> streets, List<Address> addresses) {
-        this.id = id;
-        this.name = name;
-        this.region = region;
-        this.streets = streets;
-        this.addresses = addresses;
-    }
-
-    public City() {
-    }
 
     @Override
     public boolean equals(Object o) {

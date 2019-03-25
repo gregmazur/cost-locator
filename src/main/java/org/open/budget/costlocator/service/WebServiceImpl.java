@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 import static org.springframework.data.domain.PageRequest.of;
 
 @Service
-@Transactional(readOnly = true)
 @CrossOrigin(origins = "http://localhost:4200")
 public class WebServiceImpl implements WebService {
 
@@ -38,12 +37,14 @@ public class WebServiceImpl implements WebService {
 
 
     @Override
+    @Transactional(readOnly = true)
     public Collection<RegionDTO> getAllRegions() {
         return regionRepository.findAll().stream().map(TenderMapperDTO.INSTANCE::convertToDto)
                 .collect(Collectors.toList());
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Collection<CityDTO> getCitiesByRegionId(Number regionId) {
         Optional<Region> region = regionRepository.findById(regionId.longValue());
         if (!region.isPresent())
@@ -52,6 +53,7 @@ public class WebServiceImpl implements WebService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Collection<StreetDTO> getStreetsByCityId(Number cityId) {
         Optional<City> city = cityRepository.findById(cityId.longValue());
         if (!city.isPresent())
@@ -60,6 +62,7 @@ public class WebServiceImpl implements WebService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Collection<AddressDTO> getAddressesByStreetId(Number streetId) {
         Optional<Street> street = streetRepository.findById(streetId.longValue());
         if (!street.isPresent())
@@ -68,22 +71,32 @@ public class WebServiceImpl implements WebService {
     }
 
     @Override
-    public Collection<TenderDTO> getTendersBySearchCriteria(SearchCriteria searchCriteria) {
-        Pageable pageable = of(0, 20);
+    @Transactional(readOnly = true)
+    public TenderSearchResultDTO getTendersBySearchCriteria(SearchCriteria searchCriteria) {
         List <Tender> tenders;
+        Pageable pageable;
+        Integer count;
+        boolean countNeeded = searchCriteria.isResultSizeNeeded();
+        if (searchCriteria.getPage() == null || searchCriteria.getSize() == null)
+            pageable = of(0, 20);
+        else
+            pageable = of(searchCriteria.getPage(), searchCriteria.getSize());
         Long address = searchCriteria.getAddress();
         Long street = searchCriteria.getStreet();
         Long city = searchCriteria.getCity();
         if (address != null) {
+            count = countNeeded ? tenderRepository.countFindByAddress(address) : null;
             tenders = tenderRepository.findByAddress(address, pageable);
         } else if (street != null) {
+            count = countNeeded ? tenderRepository.countFindByStreet(street) : null;
             tenders = tenderRepository.findByStreet(street, pageable);
         } else if (city != null) {
+            count = countNeeded ? tenderRepository.countFindByCity(city) : null;
             tenders = tenderRepository.findByCity(city, pageable);
         } else {
             throw new IllegalStateException("not able to find tenders without at least cityId");
         }
-        return tenders.stream()
-                .map(TenderMapperDTO.INSTANCE::convertToDto).collect(Collectors.toList());
+        return new TenderSearchResultDTO(tenders.stream()
+                .map(TenderMapperDTO.INSTANCE::convertToDto).collect(Collectors.toList()),  count);
     }
 }

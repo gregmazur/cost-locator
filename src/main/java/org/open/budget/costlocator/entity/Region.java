@@ -18,6 +18,8 @@ public class Region {
     private Long id;
     @Column(length = 20)
     private String name;
+    @Column(length = 20, name = "full_name")
+    private String fullName;
     @OneToMany(mappedBy = "region")
     private List<City> cities;
 }

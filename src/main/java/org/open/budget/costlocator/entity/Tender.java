@@ -43,7 +43,8 @@ public class Tender {
     @ManyToMany
     @JoinTable(name = "tender_addresses",
             joinColumns = @JoinColumn(name = "tender_id"),
-            inverseJoinColumns = @JoinColumn(name = "addresses_id")
+            inverseJoinColumns = @JoinColumn(name = "addresses_id"),
+            indexes = @Index(name = "TA_INDEX", unique = true, columnList = "tender_id, addresses_id")
     )
     private Set<Address> addresses;
 

@@ -50,25 +50,25 @@ public class TenderServiceImpl implements TenderService {
 
     @Override
     @Transactional
-    public void save(TenderAPI tenderAPI) {
+    public Tender save(TenderAPI tenderAPI) {
         if (tenderAPI.getStatus().startsWith("active") &&
                 (!tenderAPI.getProcurementMethod().equals("reporting") ||
                 !tenderAPI.getProcurementMethod().equals("belowThreshold"))) {
             log.warn("Tender is in active status {} will be saved to unsuccessful ", tenderAPI.getId());
             unsuccessfulItemRepository.save(new UnsuccessfulItem(tenderAPI.getId(), true));
-            return;
+            return null;
         }
         Tender tender = TenderMapperAPI.INSTANCE.tenderApiToTender(tenderAPI);
         saveAddresses(tenderAPI, tender);
         if (tender.getAddresses().isEmpty()) {
             log.warn("Could not find address for {} will be saved to unsuccessful ", tenderAPI.getId());
             unsuccessfulItemRepository.save(new UnsuccessfulItem(tenderAPI.getId(), false));
-            return;
+            return null;
         }
         saveTenderIssuer(tender);
         saveClassification(tender);
         saveTenderDetail(tender);
-        tenderRepository.save(tender);
+        return tenderRepository.save(tender);
     }
 
     private void saveAddresses(TenderAPI tenderAPI, Tender tender) {

@@ -140,8 +140,8 @@ public class Extractor {
             log.info("UNSUITABLE CLASSIFICATION id {}", tenderApi.getId());
             return;
         }
-        tenderService.save(tenderApi);
-        log.info("-----CREATED NEW TENDER----- {}", tenderApi.getId());
+        if (tenderService.save(tenderApi) != null)
+            log.info("-----CREATED NEW TENDER----- {}", tenderApi.getId());
     }
 
     private boolean isNeededClassification(TenderAPI tender) {

@@ -13,7 +13,7 @@ import java.util.Map;
 @Service
 public interface TenderService {
 
-    void save(TenderAPI tender);
+    Tender save(TenderAPI tender);
 
     String getLastListPath();
 

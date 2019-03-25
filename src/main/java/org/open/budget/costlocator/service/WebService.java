@@ -1,6 +1,7 @@
 package org.open.budget.costlocator.service;
 
 import org.open.budget.costlocator.dto.*;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -16,5 +17,5 @@ public interface WebService {
 
     Collection<AddressDTO> getAddressesByStreetId(Number streetId);
 
-    Collection<TenderDTO> getTendersBySearchCriteria(SearchCriteria searchCriteria);
+    TenderSearchResultDTO getTendersBySearchCriteria(SearchCriteria searchCriteria);
 }

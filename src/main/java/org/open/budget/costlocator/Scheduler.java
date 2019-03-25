@@ -23,7 +23,7 @@ public class Scheduler {
     @Autowired
     private TenderService tenderService;
 
-    @Scheduled(fixedDelay = 1000000)
+    @Scheduled(cron = "0 0 23 * * *")
     public void loadTenders() {
         log.warn("ATTENTION---STARTED TASK----------ATTENTION---------------ATTENTION---------------------");
         if (needToReadStreetsFile) {

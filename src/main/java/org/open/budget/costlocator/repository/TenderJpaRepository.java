@@ -12,25 +12,40 @@ import java.util.List;
 @Repository
 public interface TenderJpaRepository extends JpaRepository<Tender, Long> {
 
+    String whereQueryAddress = "id in (" +
+            "select t.id from tender t " +
+            "inner join tender_addresses ta on ta.tender_id=t.id " +
+            "where ta.addresses_id= :address)";
+
+    String whereQueryStreet = "id in (" +
+            "select t.id from tender t " +
+            "inner join tender_addresses ta on ta.tender_id=t.id " +
+            "inner join address a on ta.addresses_id=a.id " +
+            "where a.fk_street = :street)";
+
+    String whereQueryCity = "id in (" +
+            "select t.id from tender t " +
+            "inner join tender_addresses ta on ta.tender_id=t.id " +
+            "inner join address a on ta.addresses_id=a.id " +
+            "where a.fk_city = :city)";
+
     List<Tender> findByTitle(String name);
 
-    @Query(value = "select * from tender where id in (" +
-            "select t.id from tender t " +
-            "inner join tender_addresses ta on ta.tender_id=t.id " +
-            "where ta.addresses_id= :address)", nativeQuery = true)
+    @Query(value = "select * from tender where " + whereQueryAddress, nativeQuery = true)
     List<Tender> findByAddress(@Param("address") Long address, Pageable pageable);
 
-    @Query(value = "select * from tender where id in (" +
-            "select t.id from tender t " +
-            "inner join tender_addresses ta on ta.tender_id=t.id " +
-            "inner join address a on ta.addresses_id=a.id " +
-            "where a.fk_street = :street)", nativeQuery = true)
+    @Query(value = "select count(*) from tender where " + whereQueryAddress, nativeQuery = true)
+    Integer countFindByAddress(@Param("address") Long address);
+
+    @Query(value = "select * from tender where " + whereQueryStreet, nativeQuery = true)
     List<Tender> findByStreet(@Param("street") Long street, Pageable pageable);
 
-    @Query(value = "select * from tender where id in (" +
-            "select t.id from tender t " +
-            "inner join tender_addresses ta on ta.tender_id=t.id " +
-            "inner join address a on ta.addresses_id=a.id " +
-            "where a.fk_city = :city)", nativeQuery = true)
+    @Query(value = "select count(*) from tender where " + whereQueryStreet, nativeQuery = true)
+    Integer countFindByStreet(@Param("street") Long street);
+
+    @Query(value = "select * from tender where " + whereQueryCity, nativeQuery = true)
     List<Tender> findByCity(@Param("city") Long city, Pageable pageable);
+
+    @Query(value = "select count(id) from tender where " + whereQueryCity, nativeQuery = true)
+    Integer countFindByCity(@Param("city") Long city);
 }

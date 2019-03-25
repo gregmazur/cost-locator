@@ -4,10 +4,12 @@ import org.open.budget.costlocator.dto.*;
 import org.open.budget.costlocator.service.SearchCriteria;
 import org.open.budget.costlocator.service.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Collections;
+
+import static org.springframework.data.domain.PageRequest.of;
 
 @RestController
 public class MainController {
@@ -41,9 +43,10 @@ public class MainController {
 
     @PostMapping(value = "/search", consumes = "application/json")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Collection<TenderDTO> getTenders(@ModelAttribute SearchCriteria searchCriteria) {
+    public TenderSearchResultDTO getTenders(@RequestBody SearchCriteria searchCriteria) {
 //        if (searchCriteria == null || searchCriteria.getCity())
 //            return Collections.EMPTY_LIST;
+
         return webService.getTendersBySearchCriteria(searchCriteria);
     }
 }
