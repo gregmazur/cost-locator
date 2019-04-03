@@ -1,0 +1,420 @@
+{
+  "data": {
+    "procurementMethod": "limited",
+    "status": "complete",
+    "documents": [
+      {
+        "hash": "md5:1d7bdaf713e27fdb74a497b80e3613e3",
+        "format": "application/pkcs7-signature",
+        "url": "https://public.docs.openprocurement.org/get/853eb2103d734c789d9a913eb0eafb50?KeyID=52462340&Signature=FK4sjj1rdrKSEOd1vA0r6zWgLOGpesnesCaysc%2FEfr3XclNH%252Bo9QicpaPXc1xzXC9MDV2H18E2zIHMcfpiSFBA%253D%253D",
+        "title": "sign.p7s",
+        "documentOf": "tender",
+        "datePublished": "2018-12-27T16:52:57.053129+02:00",
+        "dateModified": "2018-12-27T16:52:57.053151+02:00",
+        "id": "b9db84ba9fda4db9965fa6cde4a50f43"
+      }
+    ],
+    "mainProcurementCategory": "services",
+    "description": "Послуги з централізованого водовідведення (каналізаційні послуги)",
+    "title": "Послуги з відведення стічних вод (каналізаційні послуги)",
+    "contracts": [
+      {
+        "status": "active",
+        "documents": [
+          {
+            "hash": "md5:fddeef050bb78d6318b7c081c41a94f7",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/70a48bb764214dbe99c5bb52ae6ac072?KeyID=52462340&Signature=4O9xj3gDXsxYz8oWK4GyOcIcg8Q0nbwnpMyXqvcysgbRtE%2FqSzyyZAEtzzzQX3eO2d5i8A4l1lkKf8KfwQT0Cg%253D%253D",
+            "title": "IMG-eb962cef45deda26bee8a745d4a226a6-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:26.036091+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:26.036112+02:00",
+            "id": "a9e8e6bb563042188cb3a97faf7c9b20"
+          },
+          {
+            "hash": "md5:4b34cc6d765ad377c099960d90c70379",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/b1a8d9df4d2743e6b49cab55e0ad2d98?KeyID=52462340&Signature=0695MgbZuY5%2Fj8VBg00V%252BE4UX6335rGew6dW13wWHXpRwtVmq%252BaanGIVo87IzMcPbMCvdWYeLv3TkYPbUwSGBA%253D%253D",
+            "title": "IMG-dfab5f8bfe22f794eb54e4bbd2807e58-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:28.700571+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:28.700592+02:00",
+            "id": "87f825664e9d43ce988f785699578f9e"
+          },
+          {
+            "hash": "md5:d062c494a4956dfddfc04e63730f055a",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/ff715606a5c9462f8a61e4313ffb45b7?KeyID=52462340&Signature=LoQeyObQRwDwkvwbneHowPpdOLAp3PLVUVhHjzd6dXsRrkbW3O7Tgnrc1dIBLgTlkF3OnV0ycIry0pcL9D2LDA%253D%253D",
+            "title": "IMG-cf52970ad7529b8cd959507ca73c827d-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:30.261170+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:30.261190+02:00",
+            "id": "01017bef8ff546be892f181f1f400442"
+          },
+          {
+            "hash": "md5:9af15230fec3f9bb6528d73b6983e70e",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/3414faf9aaca4912be70c31d80ea162f?KeyID=52462340&Signature=uvYZfgMlG9cNNf5Wiww3m2gDR1RZ838pkg%2F%2FmcW3Uvb3VHAn%2FUJN2bsEsShr0IPiivBYmhWTqfDM0FvlIWLcBQ%253D%253D",
+            "title": "IMG-b48708e1a3d38fcbf4f0b0d10bc7ae4d-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:31.889686+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:31.889706+02:00",
+            "id": "1d688d4488584b6a87535f4c12a80201"
+          },
+          {
+            "hash": "md5:d1182e00cf84886dc4c6b6142dade89d",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/87bf7ae92840490591e2b0fa41cc84c7?KeyID=52462340&Signature=wYM0OwNtA01yR9eT8BIT2SrzHUwITs4NVCxOalqnbcLlvMTO05SLpkSjiOpDjZAqaTiI75%252BgeuDcTMnG2IX%2FAg%253D%253D",
+            "title": "IMG-b191aa445a7488e4fa23a908b7ccb35a-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:33.710919+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:33.710940+02:00",
+            "id": "8af13782968b40a6a7590ed7ab0e10da"
+          },
+          {
+            "hash": "md5:20d773da4f03818865124eb0b259487c",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/9d73b43567cf4fa3b36c49d49f493c85?KeyID=52462340&Signature=H0959Q8%252Bf%252B9upub%2FcAIJULXrKJQylNjSdeJl1ZHJjsPD%252BgRWdjrhjvt4MODGu1bFjvUV4shyyAoA%252BoJZM7VbBg%253D%253D",
+            "title": "IMG-ac834b86eaf37f74a8bd872a4ead3947-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:35.318111+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:35.318132+02:00",
+            "id": "021f6ef6f4c44b8f9fc83e3269c1be5b"
+          },
+          {
+            "hash": "md5:81d7a06ad9d16e91d572c358454e4a0d",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/da2c3853664a41eab526250930bc1b54?KeyID=52462340&Signature=JWKtQQTFiRXEnyYtooMUCEEpzXZ6Px2jcK4yQ2XdFjUB8tZghaLhbtG2QmnSMHjP28y%252B%252BYIfINzNGIDmwCS%2FDQ%253D%253D",
+            "title": "IMG-332874df56bc123ce399347cb571cb97-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:37.422099+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:37.422121+02:00",
+            "id": "4973945f9464493e93958a6164af0059"
+          },
+          {
+            "hash": "md5:85bee4ca7bc9b9b1d4b1272f63759015",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/301be349c54c4d9c89cb2b6dac380fb0?KeyID=52462340&Signature=t5XYMggoEJ8NaDa26L96ukQPzsMc3QEbmlv2ja5rluNbbwE2tpsp1xGLzZLt1y5PUUcdIhC6RFE%2FntNBCiOcBQ%253D%253D",
+            "title": "IMG-41350ea6e200be8fa56fe8167f317eac-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:38.656795+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:38.656814+02:00",
+            "id": "47503e108e144ce5b451b78bd1f7796f"
+          },
+          {
+            "hash": "md5:6f3d8ad5870ebbe0c4d0fa714ae33708",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/244fcde59bf34309a600815f594d897a?KeyID=52462340&Signature=p65Ei4i787uL6dHMfwupQ%2FrPO6ZVxyJQuDofNc6xVCHceZY3Dn0oKDs%2FdVpPe6gmPMqQDGj21THBO9B1SoauAQ%253D%253D",
+            "title": "IMG-7217b86e4446173e1e003586883b748e-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:40.502845+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:40.502865+02:00",
+            "id": "262fa4c10daf44d5bf14d30dcb9ef397"
+          },
+          {
+            "hash": "md5:fbddeb094b4171f7b888cbb386501c6f",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/65eaa9a44876464785ebd79c035797ac?KeyID=52462340&Signature=4xiLFtdnsR6hd%252Bsc7HJOjqYgHY8kJ1v991%252B%2FK%2FWBNvpZvAtxiT4vcBu%252BqnYrUR4uFjR8QDO2mAoFy7yvh5IQDA%253D%253D",
+            "title": "IMG-450a2d42ffa779f32a7bc4d0848935f2-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:41.864028+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:41.864048+02:00",
+            "id": "84cc291505cd424eb7fbe3f2a3e5726b"
+          },
+          {
+            "hash": "md5:4ee4dfd79ed29e0c09f17dcfd18a2b92",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/e41ea7e445914c77867f5cd6ad5984a8?KeyID=52462340&Signature=8nf%252BINewJs4FYMlOiN8mLa7HQhyMQR7IsAenrVi3PfWybrRnpaRoDI8RSvuEXS0zOaOZJ2%2FEoXbByK%252BCrvKVDQ%253D%253D",
+            "title": "IMG-232e2028b8ea6eb23360dd871dd1fae6-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:43.139763+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:43.139784+02:00",
+            "id": "247a640aa05c4092a61498c72af652ce"
+          },
+          {
+            "hash": "md5:6c71b9c02f80a14facfff92fd5a0236b",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/7a086ec74a05441bbd4d869ef1f1e1b2?KeyID=52462340&Signature=RzwtY1jOzXPOvuUiNMYPcU7%2Fmq4aKoEjclm7bp2YMsQKUddt%2Fj7XhdTu%2Ff0MGl2ZyjTSD3fbqbs9mnnF%252BtThCg%253D%253D",
+            "title": "IMG-89c38fee2491df25be8f4817daa4329b-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:44.349836+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:44.349857+02:00",
+            "id": "4a76b9d9b0954a8b9ad42d169c39b92d"
+          },
+          {
+            "hash": "md5:c8d9e864e71bd71becb2235324714f9b",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/9643a26f3b9c4a2faebcb16dadbecfa6?KeyID=52462340&Signature=Em7XQ%2FzcNzt1W0vLRgDdPOZ2qCfLE%252BjOZ8LQLPq2jVtH%252Bb0TSk7ep%252Bm5cgC3tP5xVg47RgcVu6GliIVreUfBAw%253D%253D",
+            "title": "IMG-13a64479c7d5522e59b41e6ac8023825-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:45.744544+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:45.744565+02:00",
+            "id": "64c47ef5791346ec9797668a7efd42a8"
+          },
+          {
+            "hash": "md5:17a823d9f18f90b316171c1a81d987df",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/c9447b2c6bec49648978657700537913?KeyID=52462340&Signature=u%2FQEa8jAHrd6%2FP7yknuu4VwHwaXMCxxmqUVISZO5RwzTWIqYhPckqV7MuHZe4DQ90L2cn40r6O303qJFQaoBCg%253D%253D",
+            "title": "IMG-7bb634c656ba18e9b13d44b66309a99d-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:47.378297+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:47.378318+02:00",
+            "id": "82939669811146a099f019517cbf1366"
+          },
+          {
+            "hash": "md5:5a3ff50453f99a3e7f4bcd07b6c485ae",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/899418498aa444f694258257edd0c610?KeyID=52462340&Signature=yF2smarJKd7xuh%252BaE5DHBTE8kv9Vfj6HKptXMz%2F6Md2swl3U5L5yEKE6lK%252Btc8lkOfFZpLLCIeyHFkCl3xkqAQ%253D%253D",
+            "title": "IMG-5f02f61401ade51b2c0c078640afbc57-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:48.913534+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:48.913555+02:00",
+            "id": "94090f151bd44ee09b781a29effd7f3b"
+          },
+          {
+            "hash": "md5:62a86ed421169e8fbe753806c620b051",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/f5c2addbc19a48aeb510ab5c521dcf3a?KeyID=52462340&Signature=2nT3UtKSYBGKNwc2H6H%2FZhc%252B27wReZURRP4BNhXm2bdytM3pAObpkWoh6dC3ab1sSlNnnioPpoURVeN79GpdDw%253D%253D",
+            "title": "IMG-4cc1e5b683f48092a429bfa50b50ba99-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:50.135004+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:50.135042+02:00",
+            "id": "1f1a2904789d4282817a0f1dd124cd0c"
+          },
+          {
+            "hash": "md5:c1fae5f6d760532f0e8e08078d4175cc",
+            "format": "image/jpeg",
+            "url": "https://public.docs.openprocurement.org/get/fcdd1d5ed9cc4ba3986e9fe6c89cbebb?KeyID=52462340&Signature=1%2FV6wXwvE4nJj7fWxhBg3fgABhp%2FGjHS93gdII4vnEkZFhlS%252BK70HSl%252B2v7t%252Bo5fMsxqThokuDe7mdxD9d%252BmCA%253D%253D",
+            "title": "IMG-3b36145f9e5635059d01663aeb251da0-V.jpg",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:12:51.610145+02:00",
+            "documentType": "contractSigned",
+            "dateModified": "2019-01-11T21:12:51.610182+02:00",
+            "id": "c465d8dee55d4144a05d4732540321ce"
+          },
+          {
+            "hash": "md5:bd7f36bed3efa0467d0034179040172d",
+            "format": "application/pkcs7-signature",
+            "url": "https://public.docs.openprocurement.org/get/f095f0003256452080fb7cee66441216?KeyID=52462340&Signature=kqg5VfaaVoOB%252BqJZR%2Fyu5l6sSCf6gDuvsfXaQjB14PNCqJc5xluWWJJdCrcCaK%2FDyalprBg%2Fqq1p4t%252BQ2LS8BQ%253D%253D",
+            "title": "sign.p7s",
+            "documentOf": "tender",
+            "datePublished": "2019-01-11T21:13:22.511463+02:00",
+            "dateModified": "2019-01-11T21:13:22.511483+02:00",
+            "id": "5816dd7641564cc4b8fc5dd6d9071dbb"
+          }
+        ],
+        "items": [
+          {
+            "description": "Послуги з централізованого водовідведення (каналізаційні послуги)",
+            "classification": {
+              "scheme": "ДК021",
+              "description": "Послуги з відведення стічних вод",
+              "id": "90430000-0"
+            },
+            "deliveryAddress": {
+              "postalCode": "65000",
+              "countryName": "Україна",
+              "streetAddress": "заклади освіти Приморського району м. Одеси",
+              "region": "Одеська",
+              "locality": "Одеса"
+            },
+            "deliveryDate": {
+              "endDate": "2019-12-31T00:00:00+02:00"
+            },
+            "id": "493d14428d93a1c2647cfc5cbdef9a97",
+            "unit": {
+              "code": "MTQ",
+              "name": "метри кубічні"
+            },
+            "quantity": 198000
+          }
+        ],
+        "suppliers": [
+          {
+            "contactPoint": {
+              "name": "Туріков О.О.",
+              "telephone": "7055601"
+            },
+            "identifier": {
+              "scheme": "UA-EDR",
+              "id": "26472133",
+              "legalName": "Товариство з обмеженою відповідальністю «Інфокс» Філія «Інфоксводоканал»"
+            },
+            "name": "Товариство з обмеженою відповідальністю «Інфокс» Філія «Інфоксводоканал»",
+            "address": {
+              "postalCode": "65110",
+              "countryName": "Україна",
+              "streetAddress": "вул. Басейна, 5",
+              "region": "Одеська",
+              "locality": "Одеса"
+            }
+          }
+        ],
+        "contractNumber": "8/19с",
+        "period": {
+          "startDate": "2019-01-11T16:13:56+02:00",
+          "endDate": "2019-12-31T21:13:56+02:00"
+        },
+        "dateSigned": "2019-01-11T16:13:56+02:00",
+        "value": {
+          "currency": "UAH",
+          "amount": 2005344,
+          "valueAddedTaxIncluded": true
+        },
+        "date": "2019-01-11T21:14:23.896964+02:00",
+        "awardID": "1c4943fe7b2c4e84a3c9d51d3592e2d0",
+        "id": "55eb77c340964ce7b46989352db8fb1d",
+        "contractID": "UA-2018-12-27-001810-c-c1"
+      }
+    ],
+    "items": [
+      {
+        "description": "Послуги з централізованого водовідведення (каналізаційні послуги)",
+        "classification": {
+          "scheme": "ДК021",
+          "description": "Послуги з відведення стічних вод",
+          "id": "90430000-0"
+        },
+        "deliveryAddress": {
+          "postalCode": "65000",
+          "countryName": "Україна",
+          "streetAddress": "заклади освіти Приморського району м. Одеси",
+          "region": "Одеська",
+          "locality": "Одеса"
+        },
+        "deliveryDate": {
+          "endDate": "2019-12-31T00:00:00+02:00"
+        },
+        "id": "493d14428d93a1c2647cfc5cbdef9a97",
+        "unit": {
+          "code": "MTQ",
+          "name": "метри кубічні"
+        },
+        "quantity": 198000
+      }
+    ],
+    "procurementMethodType": "negotiation.quick",
+    "value": {
+      "currency": "UAH",
+      "amount": 2005344,
+      "valueAddedTaxIncluded": true
+    },
+    "id": "007f1bf4f5f5481393463dc7b28d2024",
+    "owner": "newtend.com",
+    "awards": [
+      {
+        "status": "active",
+        "documents": [
+          {
+            "hash": "md5:78aff6e6a7a2b55fa382312ed8b490a3",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/621c39777b884eba96442aaeaf46eece?KeyID=52462340&Signature=t6k49G2Ga9brVmKE9zVhp%2FM%252BwdO0ppO0wl6FB3f7pG%252BELhUAftD2RY7aA0rHoMWLB0HQcySAi1h2jkc9RmV8Bw%253D%253D",
+            "title": "SCAN0026.PDF",
+            "documentOf": "tender",
+            "datePublished": "2018-12-27T16:51:41.322935+02:00",
+            "dateModified": "2018-12-27T16:51:41.322972+02:00",
+            "id": "b18cc54ca17040d48307de291ff76f7b"
+          },
+          {
+            "hash": "md5:7107a624b55f5be43b737e3882a0a065",
+            "format": "application/pdf",
+            "url": "https://public.docs.openprocurement.org/get/548356c9e6a14765a497a3463b5ff3ca?KeyID=52462340&Signature=9eLl9NG4RdiTmiodNEv27xRLfQIKNb39ib2l8s%252BTYwPrJ7EtbfFqk7Kg5sdB9q3JuvuLO1j3uoF8oadrKTA1BQ%253D%253D",
+            "title": "SCAN0030.PDF",
+            "documentOf": "tender",
+            "datePublished": "2018-12-27T16:51:44.765899+02:00",
+            "dateModified": "2018-12-27T16:51:44.765922+02:00",
+            "id": "1ac674522ef14c908316d9f5ea967088"
+          },
+          {
+            "hash": "md5:a50f70428a783b9fdab386b7d15423c9",
+            "format": "application/pkcs7-signature",
+            "url": "https://public.docs.openprocurement.org/get/4820f6fbb2c9481da0cee4fb8cf3419e?KeyID=52462340&Signature=Ki%2FIECopF9h%252BEOi6gWSf7At6Ch5mtMgcLyPNRSpZ5w7xaVhWubDy%252B0uG9XjDQrci5TSklGLEC6wYwr0ivfCZBw%253D%253D",
+            "title": "sign.p7s",
+            "documentOf": "tender",
+            "datePublished": "2018-12-27T16:52:37.868757+02:00",
+            "dateModified": "2018-12-27T16:52:37.868780+02:00",
+            "id": "370c44b5f74d46c0992af8901eced3bd"
+          }
+        ],
+        "description": "",
+        "title": "",
+        "suppliers": [
+          {
+            "contactPoint": {
+              "name": "Туріков О.О.",
+              "telephone": "7055601"
+            },
+            "identifier": {
+              "scheme": "UA-EDR",
+              "id": "26472133",
+              "legalName": "Товариство з обмеженою відповідальністю «Інфокс» Філія «Інфоксводоканал»"
+            },
+            "name": "Товариство з обмеженою відповідальністю «Інфокс» Філія «Інфоксводоканал»",
+            "address": {
+              "postalCode": "65110",
+              "countryName": "Україна",
+              "streetAddress": "вул. Басейна, 5",
+              "region": "Одеська",
+              "locality": "Одеса"
+            }
+          }
+        ],
+        "complaintPeriod": {
+          "startDate": "2018-12-27T16:49:23.435361+02:00",
+          "endDate": "2019-01-02T00:00:00+02:00"
+        },
+        "value": {
+          "currency": "UAH",
+          "amount": 2005344,
+          "valueAddedTaxIncluded": true
+        },
+        "subcontractingDetails": "",
+        "qualified": true,
+        "date": "2018-12-27T16:52:39.553297+02:00",
+        "id": "1c4943fe7b2c4e84a3c9d51d3592e2d0"
+      }
+    ],
+    "tenderID": "UA-2018-12-27-001810-c",
+    "date": "2019-01-11T21:14:23.896964+02:00",
+    "cause": "noCompetition",
+    "dateModified": "2019-01-11T21:14:23.896964+02:00",
+    "causeDescription": "відповідно до Закону України «Про питну воду та питне водопостачання» (зі змінами), «Правил користування системами централізованого комунального водопостачання та водовідведення в населених пунктах України», Закону України «Про житлово-комунальні послуги» (зі змінами) – ТОВ «Інфокс» Філія «Інфоксводоканал» здійснює централізоване водовідведення всім категоріям споживачів, в тому числі установам і організаціям, що фінансуються з державного і місцевих бюджетів, та суб'єктам господарювання. Також згідно з частиною 1 статті 5 Закону України «Про природні монополії» та Зведеного переліку суб’єктів природних монополій, розміщеного на офіційному веб-сайті Антимонопольного комітету України (http://www.amc.gov.ua) на виконання розпорядження Антимонопольного комітету України №874-р від 28.11.2012 «Про затвердження порядку складання та ведення зведеного переліку суб’єктів природних монополій», Товариство з обмеженою відповідальністю «Інфокс» відноситься до суб’єктів природних монополій Одеської області, яке надає послуги з централізованого водовідведення населенню, бюджетним і виробничим організаціям (установам) міста Одеси",
+    "procuringEntity": {
+      "contactPoint": {
+        "telephone": "+380487228346",
+        "name": "Мирослава Коленда",
+        "email": "buhgalter134@gmail.com"
+      },
+      "identifier": {
+        "scheme": "UA-EDR",
+        "id": "40703130",
+        "legalName": "Комунальна установа \"Центр фінансування та господарської діяльності закладів та установ системи освіти Приморського району м. Одеси\""
+      },
+      "name": "Комунальна установа \"Центр фінансування та господарської діяльності закладів та установ системи освіти Приморського району м. Одеси\"",
+      "kind": "general",
+      "address": {
+        "postalCode": "65039",
+        "countryName": "Україна",
+        "streetAddress": "вул. Канатна, буд.134",
+        "region": "Одеська область",
+        "locality": "Одеса"
+      }
+    }
+  }
+}
