@@ -26,9 +26,9 @@ public class City {
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_region")
     private Region region;
-    @OneToMany(mappedBy = "city")
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
     private List<Street> streets;
-    @OneToMany(mappedBy = "city")
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
     private List<Address> addresses;
 
     @Override

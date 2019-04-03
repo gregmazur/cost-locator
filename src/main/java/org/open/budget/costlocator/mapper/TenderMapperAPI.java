@@ -36,7 +36,7 @@ public interface TenderMapperAPI {
                 .scheme(tenderIssuerAPI.getIdentifier().getScheme()).build();
         TenderDetail tenderDetail = TenderDetail.builder()
                 .deliveryDate(deliveryDateAPIToDeliveryDate(item.getDeliveryDateAPI())).id(item.getItemId())
-                .quantity(item.getQuantity().longValue()).awardCriteria(tenderAPI.getAwardCriteria()).description(item.getItemDescription())
+                .quantity(item.getQuantity() != null ? item.getQuantity().longValue() : null).awardCriteria(tenderAPI.getAwardCriteria()).description(item.getItemDescription())
                 .unit(unitApiToUnit(item.getUnit())).procurementMethodType(tenderAPI.getProcurementMethodType())
                 .submissionMethod(tenderAPI.getSubmissionMethod())
                 .value(valueApiToValue(valueAPI)).build();

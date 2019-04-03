@@ -56,9 +56,9 @@ public class StreetServiceImpl implements StreetService {
     }
 
     Street saveIfNeeded(Street street, City city){
-        Optional<Street> streetFromDB = streetRepository.find(city, street.getName(), street.getIndex());
+        Optional<Street> streetFromDB = streetRepository.find(city, street.getName(), street.getFullName(), street.getIndex());
         if (!streetFromDB.isPresent()){
-            street = Street.builder().name(street.getName()).index(street.getIndex()).city(city).build();
+            street = Street.builder().name(street.getName()).fullName(street.getFullName()).index(street.getIndex()).city(city).build();
             return streetRepository.save(street);
         }
         return streetFromDB.get();

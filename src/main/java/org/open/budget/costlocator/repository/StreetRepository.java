@@ -3,8 +3,6 @@ package org.open.budget.costlocator.repository;
 import org.open.budget.costlocator.entity.City;
 import org.open.budget.costlocator.entity.Region;
 import org.open.budget.costlocator.entity.Street;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,8 +17,10 @@ public interface StreetRepository extends JpaRepository<Street, Long> {
 
     List<Street> findByIndex(String index);
 
-    @Query("select s from Street s where s.city.id = :#{#city.id} and s.name = :name and s.index = :index")
-    Optional<Street> find(@Param("city") City city, @Param("name") String name, @Param("index") String index);
+    @Query("select s from Street s where s.city.id = :#{#city.id} and s.name = :name " +
+            "and s.fullName = :fullName and s.index = :index")
+    Optional<Street> find(@Param("city") City city, @Param("name") String name, @Param("fullName") String fullName,
+                          @Param("index") String index);
 
     @Query(value = "select * from street s " +
             "inner join city c on c.id=s.fk_city " +

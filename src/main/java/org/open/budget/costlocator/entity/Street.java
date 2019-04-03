@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "street", indexes = {@Index(unique = true, columnList = "fk_city,name,p_index")})
+@Table(name = "street", indexes = {@Index(unique = true, columnList = "fk_city,name,full_name,p_index"),
+        @Index(unique = true, columnList = "p_index")})
 @Getter
 @Builder
 @EqualsAndHashCode(of = {"id"})
@@ -25,7 +26,7 @@ public class Street {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_city")
     private City city;
-    @OneToMany(mappedBy = "street")
+    @OneToMany(mappedBy = "street", fetch = FetchType.LAZY)
     private List<Address> addresses;
 
 }

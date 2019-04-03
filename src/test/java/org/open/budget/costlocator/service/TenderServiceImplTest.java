@@ -6,19 +6,18 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.open.budget.costlocator.entity.Address;
 import org.open.budget.costlocator.api.AddressAPI;
+import org.open.budget.costlocator.entity.Address;
 import org.open.budget.costlocator.entity.City;
 import org.open.budget.costlocator.entity.Region;
 import org.open.budget.costlocator.entity.Street;
 import org.open.budget.costlocator.repository.*;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
@@ -77,9 +76,9 @@ public class TenderServiceImplTest {
                 .locality("с. Кам'яний Брід  ")
                 .postalCode("12511")
                 .region("Житомирська область").build();
-        Region region = Region.builder().name("житомирська").build();
+        Region region = Region.builder().name("Житомирська").build();
         City city = City.builder().name("Кам'яний Брід").region(region).id(1L).build();
-        Street street = Street.builder().city(city).name("Зарічна").id(1L).index("12511").build();
+        Street street = Street.builder().city(city).name("Зарічна").fullName("вул. Зарічна").id(1L).index("12511").build();
         Address mockAddress = Address.builder().street(street).houseNumber("8").city(city).build();
         when(addressRepository.find(eq(street.getCity().getId()),eq(street.getId()), eq("8"))).thenReturn(Optional.of(mockAddress));
         Set<Address> addresses = tenderService.getAdddresses(addressAPI, Arrays.asList(street));
@@ -91,7 +90,7 @@ public class TenderServiceImplTest {
     }
 
     @Test
-    public void getAddressesWithoutStreetName_shouldPass() {
+    public void getAddressWithoutStreetNameWithExistingNAaddress_shouldPass() {
         AddressAPI addressAPI = AddressAPI.builder()
                 .streetAddress("Місце надання Послуг - територія  Замовника: ВПК-1, ВПК-2, ВПК-3 ДП «ІЗМ МТП».")
                 .countryName("Україна")
@@ -101,14 +100,14 @@ public class TenderServiceImplTest {
         Region region = Region.builder().name("одеська").build();
         City city = City.builder().name("Ізмаїл").region(region).id(33L).build();
         Street street = Street.builder().city(city).name("name").index("123").id(2L).build();
-        Street mockStreet = Street.builder().index("N/A").name("N/A").city(city).id(3L).build();
-        Address mockAddress = Address.builder().city(city).street(mockStreet).houseNumber("N/A").build();
-        when(streetRepository.find(eq(city), eq(mockStreet.getName()), eq(mockStreet.getIndex()))).thenReturn(Optional.of(mockStreet));
+        Street mockStreet = Street.builder().index("n/a").name("n/a").fullName("n/a").city(city).id(3L).build();
+        Address mockAddress = Address.builder().city(city).street(mockStreet).houseNumber("n/a").build();
+        when(streetRepository.find(eq(city), eq(mockStreet.getName()), eq(mockStreet.getName()), eq(mockStreet.getIndex()))).thenReturn(Optional.of(mockStreet));
         when(addressRepository.find(eq(city.getId()), eq(mockStreet.getId()), eq(mockAddress.getHouseNumber())))
                 .thenReturn(Optional.empty());
         when(addressRepository.save(eq(mockAddress))).thenReturn(mockAddress);
         Set<Address> addresses = tenderService.getAdddresses(addressAPI, Arrays.asList(street));
-        verify(addressRepository, times(1)).find(eq(33L), eq(3L), eq("N/A"));
+        verify(addressRepository, times(1)).find(eq(33L), eq(3L), eq("n/a"));
         assertEquals(1, addresses.size());
     }
 
@@ -128,4 +127,15 @@ public class TenderServiceImplTest {
         assertEquals("00012345", tenderService.getCorrectIssuerID("12345"));
         assertEquals("00012345", tenderService.getCorrectIssuerID("0000012345"));
     }
+
+//    public void deliveryAddressShouldBeSet() throws IOException {
+//        GsonBuilder gsonBuilder = new GsonBuilder();
+//        Gson gson = gsonBuilder.create();
+//        TenderWrapper tenderWrapper;
+//        try(Reader reader = new InputStreamReader(
+//                GsonTest.class.getResourceAsStream("/TenderWrapper2.json"))){
+//            tenderWrapper = gson.fromJson(reader, TenderWrapper.class);
+//        }
+//
+//    }
 }

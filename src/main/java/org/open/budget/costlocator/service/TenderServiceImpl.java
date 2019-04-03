@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.text.similarity.LevenshteinDistance;
 import org.open.budget.costlocator.api.AddressAPI;
 import org.open.budget.costlocator.api.TenderAPI;
 import org.open.budget.costlocator.entity.*;
@@ -13,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 import java.util.*;
 import java.util.function.Function;
@@ -53,7 +53,7 @@ public class TenderServiceImpl implements TenderService {
     public Tender save(TenderAPI tenderAPI) {
         if (tenderAPI.getStatus().startsWith("active") &&
                 (!tenderAPI.getProcurementMethod().equals("reporting") ||
-                !tenderAPI.getProcurementMethod().equals("belowThreshold"))) {
+                        !tenderAPI.getProcurementMethod().equals("belowThreshold"))) {
             log.warn("Tender is in active status {} will be saved to unsuccessful ", tenderAPI.getId());
             unsuccessfulItemRepository.save(new UnsuccessfulItem(tenderAPI.getId(), true));
             return null;
@@ -97,12 +97,12 @@ public class TenderServiceImpl implements TenderService {
     }
 
     @Cacheable("streetsByIndex")
-    Collection<Street> getStreetsByIndex(String index){
+    Collection<Street> getStreetsByIndex(String index) {
         return streetRepository.findByIndex(index);
     }
 
     @Cacheable("streetsByRegion")
-    Collection<Street> getStreetsOfRegion(Region region){
+    Collection<Street> getStreetsOfRegion(Region region) {
         return streetRepository.findByRegion(region);
     }
 
@@ -115,7 +115,7 @@ public class TenderServiceImpl implements TenderService {
     }
 
     @Cacheable("regions")
-    Collection<Region> getRegions(){
+    Collection<Region> getRegions() {
         return regionRepository.findAll();
     }
 
@@ -143,17 +143,18 @@ public class TenderServiceImpl implements TenderService {
             Address.AddressBuilder addressBuilder = null;
             for (int i = 0; i < splitedByComma.length; i++) {
                 String splitedByCommaText = splitedByComma[i];
-                Optional<Street> foundStreet = potentialStreets.stream().filter(s -> splitedByCommaText.contains(s.getName())).findFirst();
+                Optional<Street> foundStreet = findStreet(splitedByCommaText, potentialStreets);
+
                 if (foundStreet.isPresent()) {
                     if (addressBuilder != null)
-                        addresses.add(saveAddressIfNeeded(addressBuilder.houseNumber("N/A").build()));
+                        addresses.add(saveAddressIfNeeded(addressBuilder.houseNumber("n/a").build()));
 
                     addressBuilder = Address.builder();
 
                     addressBuilder.street(foundStreet.get());
                     addressBuilder.city(foundStreet.get().getCity());
                     if (i == splitedByComma.length - 1) {
-                        addresses.add(saveAddressIfNeeded(addressBuilder.houseNumber("N/A").build()));
+                        addresses.add(saveAddressIfNeeded(addressBuilder.houseNumber("n/a").build()));
                     }
                 } else {
                     if (addressBuilder != null) {
@@ -172,12 +173,32 @@ public class TenderServiceImpl implements TenderService {
             })).filter(o -> o.isPresent()).map(Optional::get).collect(Collectors.toSet());
 
             for (City city : foundCities) {
-                Street street = saveIfNeeded(Street.builder().city(city).index("N/A").name("N/A").build(), city);
-                Address.AddressBuilder addressBuilder = Address.builder().city(city).street(street).houseNumber("N/A");
+                Street street = saveIfNeeded(Street.builder().city(city).index("n/a").name("n/a").fullName("n/a").build(), city);
+                Address.AddressBuilder addressBuilder = Address.builder().city(city).street(street).houseNumber("n/a");
                 addresses.add(saveAddressIfNeeded(addressBuilder.build()));
             }
         }
         return addresses;
+    }
+
+    Optional<Street> findStreet(String splitedByCommaText, Collection<Street> potentialStreets) {
+        Street foundStreet = null;
+        splitedByCommaText = splitedByCommaText.toLowerCase();
+        for (Street iterStreet : potentialStreets) {
+            if (splitedByCommaText.contains(iterStreet.getName().toLowerCase())) {
+                foundStreet = iterStreet;
+                if (isSimillar(splitedByCommaText, iterStreet.getFullName())) {
+                    return Optional.of(foundStreet);
+                }
+            }
+        }
+        return Optional.ofNullable(foundStreet);
+    }
+
+    boolean isSimillar(String left, String right) {
+        float difference = LevenshteinDistance.getDefaultInstance()
+                .apply(left.toLowerCase(), right.toLowerCase());
+        return ((((float) left.length()) - difference) / ((float) left.length()) * 100) > 75;
     }
 
     Address saveAddressIfNeeded(Address address) {
@@ -201,11 +222,11 @@ public class TenderServiceImpl implements TenderService {
 
     String getValidHouseNumber(String text) {
         String[] splited = text.trim().split(" ");
-        return splited[0];
+        return splited[0].toLowerCase();
     }
 
     Street saveIfNeeded(Street street, City city) {
-        Optional<Street> streetFromDB = streetRepository.find(city, street.getName(), street.getIndex());
+        Optional<Street> streetFromDB = streetRepository.find(city, street.getName(), street.getFullName(), street.getIndex());
         if (!streetFromDB.isPresent()) {
             street = Street.builder().name(street.getName()).index(street.getIndex()).city(city).build();
             return streetRepository.save(street);
@@ -228,8 +249,8 @@ public class TenderServiceImpl implements TenderService {
         if (text.length() == 8)
             return text;
         String result = null;
-        for (int i = 0; i < text.length(); i++){
-            if (text.charAt(i) != '0'){
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) != '0') {
                 result = text.substring(i);
                 break;
             }
