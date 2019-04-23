@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "address", indexes = {@Index(name = "STREET_INDEX", unique = true, columnList = "fk_city, fk_street, house_number")})
+@Table(name = "address", indexes = {@Index(name = "ADDRESS_INDEX", unique = true, columnList = "fk_city, fk_street, house_number")})
 @Getter
 @Builder
 @EqualsAndHashCode(of = {"id"})

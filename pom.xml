@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>org.open.budget</groupId>
 	<artifactId>cost-locator</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>cost-locator</name>
 
 	<properties>

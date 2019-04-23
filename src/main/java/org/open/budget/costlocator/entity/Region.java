@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "region", indexes = {@Index(unique = true, columnList = "name")})
+@Table(name = "region", indexes = {@Index(name = "REGION_NAME", unique = true, columnList = "name")})
 @Getter
 @Builder
 @AllArgsConstructor

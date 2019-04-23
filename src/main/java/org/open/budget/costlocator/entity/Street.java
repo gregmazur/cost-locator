@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "street", indexes = {@Index(unique = true, columnList = "fk_city,name,full_name,p_index"),
-        @Index(unique = true, columnList = "p_index")})
+@Table(name = "street", indexes = {@Index(name = "STREET_CITY_NAME_IND", unique = true, columnList = "fk_city,name,full_name,p_index"),
+        @Index(name = "STREET_INDEX", unique = true, columnList = "p_index")})
 @Getter
 @Builder
 @EqualsAndHashCode(of = {"id"})

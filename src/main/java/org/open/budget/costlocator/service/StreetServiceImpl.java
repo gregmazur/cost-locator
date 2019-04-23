@@ -49,7 +49,7 @@ public class StreetServiceImpl implements StreetService {
     City saveIfNeeded(City city, Region region){
         City cityFromDB = cityRepository.findByRegionIdAndName(region.getId(), city.getName());
         if (cityFromDB == null){
-            city = City.builder().name(city.getName()).region(region).build();
+            city = City.builder().name(city.getName()).fullName(city.getFullName()).region(region).build();
             return cityRepository.save(city);
         }
         return cityFromDB;
