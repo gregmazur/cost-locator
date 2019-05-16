@@ -46,7 +46,7 @@ public class AddressRepositoryTest {
         city = City.builder().name("Odessa").region(region).build();
         city = cityRepository.save(city);
         cityRepository.flush();
-        street = Street.builder().city(city).name("Street").index("65091").build();
+        street = Street.builder().city(city).name("Street").index("65091").fullName("Street").build();
         street = streetRepository.save(street);
         streetRepository.flush();
         Address address = Address.builder().houseNumber("1").city(city).street(street).build();
@@ -77,7 +77,7 @@ public class AddressRepositoryTest {
     @Test(expected = DataIntegrityViolationException.class)
     public void notUniqueSaveStreet_shouldThrowError() {
         Street nonUniqueStreet =
-                Street.builder().city(city).name("Street").index("65091").build();
+                Street.builder().city(city).name("Street").index("65091").fullName("Street").build();
         streetRepository.save(nonUniqueStreet);
         streetRepository.flush();
     }

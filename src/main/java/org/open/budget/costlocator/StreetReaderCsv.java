@@ -1,5 +1,6 @@
 package org.open.budget.costlocator;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.open.budget.costlocator.entity.City;
@@ -16,18 +17,16 @@ import java.util.Optional;
 
 @Builder
 @Slf4j
+@AllArgsConstructor
 public class StreetReaderCsv {
 
     private StreetService streetService;
 
-    public StreetReaderCsv(StreetService streetService) {
-        this.streetService = streetService;
-    }
+    private String housesCsvName;
 
-    @Transactional
     public void start() {
         {
-            String path = StreetReaderCsv.class.getResource("/houses.csv").getPath();
+            String path = housesCsvName;
 
             try (
                     BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path), "windows-1251"))

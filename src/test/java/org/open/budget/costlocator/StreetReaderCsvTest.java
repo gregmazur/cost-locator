@@ -34,7 +34,8 @@ public class StreetReaderCsvTest {
 
     @Test
     public void start() {
-        serviceCsv.start();
+        StreetReaderCsv streetReaderCsv = new StreetReaderCsv(streetService, getClass().getResource("/houses-test.csv").getPath());
+        streetReaderCsv.start();
         verify(streetService,times(2)).save(any(Region.class), any(City.class), any(Street.class)
 //                Street.builder().region("вінницька").city("Бар").officeName("Андрія Малишка").build()
         );
