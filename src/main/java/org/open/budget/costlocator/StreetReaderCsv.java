@@ -7,6 +7,7 @@ import org.open.budget.costlocator.entity.City;
 import org.open.budget.costlocator.entity.Region;
 import org.open.budget.costlocator.entity.Street;
 import org.open.budget.costlocator.service.StreetService;
+import org.open.budget.costlocator.service.TenderService;
 
 import javax.transaction.Transactional;
 import java.io.BufferedReader;
@@ -20,17 +21,23 @@ import java.util.Optional;
 @AllArgsConstructor
 public class StreetReaderCsv {
 
+    public static String VERSION_OF_LOADED_HOUSES = "HOUSES_VERSION";
+
     private StreetService streetService;
+
+    private TenderService tenderService;
 
     private String housesCsvName;
 
     public void start() {
         {
             String path = housesCsvName;
+            String version = tenderService.getProperty(VERSION_OF_LOADED_HOUSES);
 
             try (
                     BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path), "windows-1251"))
             ) {
+                log.warn("ATTENTION---STARTED READ FROM HOUSES----------ATTENTION---------------ATTENTION---------------------");
                 String line;
                 boolean firstLine = true;
                 while ((line = br.readLine()) != null) {
@@ -46,8 +53,16 @@ public class StreetReaderCsv {
                     streetService.save(wrapper.get().region, wrapper.get().city, wrapper.get().street);
                 }
                 log.warn("------READ HAS ENDED------");
+
+                if (version == null){
+                    tenderService.saveProp(VERSION_OF_LOADED_HOUSES, "1");
+                } else {
+                    tenderService.saveProp(VERSION_OF_LOADED_HOUSES, String.valueOf(Integer.valueOf(version) + 1));
+                }
             } catch (IOException e) {
-                throw new IllegalStateException("not able to read " + path, e);
+                if (version == null) {
+                    throw new IllegalStateException("not able to read " + path, e);
+                }
             }
         }
     }

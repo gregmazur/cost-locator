@@ -11,6 +11,7 @@ import org.open.budget.costlocator.entity.City;
 import org.open.budget.costlocator.entity.Region;
 import org.open.budget.costlocator.entity.Street;
 import org.open.budget.costlocator.service.StreetService;
+import org.open.budget.costlocator.service.TenderService;
 
 import java.util.Optional;
 
@@ -24,6 +25,8 @@ import static org.mockito.Mockito.verify;
 public class StreetReaderCsvTest {
     @Mock
     private StreetService streetService;
+    @Mock
+    private TenderService tenderService;
     @InjectMocks
     private StreetReaderCsv serviceCsv;
 
@@ -34,7 +37,7 @@ public class StreetReaderCsvTest {
 
     @Test
     public void start() {
-        StreetReaderCsv streetReaderCsv = new StreetReaderCsv(streetService, getClass().getResource("/houses-test.csv").getPath());
+        StreetReaderCsv streetReaderCsv = new StreetReaderCsv(streetService, tenderService, getClass().getResource("/houses-test.csv").getPath());
         streetReaderCsv.start();
         verify(streetService,times(2)).save(any(Region.class), any(City.class), any(Street.class)
 //                Street.builder().region("вінницька").city("Бар").officeName("Андрія Малишка").build()

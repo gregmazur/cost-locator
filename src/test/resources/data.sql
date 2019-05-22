@@ -1,0 +1,1 @@
+insert into app_prop (id, property) values ('HOUSES_VERSION', '1')

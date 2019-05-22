@@ -9,14 +9,11 @@ import org.open.budget.costlocator.api.TenderListWrapper;
 import org.open.budget.costlocator.api.TenderWrapper;
 import org.open.budget.costlocator.entity.Item;
 import org.open.budget.costlocator.entity.Tender;
-import org.open.budget.costlocator.entity.UnsuccessfulItem;
 import org.open.budget.costlocator.service.SearchCriteria;
 import org.open.budget.costlocator.service.TenderService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
@@ -25,6 +22,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 public class Extractor {
+    public static String LIST_PATH_ID = "listPath";
 
     static final String API_LINK = "https://public.api.openprocurement.org";
 
@@ -65,16 +63,18 @@ public class Extractor {
     }
 
     public void extract() {
+        String path = tenderService.getProperty(LIST_PATH_ID);
+        if (path == null)
+            return;
         log.warn("------RETRIEVING FROM API HAS STARTED-----");
         setUp();
-        String path = tenderService.getLastListPath();
         TenderListWrapper tenderListWrapper = retrievePortion(path);
         while (!tenderListWrapper.getTenderList().isEmpty()) {
             preLoadPortion(tenderListWrapper);
             path = tenderListWrapper.getNextPage().getPath();
             log.info("loaded list, path : {}", path);
             persistPortion(tenderListWrapper.getTenderList());
-            tenderService.save(path);
+            tenderService.saveProp(LIST_PATH_ID, path);
             tenderListWrapper = retrievePortion(path);
         }
         persistPortion(tenderService.getAllUnsuccessful());

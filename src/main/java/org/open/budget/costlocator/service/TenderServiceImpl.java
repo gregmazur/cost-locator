@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.*;
 import java.util.function.Function;
@@ -39,7 +40,7 @@ public class TenderServiceImpl implements TenderService {
     @Autowired
     private TenderIssuerRepository tenderIssuerRepository;
     @Autowired
-    private ListPathRepository listPathRepository;
+    private ApplicationPropertyRepository applicationPropertyRepository;
     @Autowired
     private UnsuccessfulItemRepository unsuccessfulItemRepository;
     @Autowired
@@ -295,17 +296,20 @@ public class TenderServiceImpl implements TenderService {
 
     @Override
     @Transactional
-    public String getLastListPath() {
-        ListPath listPath = listPathRepository.getOne(1L);
-        if (listPath == null)
-            throw new IllegalStateException("there is no last path set in DB");
-        return listPath.getLastPath();
+    public String getProperty(String id) {
+        String applicationProperty;
+        try{
+            applicationProperty = applicationPropertyRepository.getOne(id).getProperty();
+        } catch (EntityNotFoundException e){
+            applicationProperty = null;
+        }
+        return applicationProperty == null ? null : applicationProperty;
     }
 
     @Override
     @Transactional
-    public ListPath save(String path) {
-        return listPathRepository.save(new ListPath(1L, path));
+    public ApplicationProperty saveProp(String id, String path) {
+        return applicationPropertyRepository.save(new ApplicationProperty(id, path));
     }
 
     @Override

@@ -34,7 +34,7 @@ public class TenderServiceImplTest {
     @Mock
     private TenderIssuerRepository tenderIssuerRepository;
     @Mock
-    private ListPathRepository listPathRepository;
+    private ApplicationPropertyRepository applicationPropertyRepository;
     @InjectMocks
     private TenderServiceImpl tenderService;
 
