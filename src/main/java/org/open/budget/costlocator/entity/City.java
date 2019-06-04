@@ -1,46 +1,50 @@
 package org.open.budget.costlocator.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
-@Table(name = "city", indexes = {@Index(name = "CITY_REG_NAME",unique = true, columnList = "fk_region,name")})
+@Table(name = "city", indexes = {@Index(name = "CITY_REG_NAME",unique = true, columnList = "fk_district,name")})
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @EqualsAndHashCode.Include
     @Column(length = 60)
     private String name;
+
     @Column(length = 60, name = "full_name")
     private String fullName;
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_region")
-    private Region region;
-    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
-    private List<Street> streets;
-    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
-    private List<Address> addresses;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof City)) return false;
-        City city = (City) o;
-        return getName().equals(city.getName());
+    @EqualsAndHashCode.Include
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_district",nullable = false)
+    private District district;
+
+    @OneToMany(mappedBy = "city", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Set<Street> streets;
+
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
+    private Set<Address> addresses;
+
+    public Optional<Street> getStreet(Street street) {
+        if (streets == null)
+            return Optional.empty();
+        return streets.stream().filter(s -> street.equals(s)).findFirst();
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getName());
+    public void addStreet(Street street) {
+        if (streets == null) {
+            streets = new HashSet<>();
+        }
+        streets.add(street);
     }
 }

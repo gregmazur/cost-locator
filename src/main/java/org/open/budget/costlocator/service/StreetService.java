@@ -1,11 +1,18 @@
 package org.open.budget.costlocator.service;
 
-import org.open.budget.costlocator.entity.City;
 import org.open.budget.costlocator.entity.Region;
 import org.open.budget.costlocator.entity.Street;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.List;
+
 @Service
 public interface StreetService {
-    void save(Region region, City city, Street street);
+
+    void save(List<Street> street);
+
+    Street save(Street street);
+
+    Collection<Region> getRegions();
 }

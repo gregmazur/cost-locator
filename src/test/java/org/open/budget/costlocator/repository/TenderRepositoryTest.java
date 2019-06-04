@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 //        (properties = "spring.profiles.active=test")
-public class TenderRepositoryTest {
+public class TenderRepositoryTest extends BaseTest {
 
     @Autowired
     private TenderRepository tenderRepository;
@@ -34,27 +34,18 @@ public class TenderRepositoryTest {
     private CityRepository cityRepository;
 
     @Autowired
+    private DistrictRepository districtRepository;
+
+    @Autowired
     private RegionRepository regionRepository;
 
     private Tender tender1, tender2, tender3;
 
     private Address address, address2, addressNoStreet;
 
-    private Street street;
-
-    private City city;
-
     @Before
-    public void setUp(){
-        Region region = Region.builder().name("Odessa").build();
-        region = regionRepository.save(region);
-        regionRepository.flush();
-        city = City.builder().name("Odessa").region(region).build();
-        city = cityRepository.save(city);
-        cityRepository.flush();
-        street = Street.builder().city(city).name("Street").index("65091").build();
-        street = streetRepository.save(street);
-        streetRepository.flush();
+    public void setUp() throws Exception {
+        super.setUp();
         address = Address.builder().houseNumber("1").city(city).street(street).build();
         addressRepository.save(address);
         address2 = Address.builder().houseNumber("2").city(city).street(street).build();

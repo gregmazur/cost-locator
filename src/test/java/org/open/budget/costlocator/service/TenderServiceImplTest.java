@@ -7,10 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.open.budget.costlocator.api.AddressAPI;
-import org.open.budget.costlocator.entity.Address;
-import org.open.budget.costlocator.entity.City;
-import org.open.budget.costlocator.entity.Region;
-import org.open.budget.costlocator.entity.Street;
+import org.open.budget.costlocator.entity.*;
 import org.open.budget.costlocator.repository.*;
 
 import java.util.Arrays;
@@ -28,13 +25,13 @@ public class TenderServiceImplTest {
     @Mock
     private AddressRepository addressRepository;
     @Mock
-    private StreetRepository streetRepository;
-    @Mock
     private ClassificationRepository classificationRepository;
     @Mock
     private TenderIssuerRepository tenderIssuerRepository;
     @Mock
     private ApplicationPropertyRepository applicationPropertyRepository;
+    @Mock
+    private StreetService streetService;
     @InjectMocks
     private TenderServiceImpl tenderService;
 
@@ -77,7 +74,8 @@ public class TenderServiceImplTest {
                 .postalCode("12511")
                 .region("Житомирська область").build();
         Region region = Region.builder().name("Житомирська").build();
-        City city = City.builder().name("Кам'яний Брід").region(region).id(1L).build();
+        District district = District.builder().name("коростишівського").region(region).build();
+        City city = City.builder().name("Кам'яний Брід").district(district).id(1L).build();
         Street street = Street.builder().city(city).name("Зарічна").fullName("вул. Зарічна").id(1L).index("12511").build();
         Address mockAddress = Address.builder().street(street).houseNumber("8").city(city).build();
         when(addressRepository.find(eq(street.getCity().getId()),eq(street.getId()), eq("8"))).thenReturn(Optional.of(mockAddress));
@@ -98,11 +96,12 @@ public class TenderServiceImplTest {
                 .postalCode("68600")
                 .region("Одеська область").build();
         Region region = Region.builder().name("одеська").build();
-        City city = City.builder().name("Ізмаїл").region(region).id(33L).build();
+        District district = District.builder().region(region).name("ізмаїл").build();
+        City city = City.builder().name("Ізмаїл").district(district).id(33L).build();
         Street street = Street.builder().city(city).name("name").index("123").id(2L).build();
         Street mockStreet = Street.builder().index("n/a").name("n/a").fullName("n/a").city(city).id(3L).build();
         Address mockAddress = Address.builder().city(city).street(mockStreet).houseNumber("n/a").build();
-        when(streetRepository.find(eq(city), eq(mockStreet.getName()), eq(mockStreet.getName()), eq(mockStreet.getIndex()))).thenReturn(Optional.of(mockStreet));
+        when(streetService.save(eq(mockStreet))).thenReturn(mockStreet);
         when(addressRepository.find(eq(city.getId()), eq(mockStreet.getId()), eq(mockAddress.getHouseNumber())))
                 .thenReturn(Optional.empty());
         when(addressRepository.save(eq(mockAddress))).thenReturn(mockAddress);

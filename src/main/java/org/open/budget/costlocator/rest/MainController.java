@@ -2,6 +2,7 @@ package org.open.budget.costlocator.rest;
 
 import org.open.budget.costlocator.dto.*;
 import org.open.budget.costlocator.service.SearchCriteria;
+import org.open.budget.costlocator.service.TenderService;
 import org.open.budget.costlocator.service.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -29,7 +30,7 @@ public class MainController {
         return webService.getCitiesByRegionId(id);
     }
 
-    @GetMapping("/cities/{id}")
+    @GetMapping("/districts/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
     public Collection<StreetDTO> getStreets(@PathVariable("id") Long id) {
         return webService.getStreetsByCityId(id);

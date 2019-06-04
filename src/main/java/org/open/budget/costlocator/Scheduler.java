@@ -15,7 +15,7 @@ public class Scheduler {
     @Autowired
     private TenderService tenderService;
 
-    @Scheduled(cron = "0 0 23 ? * FRI")
+    @Scheduled(cron = "0 0 23 * * ?")
     public void loadTenders() {
         log.warn("ATTENTION---STARTED TASK----------ATTENTION---------------ATTENTION---------------------");
         Extractor extractor = new Extractor(tenderService);

@@ -10,10 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.springframework.data.domain.PageRequest.of;
@@ -49,7 +46,9 @@ public class WebServiceImpl implements WebService {
         Optional<Region> region = regionRepository.findById(regionId.longValue());
         if (!region.isPresent())
             return Collections.EMPTY_LIST;
-        return region.get().getCities().stream().map(TenderMapperDTO.INSTANCE::convertToDto).collect(Collectors.toList());
+        Collection<City> cities = new ArrayList<>();
+        region.get().getDistricts().stream().map(d -> d.getCities()).forEach(c -> cities.addAll(c));
+        return cities.stream().map(TenderMapperDTO.INSTANCE::convertToDto).collect(Collectors.toList());
     }
 
     @Override
@@ -73,7 +72,7 @@ public class WebServiceImpl implements WebService {
     @Override
     @Transactional(readOnly = true)
     public TenderSearchResultDTO getTendersBySearchCriteria(SearchCriteria searchCriteria) {
-        List <Tender> tenders;
+        List<Tender> tenders;
         Pageable pageable;
         Integer count;
         boolean countNeeded = searchCriteria.isResultSizeNeeded();
@@ -97,6 +96,6 @@ public class WebServiceImpl implements WebService {
             throw new IllegalStateException("not able to find tenders without at least cityId");
         }
         return new TenderSearchResultDTO(tenders.stream()
-                .map(TenderMapperDTO.INSTANCE::convertToDto).collect(Collectors.toList()),  count);
+                .map(TenderMapperDTO.INSTANCE::convertToDto).collect(Collectors.toList()), count);
     }
 }

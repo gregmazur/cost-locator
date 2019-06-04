@@ -10,6 +10,8 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=no
     ports:
       - 3306:3306
+    volumes:
+      - my-datavolume:/var/lib/mysql
   app:
     image: grdo/costlocator:1
     restart: always
@@ -17,6 +19,8 @@ services:
       - db
     ports:
       - 8000:8000
+volumes:
+  my-datavolume:
 
 
 

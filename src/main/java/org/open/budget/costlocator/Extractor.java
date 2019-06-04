@@ -20,6 +20,8 @@ import org.springframework.web.client.RestTemplate;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static org.open.budget.costlocator.StreetReaderCsv.HOUSES_LOADING;
+
 @Slf4j
 public class Extractor {
     public static String LIST_PATH_ID = "listPath";
@@ -64,7 +66,8 @@ public class Extractor {
 
     public void extract() {
         String path = tenderService.getProperty(LIST_PATH_ID);
-        if (path == null)
+        String loading = tenderService.getProperty(HOUSES_LOADING);
+        if (path == null || Boolean.valueOf(loading))
             return;
         log.warn("------RETRIEVING FROM API HAS STARTED-----");
         setUp();

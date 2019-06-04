@@ -11,7 +11,6 @@ import org.open.budget.costlocator.entity.*;
 import org.open.budget.costlocator.mapper.TenderMapperAPI;
 import org.open.budget.costlocator.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -34,7 +33,7 @@ public class TenderServiceImpl implements TenderService {
     @Autowired
     private AddressRepository addressRepository;
     @Autowired
-    private StreetRepository streetRepository;
+    private RegionRepository regionRepository;
     @Autowired
     private ClassificationRepository classificationRepository;
     @Autowired
@@ -44,9 +43,9 @@ public class TenderServiceImpl implements TenderService {
     @Autowired
     private UnsuccessfulItemRepository unsuccessfulItemRepository;
     @Autowired
-    private RegionRepository regionRepository;
-    @Autowired
     private TenderDetailRepository tenderDetailRepository;
+    @Autowired
+    private StreetService streetService;
 
 
     @Override
@@ -88,7 +87,7 @@ public class TenderServiceImpl implements TenderService {
         Optional<String> index = findInAddressAPI(addressAPI, this::getValidPostIndex);
         Set<Street> potentialStreets = new HashSet<>();
         if (index.isPresent()) {
-            potentialStreets.addAll(getStreetsByIndex(index.get()));
+            potentialStreets.addAll(findStreetsByCriteria(street -> street.getIndex().equals(index)));
         }
         Optional<Region> region = findInAddressAPI(addressAPI, this::getValidRegionName);
         if (region.isPresent()) {
@@ -97,14 +96,34 @@ public class TenderServiceImpl implements TenderService {
         return potentialStreets;
     }
 
-    @Cacheable("streetsByIndex")
-    Collection<Street> getStreetsByIndex(String index) {
-        return streetRepository.findByIndex(index);
+    Collection<Street> findStreetsByCriteria(Function<Street,Boolean> criteria) {
+        Collection<Street> streets = new HashSet<>();
+        for (Region region : getRegions()) {
+            for (District district : region.getDistricts()) {
+                for (City city : district.getCities()) {
+                    for (Street street : city.getStreets()) {
+                        if (criteria.apply(street)) {
+                            streets.add(street);
+                        }
+                    }
+                }
+            }
+        }
+        return streets;
     }
 
-    @Cacheable("streetsByRegion")
     Collection<Street> getStreetsOfRegion(Region region) {
-        return streetRepository.findByRegion(region);
+        Collection<Street> streets = new HashSet<>();
+        for (Region rI : getRegions().stream().filter(r -> region.equals(r)).collect(Collectors.toSet())) {
+            for (District district : rI.getDistricts()) {
+                for (City city : district.getCities()) {
+                    for (Street street : city.getStreets()) {
+                            streets.add(street);
+                    }
+                }
+            }
+        }
+        return streets;
     }
 
     Optional<Region> getValidRegionName(String regionRaw) {
@@ -115,9 +134,8 @@ public class TenderServiceImpl implements TenderService {
         return Optional.empty();
     }
 
-    @Cacheable("regions")
     Collection<Region> getRegions() {
-        return regionRepository.findAll();
+        return streetService.getRegions();
     }
 
     <T> Optional<T> findInAddressAPI(AddressAPI addressAPI, Function<String, Optional<T>> function) {
@@ -174,7 +192,7 @@ public class TenderServiceImpl implements TenderService {
             })).filter(o -> o.isPresent()).map(Optional::get).collect(Collectors.toSet());
 
             for (City city : foundCities) {
-                Street street = saveIfNeeded(Street.builder().city(city).index("n/a").name("n/a").fullName("n/a").build(), city);
+                Street street = streetService.save(Street.builder().city(city).index("n/a").name("n/a").fullName("n/a").build());
                 Address.AddressBuilder addressBuilder = Address.builder().city(city).street(street).houseNumber("n/a");
                 addresses.add(saveAddressIfNeeded(addressBuilder.build()));
             }
@@ -203,8 +221,8 @@ public class TenderServiceImpl implements TenderService {
     }
 
     Address saveAddressIfNeeded(Address address) {
-        Optional<Address> addressFromDB;
-        addressFromDB = addressRepository.find(address.getCity().getId(), address.getStreet().getId(), address.getHouseNumber());
+        Optional<Address> addressFromDB =
+                addressRepository.find(address.getCity().getId(), address.getStreet().getId(), address.getHouseNumber());
 
         if (addressFromDB.isPresent())
             return addressFromDB.get();
@@ -226,14 +244,7 @@ public class TenderServiceImpl implements TenderService {
         return splited[0].toLowerCase();
     }
 
-    Street saveIfNeeded(Street street, City city) {
-        Optional<Street> streetFromDB = streetRepository.find(city, street.getName(), street.getFullName(), street.getIndex());
-        if (!streetFromDB.isPresent()) {
-            street = Street.builder().name(street.getName()).index(street.getIndex()).city(city).build();
-            return streetRepository.save(street);
-        }
-        return streetFromDB.get();
-    }
+
 
     private void saveTenderIssuer(Tender tender) {
         TenderIssuer tenderIssuer = tender.getIssuer();
@@ -298,9 +309,9 @@ public class TenderServiceImpl implements TenderService {
     @Transactional
     public String getProperty(String id) {
         String applicationProperty;
-        try{
+        try {
             applicationProperty = applicationPropertyRepository.getOne(id).getProperty();
-        } catch (EntityNotFoundException e){
+        } catch (EntityNotFoundException e) {
             applicationProperty = null;
         }
         return applicationProperty == null ? null : applicationProperty;

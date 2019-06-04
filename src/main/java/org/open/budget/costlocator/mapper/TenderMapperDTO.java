@@ -13,7 +13,7 @@ public interface TenderMapperDTO {
 
     RegionDTO convertToDto(Region region);
 
-    @Mapping(source = "region.id", target = "regionId")
+    @Mapping(source = "district.fullName", target = "district")
     CityDTO convertToDto(City city);
 
     @Mapping(source = "city.id", target = "cityId")

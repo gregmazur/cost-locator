@@ -20,35 +20,11 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 //@SpringBootTest(properties = "spring.profiles.active=IT")
-public class AddressRepositoryTest {
-
-    @Autowired
-    private AddressRepository addressRepository;
-
-    @Autowired
-    private StreetRepository streetRepository;
-
-    @Autowired
-    private CityRepository cityRepository;
-
-    @Autowired
-    private RegionRepository regionRepository;
-
-    private Street street;
-
-    private City city;
+public class AddressRepositoryTest extends BaseTest {
 
     @Before
     public void setUp() throws Exception {
-        Region region = Region.builder().name("Odessa").build();
-        region = regionRepository.save(region);
-        regionRepository.flush();
-        city = City.builder().name("Odessa").region(region).build();
-        city = cityRepository.save(city);
-        cityRepository.flush();
-        street = Street.builder().city(city).name("Street").index("65091").fullName("Street").build();
-        street = streetRepository.save(street);
-        streetRepository.flush();
+        super.setUp();
         Address address = Address.builder().houseNumber("1").city(city).street(street).build();
         addressRepository.save(address);
         Address address2 = Address.builder().houseNumber("2").city(city).street(street).build();
@@ -89,7 +65,7 @@ public class AddressRepositoryTest {
 //
 //    @Test
 //    public void getCities_shouldReturn(){
-//        assertEquals(1, regionRepository.findAll().get(0).getCities().size());
+//        assertEquals(1, regionRepository.findAll().get(0).getDistricts().size());
 //    }
 
     @Test
