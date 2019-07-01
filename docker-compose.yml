@@ -13,7 +13,7 @@ services:
     volumes:
       - my-datavolume:/var/lib/mysql
   app:
-    image: grdo/costlocator:1
+    image: grdo/costlocator:latest
     restart: always
     links:
       - db

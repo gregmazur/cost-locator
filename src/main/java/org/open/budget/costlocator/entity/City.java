@@ -1,6 +1,7 @@
 package org.open.budget.costlocator.entity;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.*;
@@ -14,22 +15,23 @@ import java.util.*;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class City {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
     @EqualsAndHashCode.Include
     @Column(length = 60)
     private String name;
 
-    @Column(length = 60, name = "full_name")
+    @Column(length = 100, name = "full_name")
     private String fullName;
 
     @EqualsAndHashCode.Include
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "fk_district",nullable = false)
     private District district;
 
-    @OneToMany(mappedBy = "city", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "city", fetch = FetchType.EAGER)
     private Set<Street> streets;
 
     @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)

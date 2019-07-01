@@ -3,7 +3,9 @@ package org.open.budget.costlocator.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import lombok.ToString;
 
+@ToString
 public class ContactPoint {
 
     @SerializedName("telephone")

@@ -83,11 +83,11 @@ public class StreetReaderCsv {
         if (regionFullName.equals("Київ"))
             regionFullName = regionFullName.replace("Київ", "Київська");
 
-        Region region = Region.builder().name(regionFullName.toLowerCase()).fullName(csvRecord[0]).build();
+        Region region = Region.builder().name(regionFullName.toLowerCase().trim()).fullName(csvRecord[0]).build();
         String cityFullName = csvRecord[2];
-        String cityName = cityFullName.replaceAll("^(смт)|(с\\. )|(м\\. )|(с-ще )", "").toLowerCase();
+        String cityName = cityFullName.replaceAll("^(смт)|(с\\. )|(м\\. )|(с-ще )", "").trim().toLowerCase();
         String districtFullName = csvRecord[1];
-        String districtName = districtFullName.toLowerCase();
+        String districtName = districtFullName.toLowerCase().trim();
 
         if (districtFullName.isEmpty()) {
             districtFullName = cityFullName;
@@ -102,7 +102,7 @@ public class StreetReaderCsv {
         String index = csvRecord[3];
         String streetName = csvRecord[4].replaceAll("^(просп\\. )|(пл\\. )|(вул\\. )|(пров\\. )|(бульв\\. )|(вулиця )|" +
                 "(Вулиця)|(Проспект )|(Провулок )|(Площа )|(площа )|(тупік )|(Тупік )|(Бульвар )|(бульвар )|" +
-                "(Проїзд )|(проїзд )|(парк )", "");
+                "(Проїзд )|(проїзд )|(парк )", "").trim();
         Street street = Street.builder().name(streetName.toLowerCase()).fullName(csvRecord[4]).index(index).city(city).build();
         return Optional.of(street);
     }

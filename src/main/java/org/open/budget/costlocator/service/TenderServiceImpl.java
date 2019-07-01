@@ -33,8 +33,6 @@ public class TenderServiceImpl implements TenderService {
     @Autowired
     private AddressRepository addressRepository;
     @Autowired
-    private RegionRepository regionRepository;
-    @Autowired
     private ClassificationRepository classificationRepository;
     @Autowired
     private TenderIssuerRepository tenderIssuerRepository;
@@ -55,14 +53,14 @@ public class TenderServiceImpl implements TenderService {
                 (!tenderAPI.getProcurementMethod().equals("reporting") ||
                         !tenderAPI.getProcurementMethod().equals("belowThreshold"))) {
             log.warn("Tender is in active status {} will be saved to unsuccessful ", tenderAPI.getId());
-            unsuccessfulItemRepository.save(new UnsuccessfulItem(tenderAPI.getId(), true));
+            unsuccessfulItemRepository.save(new UnsuccessfulItem(tenderAPI.getId(), true, tenderAPI.toString()));
             return null;
         }
         Tender tender = TenderMapperAPI.INSTANCE.tenderApiToTender(tenderAPI);
         saveAddresses(tenderAPI, tender);
         if (tender.getAddresses().isEmpty()) {
             log.warn("Could not find address for {} will be saved to unsuccessful ", tenderAPI.getId());
-            unsuccessfulItemRepository.save(new UnsuccessfulItem(tenderAPI.getId(), false));
+            unsuccessfulItemRepository.save(new UnsuccessfulItem(tenderAPI.getId(), false, tenderAPI.toString()));
             return null;
         }
         saveTenderIssuer(tender);

@@ -1,7 +1,9 @@
 package org.open.budget.costlocator.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -9,16 +11,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tender_not_saved")
 @Getter
+@AllArgsConstructor
 public class UnsuccessfulItem implements Item{
     @Id
-    String id;
+    private String id;
 
-    boolean active;
+    private boolean active;
 
-    public UnsuccessfulItem(String id, boolean active) {
-        this.id = id;
-        this.active = active;
-    }
+    @Column(name = "full_text", columnDefinition = "text")
+    private String fullText;
 
     public UnsuccessfulItem() {
     }
